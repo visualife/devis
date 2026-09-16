@@ -14,6 +14,14 @@ const nextConfig: NextConfig = {
   // basePath does not apply to a browser fetch(), so the client needs the
   // prefix as a value rather than hardcoding it at the call site.
   env: { NEXT_PUBLIC_BASE_PATH: BASE_PATH },
+
+  // On the standalone *.vercel.app domain the bare root is outside basePath
+  // and 404s. `basePath: false` lets this one redirect live outside the
+  // prefix. Harmless once the app is rewritten under ailive.fr, where the
+  // main site owns "/" and only /dr-brief is routed here.
+  async redirects() {
+    return [{ source: '/', destination: BASE_PATH, permanent: false, basePath: false }];
+  },
 };
 
 export default nextConfig;

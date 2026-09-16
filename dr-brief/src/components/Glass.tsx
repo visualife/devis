@@ -31,6 +31,18 @@ let cssOnly: boolean | null = null;
 
 function forceCssRefraction(): boolean {
   if (cssOnly !== null) return cssOnly;
+
+  // `?glass=css` pins the fallback, `?glass=svg` pins full refraction. This is
+  // how the Safari rendering gets reviewed without a Safari device: the CSS
+  // path is the same code in every engine, so forcing it in Chromium shows
+  // what Safari will paint — and Chromium actually composites the blur, which
+  // is the part a WebKit-on-Windows build cannot be trusted to show.
+  const override = new URLSearchParams(window.location.search).get('glass');
+  if (override === 'css' || override === 'svg') {
+    cssOnly = override === 'css';
+    return cssOnly;
+  }
+
   const brands = (navigator as Navigator & { userAgentData?: { brands?: { brand: string }[] } })
     .userAgentData?.brands;
   cssOnly = !(Array.isArray(brands) && brands.some((b) => /Chromium/i.test(b.brand)));
