@@ -1,0 +1,594 @@
+<title>Devis Dr Lellouche</title>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<style>
+  :root{
+    --bg:#121212;
+    --surface:#1A1A1A;
+    --surface-2:#212121;
+    --ink:#F8F9FA;
+    --ink-soft:#B7BBC0;
+    --ink-faint:#7C8085;
+    --line:#2B2B2B;
+    --line-strong:#3A3A3A;
+    --accent:#0D6EFD;
+    --accent-ink:#3D8BFD;
+    --accent-soft:#132339;
+    --good:#20C997;
+    --good-soft:#123029;
+    --shadow: 0 1px 2px rgba(0,0,0,0.4), 0 12px 32px -14px rgba(0,0,0,0.7);
+    --radius: 3px;
+  }
+
+  *{box-sizing:border-box;}
+  html{-webkit-text-size-adjust:100%;}
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--ink);
+    font-family: -apple-system, "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+    font-size:16px;
+    line-height:1.55;
+    -webkit-font-smoothing:antialiased;
+  }
+  .serif{
+    font-family: Georgia, "Iowan Old Style", "Times New Roman", serif;
+  }
+  h1,h2,h3{
+    font-family: Georgia, "Iowan Old Style", "Times New Roman", serif;
+    font-weight:400;
+    color:var(--ink);
+    text-wrap:balance;
+    margin:0;
+  }
+  a{color:var(--accent-ink);}
+  .num{ font-variant-numeric: tabular-nums; }
+
+  .wrap{
+    max-width:920px;
+    margin:0 auto;
+    padding: 0 24px 120px;
+  }
+
+  /* ---------- header ---------- */
+  header.hero{
+    padding: 64px 24px 48px;
+    border-bottom:1px solid var(--line);
+    background:
+      radial-gradient(1100px 380px at 15% -10%, var(--accent-soft) 0%, transparent 60%),
+      var(--bg);
+  }
+  .hero-inner{ max-width:920px; margin:0 auto; }
+  .eyebrow{
+    display:flex; flex-wrap:wrap; gap: 8px 14px;
+    font-size:12.5px; letter-spacing:.08em; text-transform:uppercase;
+    color:var(--ink-faint); margin-bottom:22px;
+  }
+  .eyebrow b{ color:var(--accent-ink); font-weight:600; letter-spacing:.04em; }
+  .eyebrow .sep{ opacity:.5; }
+  h1.title{ font-size:clamp(28px,4.4vw,42px); line-height:1.18; max-width:14ch; }
+  .hero-sub{ margin-top:16px; color:var(--ink-soft); max-width:56ch; font-size:16.5px; }
+
+  .meta-grid{
+    margin-top:36px;
+    display:grid;
+    grid-template-columns: repeat(4, 1fr);
+    border-top:1px solid var(--line);
+  }
+  .meta-cell{
+    padding:16px 18px 16px 0;
+    border-right:1px solid var(--line);
+  }
+  .meta-cell:last-child{ border-right:none; padding-right:0; }
+  .meta-label{ font-size:11.5px; text-transform:uppercase; letter-spacing:.07em; color:var(--ink-faint); }
+  .meta-value{ margin-top:6px; font-size:15px; color:var(--ink); }
+  @media (max-width:760px){
+    .meta-grid{ grid-template-columns: 1fr 1fr; }
+    .meta-cell{ border-right:none; border-bottom:1px solid var(--line); padding:14px 0; }
+  }
+
+  /* ---------- sections ---------- */
+  section{ padding:56px 0; border-bottom:1px solid var(--line); }
+  section:last-of-type{ border-bottom:none; }
+  .section-head{ display:flex; align-items:baseline; gap:14px; margin-bottom:28px; }
+  .section-no{ font-size:13px; color:var(--accent-ink); font-weight:600; font-variant-numeric:tabular-nums; }
+  h2.section-title{ font-size:26px; }
+  .lede{ color:var(--ink-soft); max-width:62ch; margin-top:14px; font-size:15.5px; }
+
+  .reveal{ opacity:0; transform: translateY(14px); transition: opacity .6s ease, transform .6s ease; }
+  .reveal.in{ opacity:1; transform:none; }
+  @media (prefers-reduced-motion: reduce){
+    .reveal{ opacity:1; transform:none; transition:none; }
+  }
+
+  /* ---------- comparison ---------- */
+  .compare-table{ width:100%; border-collapse:collapse; margin-top:8px; font-size:14.5px; }
+  .compare-table th, .compare-table td{ padding:11px 14px; border-bottom:1px solid var(--line); text-align:left; }
+  .compare-table th{ font-size:11.5px; text-transform:uppercase; letter-spacing:.05em; color:var(--ink-faint); font-weight:600; }
+  .compare-table td.num, .compare-table th.num{ text-align:right; }
+  .row-strong td{ font-weight:600; }
+  .tag-no{ color:#E5695A; }
+  .tag-yes{ color:var(--good); }
+
+  .bars{ margin-top:32px; display:flex; flex-direction:column; gap:22px; }
+  .bar-row{ display:grid; grid-template-columns: 130px 1fr 110px; align-items:center; gap:16px; }
+  .bar-label{ font-size:13.5px; color:var(--ink-soft); }
+  .bar-track{ height:14px; background:var(--surface-2); border-radius:2px; overflow:hidden; }
+  .bar-fill{ height:100%; width:0%; transition: width 1.1s cubic-bezier(.2,.7,.2,1); border-radius:2px; }
+  .bar-fill.today{ background: linear-gradient(90deg, #B8402F, #E5695A); }
+  .bar-fill.ailive{ background: linear-gradient(90deg, var(--accent), var(--accent-ink)); }
+  .bar-row.in .bar-fill.today{ width:var(--w,0%); }
+  .bar-row.in .bar-fill.ailive{ width:var(--w,0%); }
+  .bar-value{ text-align:right; font-size:14px; font-variant-numeric:tabular-nums; color:var(--ink); }
+  @media (prefers-reduced-motion: reduce){ .bar-fill{ transition:none; } }
+  @media (max-width:600px){ .bar-row{ grid-template-columns: 90px 1fr 80px; gap:10px; } }
+
+  /* ---------- configurator ---------- */
+  .configurator{
+    display:grid;
+    grid-template-columns: 1fr 320px;
+    gap:36px;
+    align-items:start;
+  }
+  @media (max-width:820px){ .configurator{ grid-template-columns:1fr; } }
+
+  .option-group{ margin-bottom:34px; }
+  .option-group:last-child{ margin-bottom:0; }
+  .group-title{ font-size:12px; text-transform:uppercase; letter-spacing:.07em; color:var(--ink-faint); margin-bottom:12px; display:flex; align-items:center; gap:8px; }
+  .group-title .n{ width:18px; height:18px; border-radius:50%; background:var(--accent-soft); color:var(--accent-ink); display:inline-flex; align-items:center; justify-content:center; font-size:10.5px; font-weight:700; }
+
+  .choice{
+    display:flex; gap:14px; align-items:flex-start;
+    padding:16px 18px; border:1px solid var(--line); border-radius:var(--radius);
+    background:var(--surface); margin-bottom:10px; cursor:pointer;
+    transition: border-color .15s ease, background .15s ease;
+  }
+  .choice:hover{ border-color:var(--line-strong); }
+  .choice input{ margin-top:3px; accent-color:var(--accent); flex-shrink:0; }
+  .choice.checked{ border-color:var(--accent); background:var(--accent-soft); }
+  .choice-body{ flex:1; }
+  .choice-top{ display:flex; justify-content:space-between; gap:10px; align-items:baseline; }
+  .choice-name{ font-weight:600; font-size:15px; }
+  .choice-price{ font-size:14.5px; font-variant-numeric:tabular-nums; color:var(--accent-ink); white-space:nowrap; }
+  .choice-desc{ font-size:13.5px; color:var(--ink-soft); margin-top:4px; }
+  .choice ul{ margin:8px 0 0; padding-left:18px; font-size:13px; color:var(--ink-soft); }
+  .choice ul li{ margin-bottom:2px; }
+  .choice-delay{ margin-top:8px; font-size:12px; color:var(--ink-faint); }
+
+  .stepper-row{
+    display:flex; justify-content:space-between; align-items:center;
+    padding:14px 18px; border:1px solid var(--line); border-radius:var(--radius);
+    background:var(--surface); margin-bottom:10px;
+  }
+  .stepper-info .stepper-name{ font-weight:600; font-size:14.5px; }
+  .stepper-info .stepper-desc{ font-size:13px; color:var(--ink-soft); margin-top:2px; }
+  .stepper{ display:flex; align-items:center; gap:10px; }
+  .stepper button{
+    width:28px; height:28px; border-radius:50%; border:1px solid var(--line-strong);
+    background:var(--surface-2); color:var(--ink); font-size:16px; cursor:pointer; line-height:1;
+  }
+  .stepper button:hover{ background:var(--accent-soft); border-color:var(--accent); }
+  .stepper output{ min-width:20px; text-align:center; font-variant-numeric:tabular-nums; font-size:14.5px; }
+
+  /* summary panel */
+  .summary{
+    position:sticky; top:20px;
+    background:var(--surface); border:1px solid var(--line);
+    border-radius:var(--radius); box-shadow:var(--shadow);
+    padding:22px 22px 20px;
+  }
+  .summary-title{ font-size:12px; text-transform:uppercase; letter-spacing:.07em; color:var(--ink-faint); margin-bottom:14px; }
+  .summary-line{ display:flex; justify-content:space-between; gap:10px; font-size:13.5px; padding:7px 0; border-bottom:1px dashed var(--line); }
+  .summary-line span:first-child{ color:var(--ink-soft); }
+  .summary-line span:last-child{ font-variant-numeric:tabular-nums; }
+  .summary-total{ margin-top:14px; padding-top:14px; border-top:1px solid var(--line-strong); }
+  .summary-total-row{ display:flex; justify-content:space-between; align-items:baseline; }
+  .summary-total-label{ font-size:13px; color:var(--ink-soft); }
+  .summary-total-value{ font-family:Georgia, serif; font-size:26px; font-variant-numeric:tabular-nums; color:var(--ink); }
+  .summary-total-sub{ font-size:12.5px; color:var(--ink-faint); margin-top:2px; text-align:right; }
+  .summary-note{ margin-top:16px; font-size:12px; color:var(--ink-faint); line-height:1.5; }
+  .summary-badge{
+    display:inline-block; margin-top:14px; font-size:11.5px; text-transform:uppercase;
+    letter-spacing:.05em; background:var(--good-soft); color:var(--good); padding:4px 9px; border-radius:2px;
+  }
+  @media (max-width:820px){
+    .summary{ position:static; }
+  }
+
+  /* ---------- recap table ---------- */
+  table.recap{ width:100%; border-collapse:collapse; font-size:14px; margin-top:10px; }
+  table.recap th, table.recap td{ padding:10px 12px; border-bottom:1px solid var(--line); text-align:left; vertical-align:top; }
+  table.recap th{ font-size:11px; text-transform:uppercase; letter-spacing:.05em; color:var(--ink-faint); }
+  table.recap td.num{ text-align:right; font-variant-numeric:tabular-nums; white-space:nowrap; }
+  .table-scroll{ overflow-x:auto; }
+
+  /* ---------- lists / conditions ---------- */
+  .kv-grid{ display:grid; grid-template-columns:repeat(2,1fr); gap:22px 32px; margin-top:6px; }
+  @media (max-width:700px){ .kv-grid{ grid-template-columns:1fr; } }
+  .kv{ font-size:14.5px; }
+  .kv dt{ font-weight:600; margin-bottom:4px; }
+  .kv dd{ margin:0; color:var(--ink-soft); }
+
+  .charge-list{ list-style:none; padding:0; margin:18px 0 0; display:flex; flex-direction:column; gap:10px; }
+  .charge-list li{ display:flex; justify-content:space-between; gap:16px; padding:12px 0; border-bottom:1px solid var(--line); font-size:14.5px; }
+  .charge-list li span:last-child{ color:var(--ink-soft); text-align:right; white-space:nowrap; }
+
+  .care-list{ list-style:none; padding:0; margin:18px 0 0; display:grid; gap:14px; }
+  .care-list li{ display:flex; gap:12px; font-size:14.5px; }
+  .care-list li::before{ content:"—"; color:var(--accent-ink); flex-shrink:0; }
+
+  details.note{
+    border:1px solid var(--line); border-radius:var(--radius); background:var(--surface);
+    padding:14px 18px; margin-bottom:10px;
+  }
+  details.note summary{ cursor:pointer; font-weight:600; font-size:14.5px; list-style:none; display:flex; justify-content:space-between; align-items:center; }
+  details.note summary::-webkit-details-marker{ display:none; }
+  details.note summary::after{ content:"+"; color:var(--accent-ink); font-size:18px; }
+  details.note[open] summary::after{ content:"–"; }
+  details.note p{ margin:10px 0 0; font-size:14px; color:var(--ink-soft); }
+
+  footer.closing{
+    padding:64px 24px 48px;
+    text-align:center;
+    background: linear-gradient(180deg, transparent, var(--accent-soft) 220%);
+  }
+  .closing-quote{ font-family:Georgia, serif; font-size:clamp(19px,2.6vw,24px); max-width:52ch; margin:0 auto; line-height:1.5; color:var(--ink); text-wrap:balance; }
+  .closing-sign{ margin-top:26px; font-size:13.5px; color:var(--ink-faint); }
+  .closing-sign b{ color:var(--ink-soft); }
+
+  .print-note{ text-align:center; font-size:12px; color:var(--ink-faint); padding:18px 24px 40px; }
+
+  ::selection{ background:var(--accent-soft); }
+</style>
+
+<header class="hero">
+  <div class="hero-inner">
+    <div class="eyebrow">
+      <span>Ailive.fr — Agence web sur-mesure, design &amp; IA — Paris</span>
+      <span class="sep">·</span>
+      <b>Devis AIL-2026-0915-LELLOUCHE</b>
+    </div>
+    <h1 class="title">Site internet sur-mesure pour le Cabinet du Dr Patrick Lellouche</h1>
+    <p class="hero-sub">Développement web sur-mesure, design graphique, vidéos IA et animation 3D — pour un cabinet dentaire qui possède enfin son site, son adresse et ses contenus. Émis par Emmanuel Mesguich, fondateur d'Ailive.fr.</p>
+
+    <div class="meta-grid">
+      <div class="meta-cell">
+        <div class="meta-label">Client</div>
+        <div class="meta-value">Cabinet du Dr Patrick Lellouche<br>Charenton-le-Pont</div>
+      </div>
+      <div class="meta-cell">
+        <div class="meta-label">Date d'émission</div>
+        <div class="meta-value">15 septembre 2026</div>
+      </div>
+      <div class="meta-cell">
+        <div class="meta-label">Validité</div>
+        <div class="meta-value">30 jours<br>jusqu'au 15 octobre 2026</div>
+      </div>
+      <div class="meta-cell">
+        <div class="meta-label">Émis par</div>
+        <div class="meta-value">Emmanuel Mesguich<br>Ailive.fr</div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<div class="wrap">
+
+  <section id="today" class="reveal">
+    <div class="section-head"><h2 class="section-title">Ce que vous payez aujourd'hui</h2></div>
+    <p class="lede">Votre site actuel est loué, pas acheté. Vous ne possédez ni le site, ni l'adresse, ni les vidéos qui s'y trouvent. Le jour où l'abonnement s'arrête, tout disparaît.</p>
+
+    <div class="table-scroll">
+      <table class="compare-table">
+        <thead>
+          <tr><th></th><th class="num">Aujourd'hui (abonnement)</th><th class="num">Avec Ailive.fr</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Coût de départ</td><td class="num">690 € TTC</td><td class="num">2 160 € TTC (Option A)</td></tr>
+          <tr><td>Coût mensuel</td><td class="num">113 à 170 € TTC / mois</td><td class="num">≈ 10 € TTC / mois (hébergement seul)</td></tr>
+          <tr class="row-strong"><td>Total sur 3 ans</td><td class="num">4 758 à 6 810 € TTC</td><td class="num">≈ 2 520 € TTC</td></tr>
+          <tr><td>Le site vous appartient</td><td class="num tag-no">Non</td><td class="num tag-yes">Oui, définitivement</td></tr>
+          <tr><td>L'adresse vous appartient</td><td class="num tag-no">Non</td><td class="num tag-yes">Oui, à votre nom</td></tr>
+          <tr><td>Les vidéos vous appartiennent</td><td class="num tag-no">Non</td><td class="num tag-yes">Oui</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="bars" id="bars">
+      <div class="bar-row" style="--w:100%">
+        <div class="bar-label">Abonnement</div>
+        <div class="bar-track"><div class="bar-fill today"></div></div>
+        <div class="bar-value num">6 810 €</div>
+      </div>
+      <div class="bar-row" style="--w:37%">
+        <div class="bar-label">Ailive.fr</div>
+        <div class="bar-track"><div class="bar-fill ailive"></div></div>
+        <div class="bar-value num">2 520 €</div>
+      </div>
+    </div>
+    <p class="lede" style="margin-top:18px;font-size:13.5px;">Coût total sur 3 ans, TTC. Dès la deuxième année, votre site ne vous coûte pratiquement plus rien.</p>
+  </section>
+
+  <section id="configure" class="reveal">
+    <div class="section-head"><h2 class="section-title">Composez votre devis</h2></div>
+    <p class="lede">Ajustez les options ci-dessous : le récapitulatif à droite se met à jour en temps réel.</p>
+
+    <div class="configurator" style="margin-top:28px;">
+      <div class="configurator-main">
+
+        <div class="option-group">
+          <div class="group-title"><span class="n">1</span> Le site</div>
+
+          <label class="choice" data-radio="site" data-value="0">
+            <input type="radio" name="site" value="0" checked>
+            <div class="choice-body">
+              <div class="choice-top"><span class="choice-name">Option A — Site essentiel</span><span class="choice-price num">1 800 € HT</span></div>
+              <div class="choice-desc">Un site clair, rapide, que vous mettez à jour vous-même.</div>
+              <ul>
+                <li>Design sur-mesure · pages accueil, cabinet, soins, urgences, accès, contact</li>
+                <li>Prise de rendez-vous vers Doctolib · adresse à votre nom · fiche Google Business</li>
+                <li>Référencement local · RGPD · formation 1h</li>
+              </ul>
+              <div class="choice-delay">Délai : 5 à 7 semaines</div>
+            </div>
+          </label>
+
+          <label class="choice" data-radio="site" data-value="1">
+            <input type="radio" name="site" value="1">
+            <div class="choice-body">
+              <div class="choice-top"><span class="choice-name">Option B — Site complet</span><span class="choice-price num">2 600 € HT</span></div>
+              <div class="choice-desc">Tout ce que vous avez aujourd'hui, en mieux — et enrichi.</div>
+              <ul>
+                <li>Tout le contenu de l'Option A</li>
+                <li>Espace conseils, galerie de cas cliniques, questionnaire pré-consultation</li>
+                <li>Formation étendue (2h)</li>
+              </ul>
+              <div class="choice-delay">Délai : 7 à 9 semaines</div>
+            </div>
+          </label>
+        </div>
+
+        <div class="option-group">
+          <div class="group-title"><span class="n">2</span> Vidéos pédagogiques</div>
+          <p class="lede" style="margin-top:0;margin-bottom:14px;font-size:13.5px;">Les vidéos actuelles appartiennent à votre prestataire et ne peuvent pas être reprises. Produites avec nos outils d'IA, elles vous appartiennent définitivement.</p>
+
+          <label class="choice" data-radio="video" data-value="0">
+            <input type="radio" name="video" value="0">
+            <div class="choice-body"><div class="choice-top"><span class="choice-name">Aucune vidéo</span><span class="choice-price num">0 €</span></div></div>
+          </label>
+          <label class="choice" data-radio="video" data-value="690">
+            <input type="radio" name="video" value="690" checked>
+            <div class="choice-body">
+              <div class="choice-top"><span class="choice-name">Pack Essentiel — 3 vidéos IA</span><span class="choice-price num">690 € HT</span></div>
+              <div class="choice-desc">Vidéos de 30 à 60 s : accueil du cabinet, déroulé d'une consultation, hygiène et brossage.</div>
+            </div>
+          </label>
+          <label class="choice" data-radio="video" data-value="1200">
+            <input type="radio" name="video" value="1200">
+            <div class="choice-body">
+              <div class="choice-top"><span class="choice-name">Pack Signature — 6 vidéos IA</span><span class="choice-price num">1 200 € HT</span></div>
+              <div class="choice-desc">Ajoute suites opératoires, présentation de l'équipe, conseils post-soin.</div>
+            </div>
+          </label>
+
+          <div class="stepper-row">
+            <div class="stepper-info">
+              <div class="stepper-name">Vidéo IA supplémentaire</div>
+              <div class="stepper-desc">260 € HT / unité</div>
+            </div>
+            <div class="stepper">
+              <button type="button" data-step="extraVideo" data-dir="-1" aria-label="Retirer une vidéo">−</button>
+              <output id="extraVideo-out">0</output>
+              <button type="button" data-step="extraVideo" data-dir="1" aria-label="Ajouter une vidéo">+</button>
+            </div>
+          </div>
+
+          <div class="stepper-row">
+            <div class="stepper-info">
+              <div class="stepper-name">Animation 3D sur-mesure</div>
+              <div class="stepper-desc">450 € HT / animation — pose d'implant, greffe osseuse, aligneurs…</div>
+            </div>
+            <div class="stepper">
+              <button type="button" data-step="anim3d" data-dir="-1" aria-label="Retirer une animation">−</button>
+              <output id="anim3d-out">0</output>
+              <button type="button" data-step="anim3d" data-dir="1" aria-label="Ajouter une animation">+</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="option-group">
+          <div class="group-title"><span class="n">3</span> Versions multilingues</div>
+          <label class="choice" data-radio="lang" data-value="0">
+            <input type="radio" name="lang" value="0" checked>
+            <div class="choice-body"><div class="choice-top"><span class="choice-name">Français uniquement</span><span class="choice-price num">0 €</span></div></div>
+          </label>
+          <label class="choice" data-radio="lang" data-value="450a">
+            <input type="radio" name="lang" value="450a">
+            <div class="choice-body"><div class="choice-top"><span class="choice-name">+ Anglais</span><span class="choice-price num">450 € HT</span></div></div>
+          </label>
+          <label class="choice" data-radio="lang" data-value="450e">
+            <input type="radio" name="lang" value="450e">
+            <div class="choice-body"><div class="choice-top"><span class="choice-name">+ Espagnol</span><span class="choice-price num">450 € HT</span></div></div>
+          </label>
+          <label class="choice" data-radio="lang" data-value="800">
+            <input type="radio" name="lang" value="800">
+            <div class="choice-body"><div class="choice-top"><span class="choice-name">+ Anglais et Espagnol</span><span class="choice-price num">800 € HT</span></div></div>
+          </label>
+        </div>
+
+      </div>
+
+      <aside class="summary" aria-live="polite">
+        <div class="summary-title">Votre devis</div>
+        <div id="summary-lines"></div>
+        <div class="summary-total">
+          <div class="summary-total-row">
+            <span class="summary-total-label">Total HT</span>
+            <span class="summary-total-value num" id="total-ht">0 €</span>
+          </div>
+          <div class="summary-total-sub num" id="total-ttc">TTC (TVA 20 %) : 0 €</div>
+        </div>
+        <span class="summary-badge" id="reco-badge">Sélection recommandée</span>
+        <p class="summary-note">Acompte de 40 % à la commande, solde à la livraison. Prix hors hébergement, nom de domaine et abonnement Doctolib.</p>
+      </aside>
+    </div>
+  </section>
+
+  <section id="recap" class="reveal">
+    <div class="section-head"><h2 class="section-title">Tableau récapitulatif</h2></div>
+    <div class="table-scroll">
+      <table class="recap">
+        <thead>
+          <tr><th>Option</th><th>Descriptif</th><th class="num">Prix HT</th><th class="num">Prix TTC (20 %)</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>A</td><td>Site essentiel</td><td class="num">1 800 €</td><td class="num">2 160 €</td></tr>
+          <tr><td>B</td><td>Site complet</td><td class="num">2 600 €</td><td class="num">3 120 €</td></tr>
+          <tr><td>Vidéos</td><td>Pack Essentiel — 3 vidéos IA</td><td class="num">690 €</td><td class="num">828 €</td></tr>
+          <tr><td>Vidéos</td><td>Pack Signature — 6 vidéos IA</td><td class="num">1 200 €</td><td class="num">1 440 €</td></tr>
+          <tr><td>3D</td><td>Animation à l'unité, geste clinique</td><td class="num">450 €</td><td class="num">540 €</td></tr>
+          <tr><td>Langues</td><td>Anglais et/ou espagnol</td><td class="num">450 à 800 €</td><td class="num">540 à 960 €</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="lede" style="font-size:13px;margin-top:10px;">Prix indiqués hors taxes. TVA à 20 % applicable en sus.</p>
+
+    <ul class="charge-list">
+      <li><span>Hébergement + nom de domaine</span><span>≈ 10 € TTC / mois, prestataire au choix</span></li>
+      <li><span>Abonnement Doctolib</span><span>Inchangé, facturé par Doctolib</span></li>
+      <li><span>Email professionnel</span><span>0 € — Zoho Mail, offre gratuite</span></li>
+    </ul>
+    <p class="lede" style="margin-top:16px;">Aucun abonnement à Ailive.fr. Le site est livré fini, fonctionnel et autonome.</p>
+  </section>
+
+  <section id="autonomy" class="reveal">
+    <div class="section-head"><h2 class="section-title">Un site que vous gérez vous-même</h2></div>
+    <p class="lede">C'est le principe de ce devis : vous livrer un site terminé, pas vous engager dans un nouvel abonnement.</p>
+    <ul class="care-list">
+      <li>Mises à jour de sécurité automatiques, activées et testées avant livraison</li>
+      <li>Sauvegarde automatique quotidienne, configurée à la mise en ligne</li>
+      <li>Interface d'édition simple : un texte, une photo, un horaire ou un tarif se modifient comme dans un traitement de texte</li>
+      <li>Formation d'1h (2h en Option B), en direct, sur votre propre site</li>
+      <li>Guide illustré remis à la fin, reprenant les gestes courants</li>
+      <li>1 mois d'assistance incluse après la mise en ligne</li>
+    </ul>
+    <p class="lede" style="margin-top:16px;">Au-delà, nous restons disponibles à la demande, sans engagement : <b class="num">90 € HT / heure</b>.</p>
+  </section>
+
+  <section id="conditions" class="reveal">
+    <div class="section-head"><h2 class="section-title">Conditions</h2></div>
+    <dl class="kv-grid">
+      <div class="kv"><dt>Acompte</dt><dd>40 % à la commande, solde à la livraison.</dd></div>
+      <div class="kv"><dt>Délais</dt><dd>Option A : 5-7 semaines · Option B : 7-9 semaines · Vidéos : 3-5 semaines, en parallèle du site. Démarrage à réception de l'acompte et des contenus.</dd></div>
+      <div class="kv"><dt>Modifications incluses</dt><dd>2 allers-retours sur le design. 1 aller-retour par vidéo après validation du scénario. Au-delà : 90 € HT/heure.</dd></div>
+      <div class="kv"><dt>Compris dans le prix</dt><dd>Conception, développement, reprise des contenus, mise en ligne, formation, guide, 1 mois d'assistance.</dd></div>
+      <div class="kv"><dt>Non compris</dt><dd>Hébergement, nom de domaine, abonnement Doctolib, rédaction de nouveaux textes, photographies professionnelles.</dd></div>
+      <div class="kv"><dt>Propriété</dt><dd>Au paiement intégral, le site et les vidéos vous appartiennent sans limite d'usage ni de durée. Hébergement et domaine ouverts à votre nom.</dd></div>
+    </dl>
+  </section>
+
+  <section id="know" class="reveal">
+    <div class="section-head"><h2 class="section-title">Bon à savoir avant de commencer</h2></div>
+
+    <details class="note" open>
+      <summary>Votre adresse internet actuelle</summary>
+      <p><code>dr-patrick-lellouche.chirurgiens-dentistes.fr</code> est un sous-domaine appartenant à votre prestataire actuel : il ne peut pas être transféré. Nous ouvrons une adresse à votre nom et mettons en place les redirections nécessaires pour conserver votre position sur Google. Ces redirections dépendent de la coopération de votre prestataire ; s'il refuse, une solution de repli est prévue, avec un effet limité et temporaire sur votre référencement.</p>
+    </details>
+    <details class="note">
+      <summary>Vos vidéos actuelles</summary>
+      <p>Fournies par votre prestataire, elles ne sont pas transférables. Le pack vidéo n'est pas une option de confort : c'est un remplacement.</p>
+    </details>
+    <details class="note">
+      <summary>Validation du contenu médical</summary>
+      <p>Chaque scénario vous est soumis avant production. L'exactitude clinique relève de votre appréciation de praticien — vous validez, nous produisons.</p>
+    </details>
+    <details class="note">
+      <summary>Volume de contenu</summary>
+      <p>Le prix est établi sur la base du contenu actuellement en ligne. Un volume nettement supérieur ferait l'objet d'un ajustement, discuté avant de commencer.</p>
+    </details>
+  </section>
+
+</div>
+
+<footer class="closing">
+  <p class="closing-quote">Un patient qui cherche un dentiste un lundi matin, trouve votre cabinet en deux clics, comprend son traitement en une minute, et prend rendez-vous sans décrocher le téléphone. À très vite en ligne !</p>
+  <p class="closing-sign">Devis établi par <b>Ailive.fr — Emmanuel Mesguich</b>. Pour toute question ou ajustement, nous restons à votre disposition.</p>
+</footer>
+
+<script>
+(function(){
+  var TVA = 1.2;
+  var state = { site: 1800, video: 690, extraVideo: 0, anim3d: 0, lang: 0 };
+  var extraVideoPrice = 260, anim3dPrice = 450;
+
+  function langValue(v){
+    if(v === "450a" || v === "450e") return 450;
+    if(v === "800") return 800;
+    return 0;
+  }
+  function langLabel(v){
+    if(v === "450a") return "Anglais";
+    if(v === "450e") return "Espagnol";
+    if(v === "800") return "Anglais et Espagnol";
+    return null;
+  }
+
+  document.querySelectorAll('input[type=radio]').forEach(function(input){
+    input.addEventListener('change', function(){
+      var group = input.name;
+      document.querySelectorAll('.choice[data-radio="'+group+'"]').forEach(function(el){ el.classList.remove('checked'); });
+      input.closest('.choice').classList.add('checked');
+      if(group === 'site') state.site = input.value === '1' ? 2600 : 1800;
+      if(group === 'video') state.video = parseInt(input.value, 10);
+      if(group === 'lang') state.lang = langValue(input.value);
+      render();
+    });
+    if(input.checked){ input.closest('.choice').classList.add('checked'); }
+  });
+
+  document.querySelectorAll('[data-step]').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      var key = btn.getAttribute('data-step');
+      var dir = parseInt(btn.getAttribute('data-dir'), 10);
+      state[key] = Math.max(0, Math.min(20, state[key] + dir));
+      document.getElementById(key + '-out').textContent = state[key];
+      render();
+    });
+  });
+
+  function fmt(n){ return n.toLocaleString('fr-FR') + ' €'; }
+
+  function render(){
+    var lines = [];
+    lines.push({ label: state.site === 2600 ? 'Option B — Site complet' : 'Option A — Site essentiel', value: state.site });
+    if(state.video > 0){
+      lines.push({ label: state.video === 1200 ? 'Pack Signature — 6 vidéos' : 'Pack Essentiel — 3 vidéos', value: state.video });
+    }
+    if(state.extraVideo > 0){
+      lines.push({ label: state.extraVideo + ' vidéo(s) supplémentaire(s)', value: state.extraVideo * extraVideoPrice });
+    }
+    if(state.anim3d > 0){
+      lines.push({ label: state.anim3d + ' animation(s) 3D', value: state.anim3d * anim3dPrice });
+    }
+    var ll = langLabel(document.querySelector('input[name=lang]:checked').value);
+    if(ll){ lines.push({ label: ll, value: state.lang }); }
+
+    var html = lines.map(function(l){
+      return '<div class="summary-line"><span>'+l.label+'</span><span class="num">'+fmt(l.value)+'</span></div>';
+    }).join('');
+    document.getElementById('summary-lines').innerHTML = html;
+
+    var totalHT = lines.reduce(function(s,l){ return s + l.value; }, 0);
+    document.getElementById('total-ht').textContent = fmt(totalHT);
+    document.getElementById('total-ttc').textContent = 'TTC (TVA 20 %) : ' + fmt(Math.round(totalHT * TVA));
+
+    var isRecommended = state.site === 2600 && state.video === 690 && state.extraVideo === 0 && state.anim3d === 0 && state.lang === 0;
+    document.getElementById('reco-badge').style.display = isRecommended ? 'inline-block' : 'none';
+  }
+  render();
+
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); } });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.reveal, .bar-row').forEach(function(el){ io.observe(el); });
+})();
+</script>

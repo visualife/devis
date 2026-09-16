@@ -1,0 +1,212 @@
+@import 'tailwindcss';
+
+/* ───────────────────────── tokens ─────────────────────────
+   Scale and type mirror the bdimo devis (Tailwind v4 defaults,
+   spacing .25rem) so the two pages measure the same. Colours are the
+   blue-grey ground, with the site teal kept as the primary accent.
+
+   Every ink/accent pair below is measured against the *composited*
+   glass surface (ground-0 under the material tint), not against the
+   bare page — that is the surface the text actually sits on.
+   Worst case is the card material: ink 12.95, dim 7.95, faint 5.71,
+   teal 6.79, focus 6.97. All AA.                                    */
+@theme {
+  --font-sans: var(--font-inter), 'Inter Fallback', system-ui, sans-serif;
+  --font-serif: var(--font-fraunces), 'Fraunces Fallback', Georgia, serif;
+
+  --color-ground-0: #0f151c;
+  --color-ground-1: #1b2430;
+  --color-ink: #eef3f8;
+  --color-ink-dim: #b3c2d1;
+  --color-ink-faint: #93a5b6;
+  --color-accent: #20c997;
+  --color-accent-ink: #08211a;
+  /* #8f7fc4 measures 4.13 on card glass — fails AA as text, and fails again
+     (3.75) as a selected-chip fill, because the tint layer's vertical falloff
+     darkens the bottom of the chip to #73689f. It stays a rule/border colour.
+     Purple as text, and purple as a chip fill, both use the lighter
+     derivative: 6.26 on card glass, 5.38 under the fill at its darkest. */
+  --color-piano: #8f7fc4;
+  --color-piano-text: #b0a2e0;
+  --color-piano-ink: #14101f;
+  --color-focus: #7ab8ff;
+}
+
+:root {
+  color-scheme: dark;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+}
+
+body {
+  margin: 0;
+  background-color: var(--color-ground-0);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  font-size: 16px;
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* The ground stays calm, but it cannot be perfectly flat: refraction has
+   nothing to bend if there is no luminance gradient behind the glass.
+   Two very soft pools, fixed, well under the content. */
+.ground {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background:
+    radial-gradient(60rem 40rem at 18% -10%, #1f3040 0%, transparent 60%),
+    radial-gradient(48rem 36rem at 92% 12%, #1a2b3a 0%, transparent 62%),
+    radial-gradient(52rem 42rem at 50% 108%, #19242f 0%, transparent 65%),
+    var(--color-ground-0);
+}
+
+/* ───────────────────────── glass hosts ─────────────────────────
+   The engine inserts its lens/tint/sheen/rim layers as CHILDREN of the
+   host and reads the page through them, so the host itself must never
+   carry a background — it would be sampled instead of the page. It must
+   also never carry isolation / filter / opacity / mask, each of which
+   induces a backdrop root and silently kills the refraction.
+
+   Until the engine mounts (and forever, with JS off) the host keeps a
+   flat painted card so the page is readable and presentable. `.ql-ready`
+   is set by the mount effect and hands the surface over to the engine. */
+/* No `position` here on purpose. It would have the same specificity as
+   Tailwind's `sticky` utility and, being declared later, would win — silently
+   turning the sticky action bar into a relative one. The engine sets
+   `position: relative` itself on mount, but only when the computed position is
+   still `static`, so a sticky host keeps its sticky. */
+.glass {
+  border-radius: 1rem;
+  background: color-mix(in srgb, var(--color-ground-1) 82%, white 4%);
+  border: 1px solid rgb(255 255 255 / 0.08);
+  box-shadow: 0 1px 2px rgb(0 0 0 / 0.3), 0 8px 24px rgb(0 0 0 / 0.22);
+}
+
+.glass.ql-ready {
+  background: none;
+  border-color: transparent;
+}
+
+/* An engine with no backdrop-filter at all would leave the glass as tint + rim
+   over live page content, which is fine on the calm ground but not under the
+   sticky bar. Those engines keep the painted card instead. Safari is NOT in
+   this bucket — it composites -webkit-backdrop-filter: blur() normally. */
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  .glass.ql-ready {
+    background: color-mix(in srgb, var(--color-ground-1) 88%, white 5%);
+    border-color: rgb(255 255 255 / 0.1);
+  }
+}
+
+/* We render .ql-content ourselves so the server HTML already has the shape the
+   engine expects. The engine only styles a wrapper it created itself, so the
+   stacking above the lens/tint/sheen/rim layers has to come from here. */
+.ql-content {
+  position: relative;
+  z-index: 10;
+}
+
+.chip {
+  border-radius: 0.625rem;
+  box-shadow: 0 1px 2px rgb(0 0 0 / 0.22);
+}
+
+/* ───────────────────────── typography ───────────────────────── */
+.display {
+  font-family: var(--font-serif);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  line-height: 1.12;
+}
+
+/* ───────────────────────── focus ─────────────────────────
+   Content sits in .ql-content at z-index 10, above every effect layer,
+   so a plain outline reads cleanly over the glass. */
+:focus-visible {
+  outline: 2px solid var(--color-focus);
+  outline-offset: 3px;
+  border-radius: 0.625rem;
+}
+
+.opt:has(:focus-visible) {
+  outline: 2px solid var(--color-focus);
+  outline-offset: 3px;
+}
+
+.opt input:focus-visible {
+  outline: none;
+}
+
+/* ───────────────────────── option chips ───────────────────────── */
+.opt {
+  cursor: pointer;
+  user-select: none;
+}
+
+.opt-label {
+  transition: color 0.14s ease, font-weight 0.14s ease;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .opt-label { transition: none; }
+}
+
+/* ───────────────────────── send sequence ─────────────────────────
+   One orchestrated moment. The rail fills, the bar hands over to the
+   confirmation panel, and the panel arrives on the engine's own spring
+   (animateIn). Nothing else on the page animates on scroll. */
+@keyframes rail-sweep {
+  from { transform: scaleX(var(--rail-from, 0)); }
+  to   { transform: scaleX(1); }
+}
+
+.rail-fill {
+  transform-origin: left center;
+  transition: transform 0.42s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.sending .rail-fill {
+  animation: rail-sweep 0.5s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .rail-fill { transition: none; }
+  .sending .rail-fill { animation: none; transform: scaleX(1); }
+}
+
+/* Textarea keeps the flat treatment — a refracting text field is
+   unreadable while you type into it. */
+.field {
+  background: rgb(255 255 255 / 0.05);
+  border: 1px solid rgb(255 255 255 / 0.1);
+  border-radius: 0.625rem;
+  color: var(--color-ink);
+  font: inherit;
+  line-height: 1.5;
+  padding: 0.6875rem 0.8125rem;
+  resize: vertical;
+  width: 100%;
+}
+
+.field::placeholder { color: var(--color-ink-faint); }
+.field:focus { outline: 2px solid var(--color-focus); outline-offset: 2px; border-color: transparent; }
+
+/* Honeypot: off-screen rather than display:none, so a bot that checks
+   computed style still sees a real, focusable field. */
+.hp {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}

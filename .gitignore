@@ -1,0 +1,16 @@
+# Build output and dependencies (dr-brief/ also carries its own .gitignore)
+node_modules/
+.next/
+.vercel/
+*.tsbuildinfo
+next-env.d.ts
+
+# Never commit real credentials — see dr-brief/.env.example for the shape
+.env
+.env.*
+!.env.example
+
+# Local workspace notes, not part of the project. Delete these two lines if you
+# want them in the repo.
+plugin-list.md
+skills-list.md
