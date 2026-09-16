@@ -161,27 +161,13 @@ body {
   .opt-label { transition: none; }
 }
 
-/* ───────────────────────── send sequence ─────────────────────────
-   One orchestrated moment. The rail fills, the bar hands over to the
-   confirmation panel, and the panel arrives on the engine's own spring
-   (animateIn). Nothing else on the page animates on scroll. */
-@keyframes rail-sweep {
-  from { transform: scaleX(var(--rail-from, 0)); }
-  to   { transform: scaleX(1); }
-}
-
 .rail-fill {
   transform-origin: left center;
   transition: transform 0.42s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-.sending .rail-fill {
-  animation: rail-sweep 0.5s cubic-bezier(0.22, 1, 0.36, 1) forwards;
-}
-
 @media (prefers-reduced-motion: reduce) {
   .rail-fill { transition: none; }
-  .sending .rail-fill { animation: none; transform: scaleX(1); }
 }
 
 /* Textarea keeps the flat treatment — a refracting text field is
@@ -200,13 +186,3 @@ body {
 
 .field::placeholder { color: var(--color-ink-faint); }
 .field:focus { outline: 2px solid var(--color-focus); outline-offset: 2px; border-color: transparent; }
-
-/* Honeypot: off-screen rather than display:none, so a bot that checks
-   computed style still sees a real, focusable field. */
-.hp {
-  position: absolute;
-  left: -9999px;
-  width: 1px;
-  height: 1px;
-  overflow: hidden;
-}

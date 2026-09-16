@@ -1,7 +1,7 @@
 'use client';
 
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
-import { Glass, type GlassHandle } from './Glass';
+import { Glass } from './Glass';
 import { QuestionCard } from './QuestionCard';
 import {
   QUESTIONS,
@@ -12,7 +12,6 @@ import {
 } from '@/lib/brief';
 
 const STORAGE_KEY = 'dr-brief-lellouche-v1';
-const API = `${process.env.NEXT_PUBLIC_BASE_PATH ?? ''}/api/dr-brief`;
 
 /* The bar is the one surface with live text scrolling underneath it, so it
    carries more smoke than the cards: legible even where the backdrop blur is
@@ -30,16 +29,6 @@ const BAR = {
   chromaticAberration: 0.18,
   quality: 'high',
 } as const;
-
-const PANEL = {
-  material: 'regular',
-  borderRadius: 18,
-  appearance: 'dark',
-  elevation: 1.1,
-  quality: 'high',
-} as const;
-
-type Status = 'idle' | 'sending' | 'sent' | 'error';
 
 /** Restores only values that still exist in the current question set. */
 function reconcile(raw: unknown): Answers {
@@ -62,13 +51,9 @@ function reconcile(raw: unknown): Answers {
 
 export function BriefForm() {
   const [answers, setAnswers] = useState<Answers>({});
-  const [status, setStatus] = useState<Status>('idle');
   const [note, setNote] = useState('Enregistré sur cet appareil au fur et à mesure.');
   const [fallbackText, setFallbackText] = useState('');
   const hydrated = useRef(false);
-  const barRef = useRef<GlassHandle>(null);
-  const panelRef = useRef<GlassHandle>(null);
-  const honeypot = useRef<HTMLInputElement>(null);
 
   /* Restore after mount so server and client HTML match. */
   useEffect(() => {
@@ -111,62 +96,8 @@ export function BriefForm() {
     }
   }, [text]);
 
-  const send = useCallback(async () => {
-    if (!text) {
-      setNote("Coche au moins une réponse avant d'envoyer.");
-      return;
-    }
-    setStatus('sending');
-    setNote('Envoi…');
-
-    try {
-      const response = await fetch(API, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          answers,
-          text,
-          // Honeypot travels with the payload; a real person leaves it empty.
-          entreprise: honeypot.current?.value ?? '',
-        }),
-      });
-      if (!response.ok) throw new Error(String(response.status));
-
-      // The one orchestrated moment: the bar springs away, then the
-      // confirmation panel springs in on mount. Both bail out cleanly under
-      // prefers-reduced-motion inside the engine.
-      await barRef.current?.animateOut();
-      setStatus('sent');
-    } catch {
-      setStatus('error');
-      setNote("L'envoi a échoué. Utilise « Copier à la place » — rien n'est perdu.");
-      setFallbackText(text);
-    }
-  }, [answers, text]);
-
-  useEffect(() => {
-    if (status === 'sent') panelRef.current?.animateIn();
-  }, [status]);
-
-  if (status === 'sent') {
-    return (
-      <main className="mx-auto flex min-h-dvh max-w-[40rem] items-center px-5 py-16">
-        <Glass className="w-full" contentClassName="p-7 sm:p-9" config={PANEL} press={false} ref={panelRef}>
-          <p className="text-sm text-accent">Bien reçu</p>
-          <h1 className="display mt-2 text-[1.75rem] text-ink">Merci, c&rsquo;est envoyé.</h1>
-          <p className="mt-3 text-[0.9375rem] text-ink-dim">
-            J&rsquo;ai tes réponses. On gagne une heure de réunion — je te réponds vite.
-          </p>
-          <p className="mt-6 text-sm text-ink-faint">
-            Tes réponses restent enregistrées sur cet appareil si tu veux les relire.
-          </p>
-        </Glass>
-      </main>
-    );
-  }
-
   return (
-    <main className={`mx-auto max-w-[40rem] px-5 pt-10 pb-8 ${status === 'sending' ? 'sending' : ''}`}>
+    <main className="mx-auto max-w-[40rem] px-5 pt-10 pb-8">
       {/* Progress: fixed, thin, fills. The only always-visible chrome. */}
       <div
         className="fixed inset-x-0 top-0 z-50 h-[3px] bg-white/[0.07]"
@@ -192,18 +123,7 @@ export function BriefForm() {
         </p>
       </header>
 
-      <form
-        className="flex flex-col gap-4"
-        onSubmit={(event) => {
-          event.preventDefault();
-          void send();
-        }}
-      >
-        <div className="hp" aria-hidden="true">
-          <label htmlFor="entreprise">Entreprise</label>
-          <input id="entreprise" name="entreprise" type="text" tabIndex={-1} autoComplete="off" ref={honeypot} />
-        </div>
-
+      <div className="flex flex-col gap-4">
         {QUESTIONS.map((question) => {
           const section = SECTIONS.find((s) => s.before === question.n);
           return (
@@ -226,25 +146,15 @@ export function BriefForm() {
 
         <Glass
           as="div"
-          ref={barRef}
           className="sticky bottom-4 z-40 mt-6"
           contentClassName="p-3.5"
           config={BAR}
           press={false}
         >
-          {/* The bar is pinned for the whole page, so it stays to three short
-              rows — on a 380px phone a taller one eats a quarter of the screen. */}
-          <div className="mb-2.5 flex items-baseline justify-between gap-3 px-1">
-            <span className="text-[0.8125rem] text-ink-dim">
-              <span className="tabular-nums text-ink">{done}</span> sur {QUESTIONS.length}
-            </span>
-            <button
-              type="button"
-              onClick={() => void copy()}
-              className="rounded-md text-[0.8125rem] font-medium text-ink-faint underline decoration-white/25 underline-offset-4 transition-colors duration-150 hover:text-ink hover:decoration-white/50"
-            >
-              Copier à la place
-            </button>
+          {/* The bar is pinned for the whole page, so it stays short — on a
+              380px phone a taller one eats a quarter of the screen. */}
+          <div className="mb-2.5 px-1 text-center text-[0.8125rem] text-ink-dim">
+            <span className="tabular-nums text-ink">{done}</span> sur {QUESTIONS.length}
           </div>
 
           {/* The status line goes ABOVE the button, not below it. The tint fades
@@ -256,14 +166,18 @@ export function BriefForm() {
           </p>
 
           <button
-            type="submit"
-            disabled={status === 'sending'}
-            className="w-full rounded-[10px] bg-accent px-4 py-3.5 text-base font-semibold text-accent-ink transition-[filter] duration-150 hover:brightness-[1.07] disabled:cursor-progress disabled:brightness-90"
+            type="button"
+            onClick={() => void copy()}
+            className="w-full rounded-[10px] bg-accent px-4 py-3.5 text-base font-semibold text-accent-ink transition-[filter] duration-150 hover:brightness-[1.07]"
           >
-            {status === 'sending' ? 'Envoi…' : 'Envoyer mes réponses'}
+            Copier mes réponses
           </button>
+
+          <p className="mt-2.5 text-center text-[0.8125rem] text-ink-faint">
+            Colle-les dans un message et envoie-les moi.
+          </p>
         </Glass>
-      </form>
+      </div>
 
       {fallbackText && (
         <textarea
