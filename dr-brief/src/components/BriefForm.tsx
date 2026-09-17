@@ -23,7 +23,12 @@ const STORAGE_KEY = 'dr-brief-lellouche-v1';
     mix than the three brand tones alone (yellow/orange in the rotation
     alongside green/purple/cyan) — 5 beams/wall (20 total) cycling
     through all five, evenly spaced so no wall reads mono-colour.
-    Delay/duration staggered so they don't rise in lockstep. */
+    Negative delays (not positive ones) stagger the beams: a positive
+    delay leaves the beam invisible until it elapses, so the field
+    would sit empty for up to a few seconds right when it first
+    appears; a negative delay starts the animation already mid-cycle,
+    so every beam is moving the instant the box renders, still offset
+    from the others. */
 const WARP_WALLS = ['top', 'bottom', 'left', 'right'] as const;
 
 const WARP_TONES = ['accent', 'piano-text', 'both', 'warp-yellow', 'warp-orange'] as const;
@@ -35,7 +40,7 @@ const WARP_BEAMS = WARP_WALLS.flatMap((wall, wi) =>
     width: 6,
     ar: 3 + ((wi * WARP_TONES.length + ti) % 6),
     tone,
-    delay: ((wi * WARP_TONES.length + ti) * 0.8) % 5,
+    delay: -(((wi * WARP_TONES.length + ti) * 0.8) % 5),
     duration: 5,
   })),
 );
