@@ -8,7 +8,7 @@ function Rich({ text }: { text: string }) {
     <>
       {text.split('**').map((part, i) =>
         i % 2 === 1 ? (
-          <b key={i} className="font-semibold text-ink">
+          <b key={i} className="font-medium text-ink">
             {part}
           </b>
         ) : (
@@ -49,7 +49,7 @@ function Chip({
         className="sr-only"
         onChange={onPick}
       />
-      <span className="opt-label text-[0.9375rem] font-medium text-ink">{label}</span>
+      <span className="opt-label text-[0.9375rem] font-normal text-ink">{label}</span>
     </label>
   );
 }
@@ -75,7 +75,7 @@ export function QuestionCard({
         <span className={`min-w-[1.25rem] shrink-0 text-[0.8125rem] tabular-nums ${accentText}`}>
           {question.n}
         </span>
-        <h2 id={`q${question.n}-title`} className="text-[1.0625rem] font-medium tracking-[-0.01em] text-ink">
+        <h2 id={`q${question.n}-title`} className="text-[1.0625rem] font-normal tracking-[-0.01em] text-ink">
           {question.title}
         </h2>
       </div>

@@ -12,12 +12,11 @@
    teal 6.79, focus 6.97. All AA.                                    */
 @theme {
   --font-sans: var(--font-inter), 'Inter Fallback', system-ui, sans-serif;
-  /* Archivo — neutral Helvetica/Grotesk character (asked for directly:
-     "Helvetica Light or similar"), self-hosted so its thin weight
-     renders the same everywhere, unlike the system Helvetica/Arial
-     stack this replaced (verified: Windows' Arial has no Light face to
-     draw from, so weight:300 on it silently renders as Regular). */
-  --font-heading: var(--font-display), 'Archivo Fallback', system-ui, sans-serif;
+  /* Nunito Sans — requested directly (fonts.google.com/specimen/Nunito+Sans),
+     a rounded/soft grotesque rather than Archivo's neutral Helvetica
+     character. Self-hosted, so its weight-200 renders identically thin
+     regardless of the viewer's OS. */
+  --font-heading: var(--font-display), 'Nunito Sans Fallback', system-ui, sans-serif;
 
   --color-ground-0: #0f151c;
   --color-ground-1: #1b2430;
@@ -131,7 +130,7 @@ body {
     color-mix(in srgb, var(--color-ground-0) 92%, var(--color-piano-text) 8%) 0%,
     color-mix(in srgb, var(--color-ground-0) 97%, black 3%) 100%);
   color: var(--color-ink);
-  font-weight: 500;
+  font-weight: 400;
   box-shadow: 0 0 22px color-mix(in srgb, var(--color-piano-text) 45%, transparent);
   transition: box-shadow 0.16s ease, background-color 0.16s ease;
 }

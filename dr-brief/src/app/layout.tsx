@@ -1,26 +1,19 @@
 import type { Metadata, Viewport } from 'next';
-import { Inter, Archivo } from 'next/font/google';
+import { Inter, Nunito_Sans } from 'next/font/google';
 import './globals.css';
 
 /* next/font downloads and self-hosts these at build time — the page makes
-   no request to Google at runtime.
-
-   The display face's fourth attempt. Tried the real system Helvetica/Arial
-   stack first (asked for directly) instead of another web font — but
-   verified via computed styles AND a zoomed screenshot that Windows'
-   Arial has no separate Light font file to draw from, so font-weight:300
-   on it just renders as plain Regular. A system font is only as light as
-   whatever weight the viewer's OS happens to have installed; Archivo is
-   the same neutral Helvetica/Grotesk-family character but self-hosted
-   with a genuine thin weight baked into the font file itself, so it
-   renders identically thin regardless of the viewer's OS. */
+   no request to Google at runtime. Nunito Sans, requested directly
+   (fonts.google.com/specimen/Nunito+Sans) — a rounded/soft grotesque
+   rather than Archivo's neutral Helvetica character. `.display` pins it
+   to weight 200, also requested directly. */
 const inter = Inter({
   subsets: ['latin'],
   display: 'swap',
   variable: '--font-inter',
 });
 
-const archivo = Archivo({
+const nunitoSans = Nunito_Sans({
   subsets: ['latin'],
   display: 'swap',
   variable: '--font-display',
@@ -68,7 +61,7 @@ export const viewport: Viewport = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="fr" className={`${inter.variable} ${archivo.variable}`}>
+    <html lang="fr" className={`${inter.variable} ${nunitoSans.variable}`}>
       <body>
         <div className="ground" aria-hidden="true" />
         {children}
