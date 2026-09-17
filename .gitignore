@@ -14,3 +14,6 @@ next-env.d.ts
 # want them in the repo.
 plugin-list.md
 skills-list.md
+
+.vercel
+.env*

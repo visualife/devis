@@ -12,7 +12,12 @@
    teal 6.79, focus 6.97. All AA.                                    */
 @theme {
   --font-sans: var(--font-inter), 'Inter Fallback', system-ui, sans-serif;
-  --font-serif: var(--font-fraunces), 'Fraunces Fallback', Georgia, serif;
+  /* Archivo — neutral Helvetica/Grotesk character (asked for directly:
+     "Helvetica Light or similar"), self-hosted so its thin weight
+     renders the same everywhere, unlike the system Helvetica/Arial
+     stack this replaced (verified: Windows' Arial has no Light face to
+     draw from, so weight:300 on it silently renders as Regular). */
+  --font-heading: var(--font-display), 'Archivo Fallback', system-ui, sans-serif;
 
   --color-ground-0: #0f151c;
   --color-ground-1: #1b2430;
@@ -21,15 +26,24 @@
   --color-ink-faint: #93a5b6;
   --color-accent: #20c997;
   --color-accent-ink: #08211a;
-  /* #8f7fc4 measures 4.13 on card glass — fails AA as text, and fails again
-     (3.75) as a selected-chip fill, because the tint layer's vertical falloff
-     darkens the bottom of the chip to #73689f. It stays a rule/border colour.
-     Purple as text, and purple as a chip fill, both use the lighter
-     derivative: 6.26 on card glass, 5.38 under the fill at its darkest. */
+  /* Muted variant for card-wash tints; --color-piano-text is the vivid
+     accent used everywhere else (borders, numbers, chip glow, text). */
   --color-piano: #8f7fc4;
-  --color-piano-text: #b0a2e0;
+  --color-piano-text: #a78bfa;
   --color-piano-ink: #14101f;
+  /* Third tone, for the "Les deux" section and its three questions — one
+     token doubles as both the muted card-wash tint (at low mix %, same
+     pattern as --color-accent) and the vivid accent everywhere else. */
+  --color-both: #22d3ee;
+  --color-both-ink: #05252b;
   --color-focus: #7ab8ff;
+
+  /* Decorative only — the H1 gradient fill. Both stops pushed well past the
+     brand pair's AA-safe versions above for saturation; large gradient type
+     straight on ground-0 has enormous headroom (>10:1 even at the dimmer
+     end), so this never needs to double as a text-on-card colour. */
+  --color-grad-from: #29e6ae;
+  --color-grad-to: #a06bff;
 }
 
 :root {
@@ -55,9 +69,8 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
-/* The ground stays calm, but it cannot be perfectly flat: refraction has
-   nothing to bend if there is no luminance gradient behind the glass.
-   Two very soft pools, fixed, well under the content. */
+/* Two very soft pools, fixed, well under the content — ambient colour,
+   not a backdrop for any refraction effect. */
 .ground {
   position: fixed;
   inset: 0;
@@ -70,68 +83,171 @@ body {
     var(--color-ground-0);
 }
 
-/* ───────────────────────── glass hosts ─────────────────────────
-   The engine inserts its lens/tint/sheen/rim layers as CHILDREN of the
-   host and reads the page through them, so the host itself must never
-   carry a background — it would be sampled instead of the page. It must
-   also never carry isolation / filter / opacity / mask, each of which
-   induces a backdrop root and silently kills the refraction.
-
-   Until the engine mounts (and forever, with JS off) the host keeps a
-   flat painted card so the page is readable and presentable. `.ql-ready`
-   is set by the mount effect and hands the surface over to the engine. */
-/* No `position` here on purpose. It would have the same specificity as
-   Tailwind's `sticky` utility and, being declared later, would win — silently
-   turning the sticky action bar into a relative one. The engine sets
-   `position: relative` itself on mount, but only when the computed position is
-   still `static`, so a sticky host keeps its sticky. */
-.glass {
+/* ───────────────────────── cards & bar ─────────────────────────
+   Flat panels — a whisper of the section's own colour on the card itself
+   (not just the border) so Cabinet and Piano read as different
+   territories even at a glance, without tipping into a coloured card. */
+.card {
   border-radius: 1rem;
-  background: color-mix(in srgb, var(--color-ground-1) 82%, white 4%);
   border: 1px solid rgb(255 255 255 / 0.08);
   box-shadow: 0 1px 2px rgb(0 0 0 / 0.3), 0 8px 24px rgb(0 0 0 / 0.22);
 }
 
-.glass.ql-ready {
-  background: none;
-  border-color: transparent;
+/* Soft gradient instead of a flat fill — a whisper of the tone at the
+   top, settling into a darker base by the bottom (mixing in more black
+   than before), so the card has some depth instead of reading as one
+   flat block of colour. */
+.card-cabinet {
+  background: linear-gradient(165deg,
+    color-mix(in srgb, var(--color-ground-1) 62%, var(--color-accent) 8%) 0%,
+    color-mix(in srgb, var(--color-ground-1) 45%, black 55%) 100%);
+}
+.card-piano {
+  background: linear-gradient(165deg,
+    color-mix(in srgb, var(--color-ground-1) 62%, var(--color-piano) 8%) 0%,
+    color-mix(in srgb, var(--color-ground-1) 45%, black 55%) 100%);
+}
+.card-both {
+  background: linear-gradient(165deg,
+    color-mix(in srgb, var(--color-ground-1) 62%, var(--color-both) 8%) 0%,
+    color-mix(in srgb, var(--color-ground-1) 45%, black 55%) 100%);
 }
 
-/* An engine with no backdrop-filter at all would leave the glass as tint + rim
-   over live page content, which is fine on the calm ground but not under the
-   sticky bar. Those engines keep the painted card instead. Safari is NOT in
-   this bucket — it composites -webkit-backdrop-filter: blur() normally. */
-@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
-  .glass.ql-ready {
-    background: color-mix(in srgb, var(--color-ground-1) 88%, white 5%);
-    border-color: rgb(255 255 255 / 0.1);
-  }
+.bar {
+  border-radius: 1.125rem;
+  border: 1px solid rgb(255 255 255 / 0.1);
+  background: color-mix(in srgb, var(--color-ground-0) 85%, black 15%);
+  box-shadow: 0 1px 2px rgb(0 0 0 / 0.3), 0 8px 24px rgb(0 0 0 / 0.22);
 }
 
-/* We render .ql-content ourselves so the server HTML already has the shape the
-   engine expects. The engine only styles a wrapper it created itself, so the
-   stacking above the lens/tint/sheen/rim layers has to come from here. */
-.ql-content {
-  position: relative;
-  z-index: 10;
+/* Same dark-core, glow-border language as the chips — no flat colour
+   fill on the primary action either. Darker and gradiented, matching the
+   reference button: a coloured glow at the border, but the fill itself
+   stays a dark core rather than a visibly tinted block. */
+.btn-primary {
+  border-radius: 0.875rem;
+  border: 1px solid var(--color-piano-text);
+  background: linear-gradient(165deg,
+    color-mix(in srgb, var(--color-ground-0) 92%, var(--color-piano-text) 8%) 0%,
+    color-mix(in srgb, var(--color-ground-0) 97%, black 3%) 100%);
+  color: var(--color-ink);
+  font-weight: 500;
+  box-shadow: 0 0 22px color-mix(in srgb, var(--color-piano-text) 45%, transparent);
+  transition: box-shadow 0.16s ease, background-color 0.16s ease;
 }
 
+.btn-primary:hover {
+  box-shadow: 0 0 30px color-mix(in srgb, var(--color-piano-text) 60%, transparent);
+}
+
+.btn-primary:active {
+  box-shadow: 0 0 34px color-mix(in srgb, var(--color-piano-text) 70%, transparent);
+}
+
+/* ───────────────────────── option chips ─────────────────────────
+   Dark core, coloured glow border — three tones (cabinet/green,
+   piano/purple, both/cyan), no fill-swap. Colour-only feedback, no
+   movement: font weight, size and text colour never change (an
+   auto-width chip would visibly resize, and this reference look keeps
+   the label text constant regardless of state), nothing scales or
+   shifts on press or hover.
+
+   Three-step progression per tone: idle (faint border, faint glow) →
+   hover/press (border at full colour, glow stronger — transient) →
+   selected (border at full colour, glow stronger AND persistent, plus
+   a whisper of background tint so it still reads as "chosen" once the
+   cursor moves away, not just "currently hovered"). */
 .chip {
-  border-radius: 0.625rem;
-  box-shadow: 0 1px 2px rgb(0 0 0 / 0.22);
+  border-radius: 0.875rem;
+  border: 1px solid transparent;
+  background: linear-gradient(165deg,
+    color-mix(in srgb, var(--color-ground-0) 96%, white 4%) 0%,
+    color-mix(in srgb, var(--color-ground-0) 90%, black 10%) 100%);
+  box-shadow: 0 1px 2px rgb(0 0 0 / 0.3);
+  transition: background-color 0.16s ease, border-color 0.16s ease, box-shadow 0.16s ease;
+}
+
+.chip.chip-cabinet {
+  border-color: color-mix(in srgb, var(--color-accent) 40%, transparent);
+  box-shadow: 0 1px 2px rgb(0 0 0 / 0.3), 0 0 14px color-mix(in srgb, var(--color-accent) 20%, transparent);
+}
+.chip.chip-piano {
+  border-color: color-mix(in srgb, var(--color-piano-text) 40%, transparent);
+  box-shadow: 0 1px 2px rgb(0 0 0 / 0.3), 0 0 14px color-mix(in srgb, var(--color-piano-text) 20%, transparent);
+}
+.chip.chip-both {
+  border-color: color-mix(in srgb, var(--color-both) 40%, transparent);
+  box-shadow: 0 1px 2px rgb(0 0 0 / 0.3), 0 0 14px color-mix(in srgb, var(--color-both) 20%, transparent);
+}
+
+.chip.chip-cabinet:hover, .chip.chip-cabinet:active {
+  border-color: var(--color-accent);
+  box-shadow: 0 1px 2px rgb(0 0 0 / 0.3), 0 0 20px color-mix(in srgb, var(--color-accent) 38%, transparent);
+}
+.chip.chip-piano:hover, .chip.chip-piano:active {
+  border-color: var(--color-piano-text);
+  box-shadow: 0 1px 2px rgb(0 0 0 / 0.3), 0 0 20px color-mix(in srgb, var(--color-piano-text) 38%, transparent);
+}
+.chip.chip-both:hover, .chip.chip-both:active {
+  border-color: var(--color-both);
+  box-shadow: 0 1px 2px rgb(0 0 0 / 0.3), 0 0 20px color-mix(in srgb, var(--color-both) 38%, transparent);
+}
+
+.chip.chip-cabinet.chip-selected {
+  background: linear-gradient(165deg,
+    color-mix(in srgb, var(--color-ground-0) 88%, var(--color-accent) 12%) 0%,
+    color-mix(in srgb, var(--color-ground-0) 97%, black 3%) 100%);
+  border-color: var(--color-accent);
+  box-shadow: 0 1px 2px rgb(0 0 0 / 0.3), 0 0 22px color-mix(in srgb, var(--color-accent) 48%, transparent);
+}
+.chip.chip-piano.chip-selected {
+  background: linear-gradient(165deg,
+    color-mix(in srgb, var(--color-ground-0) 88%, var(--color-piano-text) 12%) 0%,
+    color-mix(in srgb, var(--color-ground-0) 97%, black 3%) 100%);
+  border-color: var(--color-piano-text);
+  box-shadow: 0 1px 2px rgb(0 0 0 / 0.3), 0 0 22px color-mix(in srgb, var(--color-piano-text) 48%, transparent);
+}
+.chip.chip-both.chip-selected {
+  background: linear-gradient(165deg,
+    color-mix(in srgb, var(--color-ground-0) 88%, var(--color-both) 12%) 0%,
+    color-mix(in srgb, var(--color-ground-0) 97%, black 3%) 100%);
+  border-color: var(--color-both);
+  box-shadow: 0 1px 2px rgb(0 0 0 / 0.3), 0 0 22px color-mix(in srgb, var(--color-both) 48%, transparent);
+}
+
+/* ───────────────────────── header wave ─────────────────────────
+   The path is two identical 800-wide (two-period) tiles; sliding by
+   exactly one tile's width loops it with no visible seam, at any speed.
+   --wx/--wy (set per <use> in BriefForm) are baked into the keyframes
+   themselves rather than left on the SVG `transform` attribute — the
+   animation's CSS `transform` wins the cascade over that attribute and
+   would otherwise erase each strand's static offset every frame. Each
+   strand gets its own animation-duration inline, so strands drift in and
+   out of phase with each other instead of moving as one rigid block. */
+.wave-path {
+  animation-name: wave-drift;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+@keyframes wave-drift {
+  from { transform: translate(var(--wx, 0px), var(--wy, 0px)); }
+  to { transform: translate(calc(var(--wx, 0px) - 800px), var(--wy, 0px)); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .wave-path { animation: none; transform: translate(var(--wx, 0px), var(--wy, 0px)); }
 }
 
 /* ───────────────────────── typography ───────────────────────── */
 .display {
-  font-family: var(--font-serif);
-  font-weight: 600;
-  letter-spacing: -0.02em;
+  font-family: var(--font-heading);
+  font-weight: 200;
+  letter-spacing: -0.01em;
   line-height: 1.12;
 }
 
-/* ───────────────────────── focus ─────────────────────────
-   Content sits in .ql-content at z-index 10, above every effect layer,
-   so a plain outline reads cleanly over the glass. */
+/* ───────────────────────── focus ───────────────────────── */
 :focus-visible {
   outline: 2px solid var(--color-focus);
   outline-offset: 3px;
@@ -147,14 +263,15 @@ body {
   outline: none;
 }
 
-/* ───────────────────────── option chips ───────────────────────── */
 .opt {
   cursor: pointer;
   user-select: none;
 }
 
+/* Colour only — weight stays fixed (see .chip above) so the label never
+   reflows on selection. */
 .opt-label {
-  transition: color 0.14s ease, font-weight 0.14s ease;
+  transition: color 0.14s ease;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -186,3 +303,103 @@ body {
 
 .field::placeholder { color: var(--color-ink-faint); }
 .field:focus { outline: 2px solid var(--color-focus); outline-offset: 2px; border-color: transparent; }
+
+/* ───────────────────────── warp field ─────────────────────────
+   The one spectacular moment on the page: the actual mechanism from
+   the reference (21st.dev/@nyxbui/components/warp-background) — a real
+   CSS 3D rig, four "walls" (top/bottom/left/right) hinged 90° away from
+   the viewer via `perspective` + `rotateX`, each running its own
+   container-query context so its beams can size themselves in `cq*`
+   units against that wall specifically. The reference's only
+   non-plain-CSS part was the beam's rise (Framer Motion) — replaced
+   here with a plain `top` @keyframes (deliberately NOT `transform`, so
+   it can't collide with anything).
+
+   No grid background: inspected the live demo's actual DOM
+   (getComputedStyle on a wall) and its grid gradient never renders —
+   backgroundImage comes back "none", just a flat colour underneath the
+   beams. Matching that (not the source code's intent) is what actually
+   looks the same. perspective 100px and 3 beams/wall (12 total) are the
+   demo's real values, read the same way. */
+.warp-field {
+  position: relative;
+  overflow: hidden;
+  border-radius: 0.875rem;
+  background: var(--color-ground-0);
+}
+
+.warp3d {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  container-type: size;
+  perspective: 100px;
+  transform-style: preserve-3d;
+}
+
+.warp-wall {
+  position: absolute;
+  container-type: inline-size;
+  transform-style: preserve-3d;
+  height: 100cqmax;
+}
+
+.warp-wall-top {
+  left: 0;
+  top: 0;
+  width: 100cqi;
+  transform-origin: 50% 0%;
+  transform: rotateX(-90deg);
+}
+
+.warp-wall-bottom {
+  left: 0;
+  top: 100%;
+  width: 100cqi;
+  transform-origin: 50% 0%;
+  transform: rotateX(-90deg);
+}
+
+.warp-wall-left {
+  left: 0;
+  top: 0;
+  width: 100cqh;
+  transform-origin: 0% 0%;
+  transform: rotate(90deg) rotateX(-90deg);
+}
+
+.warp-wall-right {
+  right: 0;
+  top: 0;
+  width: 100cqh;
+  transform-origin: 100% 0%;
+  transform: rotate(-90deg) rotateX(-90deg);
+}
+
+.warp-beam {
+  position: absolute;
+  left: var(--bx);
+  top: 100cqmax;
+  width: var(--bw);
+  aspect-ratio: 1 / var(--bar);
+  transform: translateX(-50%);
+  background: linear-gradient(var(--bc), transparent);
+  animation: warp-rise linear infinite;
+  animation-delay: var(--bd);
+  animation-duration: var(--bdur);
+}
+
+@keyframes warp-rise {
+  from { top: 100cqmax; }
+  to { top: -100%; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .warp-beam { animation: none; top: 40cqmax; opacity: 0.4; }
+}
+
+.warp-field .field {
+  position: relative;
+  z-index: 10;
+  background: var(--color-ground-0);
+}

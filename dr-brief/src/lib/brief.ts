@@ -5,7 +5,20 @@
  * `**…**` inside `known` marks the <b> runs of the original markup.
  */
 
-export type Tone = 'cabinet' | 'piano';
+export type Tone = 'cabinet' | 'piano' | 'both';
+
+/** Tailwind utility per tone — green (cabinet), purple (piano), cyan (both). */
+export const TONE_TEXT: Record<Tone, string> = {
+  cabinet: 'text-accent',
+  piano: 'text-piano-text',
+  both: 'text-both',
+};
+
+export const TONE_BORDER: Record<Tone, string> = {
+  cabinet: 'border-accent',
+  piano: 'border-piano',
+  both: 'border-both',
+};
 
 type Base = {
   n: number;
@@ -33,7 +46,7 @@ export type Section = {
 export const SECTIONS: Section[] = [
   { id: 'cabinet', heading: 'Le cabinet', blurb: 'Neuf questions sur ton site professionnel.', tone: 'cabinet', before: 1 },
   { id: 'piano', heading: 'Le piano', blurb: 'Cinq questions. La première décide de tout le reste.', tone: 'piano', before: 10 },
-  { id: 'deux', heading: 'Les deux', blurb: 'Trois dernières.', tone: 'cabinet', before: 15 },
+  { id: 'deux', heading: 'Les deux', blurb: 'Trois dernières.', tone: 'both', before: 15 },
 ];
 
 export const QUESTIONS: Question[] = [
@@ -116,19 +129,19 @@ export const QUESTIONS: Question[] = [
     options: ['Oui, tout', 'Une partie', 'Il faut que je cherche'],
   },
   {
-    n: 15, field: 'Langues', tone: 'cabinet', kind: 'check',
+    n: 15, field: 'Langues', tone: 'both', kind: 'check',
     title: 'Anglais, espagnol ?',
     known: 'Le site du cabinet a **une page** dans chaque langue ; insidemysoul est bilingue.',
     options: ['Cabinet en anglais', 'Cabinet en espagnol', 'Piano en anglais', 'Français partout, ça suffit'],
   },
   {
-    n: 16, field: 'Photos', tone: 'cabinet', kind: 'check',
+    n: 16, field: 'Photos', tone: 'both', kind: 'check',
     title: "Les photos, je m'en occupe",
     known: "Tu m'as très bien soigné — je te fais **les photos en cadeau**. Prise de vue pro au Nikon D800 sur trépied, à ma prochaine consultation. Le cabinet, et toi au piano si tu veux.",
     options: ['Le cabinet', 'Moi au piano', "J'ai déjà les miennes"],
   },
   {
-    n: 17, field: 'Remarques', tone: 'cabinet', kind: 'free',
+    n: 17, field: 'Remarques', tone: 'both', kind: 'free',
     title: 'Autre chose ?',
     placeholder: 'Un site que tu aimes, une contrainte, une idée…',
   },

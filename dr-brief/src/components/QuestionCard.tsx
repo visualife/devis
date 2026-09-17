@@ -1,47 +1,6 @@
 'use client';
 
-import { useRef } from 'react';
-import { Glass, type GlassHandle } from './Glass';
-import type { Question, Tone } from '@/lib/brief';
-
-/* Tint is handed to the engine as an 'r, g, b' string.
-   Fills are the AA-verified pair: teal #20c997 / piano #b0a2e0. */
-const FILL: Record<Tone, string> = {
-  cabinet: '32, 201, 151',
-  piano: '176, 162, 224',
-};
-
-const CARD = {
-  material: 'regular',
-  borderRadius: 16,
-  appearance: 'dark',
-  elevation: 0.9,
-  chromaticAberration: 0.2,
-  quality: 'high',
-} as const;
-
-/* Chips are numerous (60+), so they run at medium map resolution. Same-width
-   chips share one refcounted displacement map. */
-const CHIP_IDLE = {
-  material: 'thin',
-  borderRadius: 10,
-  appearance: 'dark',
-  elevation: 0.35,
-  refractionStrength: 18,
-  chromaticAberration: 0.26,
-  quality: 'medium',
-} as const;
-
-function chipSelected(tone: Tone) {
-  return {
-    ...CHIP_IDLE,
-    tint: FILL[tone],
-    tintOpacity: 0.92,
-    blur: 10,
-    elevation: 0.7,
-    edgeHighlight: 1,
-  };
-}
+import { TONE_BORDER, TONE_TEXT, type Question } from '@/lib/brief';
 
 /** Renders the `**bold**` runs of the original copy. */
 function Rich({ text }: { text: string }) {
@@ -71,18 +30,16 @@ function Chip({
   checked: boolean;
   onPick: () => void;
 }) {
-  const ref = useRef<GlassHandle>(null);
   const tone = question.tone;
   const multi = question.kind === 'check';
 
   return (
-    <Glass
-      as="label"
-      ref={ref}
-      className="opt chip inline-flex"
-      contentClassName="flex items-center px-3.5 py-2.5"
-      config={checked ? chipSelected(tone) : CHIP_IDLE}
-      press={{ scale: 0.94, squish: 0.025 }}
+    <label
+      className={[
+        'opt chip inline-flex items-center px-3.5 py-2.5',
+        `chip-${tone}`,
+        checked ? 'chip-selected' : '',
+      ].join(' ')}
     >
       <input
         type={multi ? 'checkbox' : 'radio'}
@@ -90,27 +47,10 @@ function Chip({
         value={label}
         checked={checked}
         className="sr-only"
-        onChange={() => {
-          onPick();
-          // Short spring on the surface itself, so the glass answers the
-          // finger rather than just the label changing colour. play() bails
-          // out under prefers-reduced-motion, so this needs no guard.
-          ref.current?.jiggle(0.55);
-        }}
+        onChange={onPick}
       />
-      <span
-        className={[
-          'opt-label text-[0.9375rem]',
-          checked
-            ? tone === 'piano'
-              ? 'font-semibold text-piano-ink'
-              : 'font-semibold text-accent-ink'
-            : 'text-ink',
-        ].join(' ')}
-      >
-        {label}
-      </span>
-    </Glass>
+      <span className="opt-label text-[0.9375rem] font-medium text-ink">{label}</span>
+    </label>
   );
 }
 
@@ -124,22 +64,18 @@ export function QuestionCard({
   onChange: (next: string[] | string) => void;
 }) {
   const picked = Array.isArray(value) ? value : [];
-  const accentText = question.tone === 'piano' ? 'text-piano-text' : 'text-accent';
+  const accentText = TONE_TEXT[question.tone];
 
   return (
-    <Glass
-      as="section"
-      className="scroll-mt-6"
-      contentClassName="p-5 sm:p-6"
-      config={CARD}
-      press={false}
+    <section
+      className={`card card-${question.tone} scroll-mt-6 p-5 sm:p-6`}
       aria-labelledby={`q${question.n}-title`}
     >
       <div className="flex items-baseline gap-3">
         <span className={`min-w-[1.25rem] shrink-0 text-[0.8125rem] tabular-nums ${accentText}`}>
           {question.n}
         </span>
-        <h2 id={`q${question.n}-title`} className="text-[1.0625rem] font-semibold tracking-[-0.01em] text-ink">
+        <h2 id={`q${question.n}-title`} className="text-[1.0625rem] font-medium tracking-[-0.01em] text-ink">
           {question.title}
         </h2>
       </div>
@@ -152,7 +88,7 @@ export function QuestionCard({
         <p
           className={[
             'mt-3 ml-[2.0625rem] max-sm:ml-0 rounded-r-md border-l-2 py-2.5 pr-3.5 pl-3.5 text-sm text-ink-dim',
-            question.tone === 'piano' ? 'border-piano' : 'border-accent',
+            TONE_BORDER[question.tone],
             'bg-white/[0.045]',
           ].join(' ')}
         >
@@ -193,6 +129,6 @@ export function QuestionCard({
           </div>
         )}
       </div>
-    </Glass>
+    </section>
   );
 }
