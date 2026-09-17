@@ -1,22 +1,28 @@
 import type { Metadata, Viewport } from 'next';
-import { Inter, Nunito_Sans } from 'next/font/google';
+import { Nunito_Sans, Cinzel } from 'next/font/google';
 import './globals.css';
 
 /* next/font downloads and self-hosts these at build time — the page makes
    no request to Google at runtime. Nunito Sans, requested directly
    (fonts.google.com/specimen/Nunito+Sans) — a rounded/soft grotesque
-   rather than Archivo's neutral Helvetica character. `.display` pins it
-   to weight 200, also requested directly. */
-const inter = Inter({
-  subsets: ['latin'],
-  display: 'swap',
-  variable: '--font-inter',
-});
+   rather than Archivo's neutral Helvetica character, and the page's only
+   sans face: body copy at its default weight, `.display` pins it to 200.
 
+   Cinzel is the second display face, also requested directly — a
+   classical engraved-stone serif, alternating with Nunito Sans across
+   the page's four titles (see `.display-alt` in globals.css and where
+   it's applied in BriefForm.tsx). Cinzel ships no weight below 400
+   (a classical serif like this was never cut light), so it's used as-is. */
 const nunitoSans = Nunito_Sans({
   subsets: ['latin'],
   display: 'swap',
   variable: '--font-display',
+});
+
+const cinzel = Cinzel({
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-display-alt',
 });
 
 /* Private link, not a search result — robots stays noindex. OG/Twitter
@@ -61,7 +67,7 @@ export const viewport: Viewport = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="fr" className={`${inter.variable} ${nunitoSans.variable}`}>
+    <html lang="fr" className={`${nunitoSans.variable} ${cinzel.variable}`}>
       <body>
         <div className="ground" aria-hidden="true" />
         {children}

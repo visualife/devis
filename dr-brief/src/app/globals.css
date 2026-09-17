@@ -11,12 +11,16 @@
    Worst case is the card material: ink 12.95, dim 7.95, faint 5.71,
    teal 6.79, focus 6.97. All AA.                                    */
 @theme {
-  --font-sans: var(--font-inter), 'Inter Fallback', system-ui, sans-serif;
   /* Nunito Sans — requested directly (fonts.google.com/specimen/Nunito+Sans),
      a rounded/soft grotesque rather than Archivo's neutral Helvetica
      character. Self-hosted, so its weight-200 renders identically thin
-     regardless of the viewer's OS. */
+     regardless of the viewer's OS. Also the page's only sans face — body
+     copy and headings both draw from it, just at different weights. */
+  --font-sans: var(--font-display), 'Nunito Sans Fallback', system-ui, sans-serif;
   --font-heading: var(--font-display), 'Nunito Sans Fallback', system-ui, sans-serif;
+  /* Cinzel — classical engraved-stone serif, alternating with Nunito
+     Sans across the page's four titles. */
+  --font-heading-alt: var(--font-display-alt), 'Cinzel Fallback', Georgia, serif;
 
   --color-ground-0: #0f151c;
   --color-ground-1: #1b2430;
@@ -47,6 +51,17 @@
 
 :root {
   color-scheme: dark;
+
+  /* Warp-field only — the reference beam mix runs warmer than the three
+     brand tones, so these two add yellow/orange into the rotation
+     without touching the cabinet/piano/both identity used everywhere
+     else on the page. Plain custom properties, not @theme tokens: these
+     are only ever read via a JS-built `var(--color-...)` string (see
+     WARP_TONES in BriefForm.tsx), never through a literal Tailwind
+     utility class — @theme tree-shakes any colour with no utility-class
+     reference, silently dropping it from the build. */
+  --color-warp-yellow: #fbbf24;
+  --color-warp-orange: #fb923c;
 }
 
 html {
@@ -214,36 +229,22 @@ body {
   box-shadow: 0 1px 2px rgb(0 0 0 / 0.3), 0 0 22px color-mix(in srgb, var(--color-both) 48%, transparent);
 }
 
-/* ───────────────────────── header wave ─────────────────────────
-   The path is two identical 800-wide (two-period) tiles; sliding by
-   exactly one tile's width loops it with no visible seam, at any speed.
-   --wx/--wy (set per <use> in BriefForm) are baked into the keyframes
-   themselves rather than left on the SVG `transform` attribute — the
-   animation's CSS `transform` wins the cascade over that attribute and
-   would otherwise erase each strand's static offset every frame. Each
-   strand gets its own animation-duration inline, so strands drift in and
-   out of phase with each other instead of moving as one rigid block. */
-.wave-path {
-  animation-name: wave-drift;
-  animation-timing-function: linear;
-  animation-iteration-count: infinite;
-}
-
-@keyframes wave-drift {
-  from { transform: translate(var(--wx, 0px), var(--wy, 0px)); }
-  to { transform: translate(calc(var(--wx, 0px) - 800px), var(--wy, 0px)); }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .wave-path { animation: none; transform: translate(var(--wx, 0px), var(--wy, 0px)); }
-}
-
 /* ───────────────────────── typography ───────────────────────── */
 .display {
   font-family: var(--font-heading);
   font-weight: 200;
   letter-spacing: -0.01em;
   line-height: 1.12;
+}
+
+/* Cinzel has no weight below 400 (a classical engraved serif was never
+   cut light) and reads best with the generous, inscription-like tracking
+   it was drawn for — the opposite treatment from .display on purpose. */
+.display-alt {
+  font-family: var(--font-heading-alt);
+  font-weight: 400;
+  letter-spacing: 0.02em;
+  line-height: 1.2;
 }
 
 /* ───────────────────────── focus ───────────────────────── */
@@ -382,7 +383,11 @@ body {
   width: var(--bw);
   aspect-ratio: 1 / var(--bar);
   transform: translateX(-50%);
-  background: linear-gradient(var(--bc), transparent);
+  /* Holds full colour through the first half instead of fading
+     immediately — an instant fade-to-transparent reads as washed out
+     at this width; the original's beams carry more visible colour. */
+  background: linear-gradient(var(--bc) 0%, var(--bc) 45%, transparent 100%);
+  filter: drop-shadow(0 0 6px var(--bc));
   animation: warp-rise linear infinite;
   animation-delay: var(--bd);
   animation-duration: var(--bdur);

@@ -36,7 +36,7 @@ function Chip({
   return (
     <label
       className={[
-        'opt chip inline-flex items-center px-3.5 py-2.5',
+        'opt chip inline-flex items-center px-2.5 py-1.5',
         `chip-${tone}`,
         checked ? 'chip-selected' : '',
       ].join(' ')}
@@ -68,7 +68,7 @@ export function QuestionCard({
 
   return (
     <section
-      className={`card card-${question.tone} scroll-mt-6 p-5 sm:p-6`}
+      className={`card card-${question.tone} scroll-mt-6 p-3.5 sm:p-4`}
       aria-labelledby={`q${question.n}-title`}
     >
       <div className="flex items-baseline gap-3">

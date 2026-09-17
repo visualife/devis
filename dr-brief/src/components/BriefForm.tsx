@@ -6,6 +6,7 @@ import {
   QUESTIONS,
   SECTIONS,
   TONE_BORDER,
+  TONE_TEXT,
   answeredCount,
   formatAnswers,
   type Answers,
@@ -18,27 +19,26 @@ const STORAGE_KEY = 'dr-brief-lellouche-v1';
     planes, each hinged 90° away via perspective/rotateX (see .warp-wall*
     in globals.css), so a beam's plain upward motion along its own wall
     projects as a diagonal comet streak once seen through the outer
-    perspective. beamsPerSide=3 and beamSize=5% are the reference's own
-    defaults (read from its live DOM), so 3 beams/wall here too — the
-    earlier 2/wall just looked sparser than the real thing. Brand tones
-    cycle in for colour instead of the reference's random-per-mount hue;
-    delay/duration staggered so they don't rise in lockstep. */
+    perspective. The reference itself carries more beams and a warmer
+    mix than the three brand tones alone (yellow/orange in the rotation
+    alongside green/purple/cyan) — 5 beams/wall (20 total) cycling
+    through all five, evenly spaced so no wall reads mono-colour.
+    Delay/duration staggered so they don't rise in lockstep. */
 const WARP_WALLS = ['top', 'bottom', 'left', 'right'] as const;
 
-const WARP_BEAMS = [
-  { wall: 'top', x: 8, width: 5, ar: 3, tone: 'accent', delay: 0, duration: 5 },
-  { wall: 'top', x: 42, width: 5, ar: 6, tone: 'piano-text', delay: 1.6, duration: 5 },
-  { wall: 'top', x: 78, width: 5, ar: 4, tone: 'both', delay: 3.2, duration: 5 },
-  { wall: 'bottom', x: 12, width: 5, ar: 5, tone: 'both', delay: 0.6, duration: 5 },
-  { wall: 'bottom', x: 48, width: 5, ar: 2, tone: 'accent', delay: 2.2, duration: 5 },
-  { wall: 'bottom', x: 82, width: 5, ar: 7, tone: 'piano-text', delay: 3.8, duration: 5 },
-  { wall: 'left', x: 15, width: 5, ar: 4, tone: 'piano-text', delay: 1.2, duration: 5 },
-  { wall: 'left', x: 50, width: 5, ar: 8, tone: 'both', delay: 2.8, duration: 5 },
-  { wall: 'left', x: 85, width: 5, ar: 3, tone: 'accent', delay: 4.4, duration: 5 },
-  { wall: 'right', x: 18, width: 5, ar: 6, tone: 'accent', delay: 0.3, duration: 5 },
-  { wall: 'right', x: 52, width: 5, ar: 5, tone: 'both', delay: 1.8, duration: 5 },
-  { wall: 'right', x: 88, width: 5, ar: 2, tone: 'piano-text', delay: 3.4, duration: 5 },
-] as const;
+const WARP_TONES = ['accent', 'piano-text', 'both', 'warp-yellow', 'warp-orange'] as const;
+
+const WARP_BEAMS = WARP_WALLS.flatMap((wall, wi) =>
+  WARP_TONES.map((tone, ti) => ({
+    wall,
+    x: 8 + ti * 21,
+    width: 6,
+    ar: 3 + ((wi * WARP_TONES.length + ti) % 6),
+    tone,
+    delay: ((wi * WARP_TONES.length + ti) * 0.8) % 5,
+    duration: 5,
+  })),
+);
 
 /** Restores only values that still exist in the current question set. */
 function reconcile(raw: unknown): Answers {
@@ -123,67 +123,7 @@ export function BriefForm() {
         />
       </div>
 
-      <header className="relative isolate mb-9">
-        {/* Actual waves, not a conveyor belt: a big, slow, four-crest curve
-            (period 400, amplitude 60 — the first version was nearly flat,
-            which is why it read as thin lines sliding rather than
-            undulating). Reused via <use> at staggered y/x offsets for
-            several strands, and — the other half of the "sliding lines"
-            problem — each strand runs the SAME loop at a DIFFERENT speed,
-            so they drift in and out of phase with each other over time
-            instead of marching in rigid lockstep like a single object. Two
-            identical 800-wide (= two-period) tiles in one path; translating
-            by exactly one tile still loops each strand with no seam,
-            regardless of its own speed. */}
-        <svg
-          aria-hidden="true"
-          className="pointer-events-none absolute inset-x-0 top-0 -z-10 h-20 w-full opacity-[0.6] sm:h-28"
-          viewBox="0 0 1600 160"
-          preserveAspectRatio="none"
-        >
-          <defs>
-            <linearGradient id="wave-grad" x1="0" y1="0" x2="1" y2="0">
-              <stop offset="0%" stopColor="var(--color-grad-from)" />
-              <stop offset="50%" stopColor="var(--color-grad-to)" />
-              <stop offset="100%" stopColor="var(--color-grad-from)" />
-            </linearGradient>
-            <path
-              id="wave-strand"
-              d="M0,80 Q100,20 200,80 T400,80 T600,80 T800,80 T1000,80 T1200,80 T1400,80 T1600,80"
-              fill="none"
-              stroke="url(#wave-grad)"
-              strokeLinecap="round"
-            />
-          </defs>
-          {[
-            { dy: -44, dx: 0, opacity: 0.22, width: 1.5, duration: 23 },
-            { dy: -22, dx: -100, opacity: 0.34, width: 2, duration: 28 },
-            { dy: 0, dx: -220, opacity: 0.65, width: 2.75, duration: 19 },
-            { dy: 22, dx: -320, opacity: 0.4, width: 2, duration: 25 },
-            { dy: 44, dx: -420, opacity: 0.26, width: 1.5, duration: 31 },
-            { dy: 60, dx: -540, opacity: 0.16, width: 1.25, duration: 17 },
-          ].map((strand) => (
-            <use
-              key={strand.dy}
-              href="#wave-strand"
-              className="wave-path"
-              style={
-                {
-                  animationDuration: `${strand.duration}s`,
-                  // Baked into the keyframes below, not the SVG `transform`
-                  // attribute — the animation's CSS `transform` would
-                  // otherwise win the cascade and silently erase this
-                  // per-strand offset every frame.
-                  '--wx': `${strand.dx}px`,
-                  '--wy': `${strand.dy + 80}px`,
-                } as CSSProperties
-              }
-              opacity={strand.opacity}
-              strokeWidth={strand.width}
-            />
-          ))}
-        </svg>
-
+      <header className="mb-9">
         <p className="mb-5 text-[0.8125rem] tracking-[0.02em] text-ink-faint">Ailive.fr — Emmanuel</p>
         <h1 className="display bg-gradient-to-br from-grad-from to-grad-to bg-clip-text text-[1.9375rem] text-transparent sm:text-[2.25rem]">
           Tes deux sites, en deux minutes
@@ -207,7 +147,14 @@ export function BriefForm() {
                     TONE_BORDER[section.tone],
                   ].join(' ')}
                 >
-                  <h2 className="display text-[1.3125rem] text-ink">{section.heading}</h2>
+                  {/* Alternates with the H1 across the page's four titles:
+                      H1 (Nunito) -> cabinet (Cinzel) -> piano (Nunito) ->
+                      deux (Cinzel). */}
+                  <h2
+                    className={`${section.id === 'piano' ? 'display' : 'display-alt'} ${TONE_TEXT[section.tone]} text-[1.3125rem]`}
+                  >
+                    {section.heading}
+                  </h2>
                   <p className="mt-0.5 text-sm text-ink-dim">{section.blurb}</p>
                 </div>
               )}
@@ -242,7 +189,7 @@ export function BriefForm() {
             globals.css), in the three brand tones instead of the
             reference's random hue. Reduced-motion freezes the beams. */}
         {fallbackText && (
-          <div className="warp-field mt-4 p-8 sm:p-12">
+          <div className="warp-field mt-4 p-12 sm:p-20">
             <div className="warp3d" aria-hidden="true">
               {WARP_WALLS.map((wall) => (
                 <div key={wall} className={`warp-wall warp-wall-${wall}`}>
