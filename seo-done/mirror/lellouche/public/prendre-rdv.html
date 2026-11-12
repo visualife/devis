@@ -185,7 +185,7 @@
       </script>
 
 
-  <link rel="stylesheet" href="assets/css/responsive.css"><link rel="stylesheet" href="assets/css/footer.css">
+  <link rel="stylesheet" href="assets/css/responsive.css"><link rel="stylesheet" href="assets/css/footer.css"><link rel="stylesheet" href="assets/css/contact-form.css">
 </head>
   <body class="view-visitor theme_wide menu_fixed has_header1 has_no_header2 has_header2_simple has_no_aside has_footer lazyload has_top_bar top_bar_size_normal top_bar_fixed ">
 
@@ -751,7 +751,7 @@
       Nom
     </label>
     <div class="sb-col sb-col-xs sb-col-xs-9">
-      <input type="text" class="sb-vi-form-input sb-vi-input-text" value="" name="form_submission[submission_data][b7d190dbf7a1a5b47392]" id="form_229770_object_599722_input_597117" placeholder="">
+      <input type="text" autocomplete="family-name" class="sb-vi-form-input sb-vi-input-text" value="" name="form_submission[submission_data][b7d190dbf7a1a5b47392]" id="form_229770_object_599722_input_597117" placeholder="">
     </div>
   </div>
 </div>
@@ -761,7 +761,7 @@
       Prénom
     </label>
     <div class="sb-col sb-col-xs sb-col-xs-9">
-      <input type="text" class="sb-vi-form-input sb-vi-input-text" value="" name="form_submission[submission_data][d16640ac5044cdc054ef]" id="form_229770_object_599723_input_597118" placeholder="">
+      <input type="text" autocomplete="given-name" class="sb-vi-form-input sb-vi-input-text" value="" name="form_submission[submission_data][d16640ac5044cdc054ef]" id="form_229770_object_599723_input_597118" placeholder="">
     </div>
   </div>
 </div>
@@ -771,7 +771,7 @@
       Âge
     </label>
     <div class="sb-col sb-col-xs sb-col-xs-9">
-      <input type="text" class="sb-vi-form-input sb-vi-input-text" value="" name="form_submission[submission_data][4d0ccf4414a0e80c392a]" id="form_229770_object_599724_input_597119" placeholder="">
+      <input type="text" inputmode="numeric" class="sb-vi-form-input sb-vi-input-text" value="" name="form_submission[submission_data][4d0ccf4414a0e80c392a]" id="form_229770_object_599724_input_597119" placeholder="">
     </div>
   </div>
 </div>
@@ -781,7 +781,7 @@
       Téléphone
     </label>
     <div class="sb-col sb-col-xs sb-col-xs-9">
-      <input type="text" class="sb-vi-form-input sb-vi-input-text" value="" name="form_submission[submission_data][64370bc0e1074011c251]" id="form_229770_object_599725_input_597120" placeholder="">
+      <input type="tel" autocomplete="tel" inputmode="tel" class="sb-vi-form-input sb-vi-input-text" value="" name="form_submission[submission_data][64370bc0e1074011c251]" id="form_229770_object_599725_input_597120" placeholder="06 12 34 56 78">
     </div>
   </div>
 </div>
@@ -791,17 +791,7 @@
       Email
     </label>
     <div class="sb-col sb-col-xs sb-col-xs-9">
-      <input type="email" class="sb-vi-form-input sb-vi-input-email" value="" name="form_submission[submission_data][e287897c862d9db97a70]" id="form_229770_object_599726_input_597121" placeholder="">
-    </div>
-  </div>
-</div>
-<div class="form-one-object sb-col sb-col-xs sb-col-xs-12" id="form-one-object-599956">
-  <div class="sb-vi-form-group sb-row media-query with-padding">
-    <label class="sb-col sb-col-xs sb-col-xs-3" for=form_229770_object_599956_input_597346>
-      Vérification de l&#39;adresse email  
-    </label>
-    <div class="sb-col sb-col-xs sb-col-xs-9">
-      <input type="email" class="sb-vi-form-input sb-vi-input-email" value="" name="form_submission[submission_data][cf083450207b0de6e4ec]" id="form_229770_object_599956_input_597346" placeholder="">
+      <input type="email" autocomplete="email" class="sb-vi-form-input sb-vi-input-email" value="" name="form_submission[submission_data][e287897c862d9db97a70]" id="form_229770_object_599726_input_597121" placeholder="prenom.nom@exemple.fr">
     </div>
   </div>
 </div>
@@ -1423,6 +1413,6 @@
 
     
 
-  <script src="assets/js/form-mail.js"></script></body>
+  <script src="assets/js/form-mail.js"></script><script>(function(){var f=document.getElementById('new_form_submission')||document.querySelector('.element-form form');if(!f)return;var b=f.querySelector('button[type=submit]');if(!b)return;f.addEventListener('submit',function(){b.classList.add('is-loading');b.setAttribute('aria-busy','true');setTimeout(function(){b.classList.remove('is-loading');b.removeAttribute('aria-busy')},10000)});})();</script></body>
 
 </html>

@@ -3,7 +3,7 @@
    qui le transmet par e-mail à dr.lellouche.patrick@gmail.com. */
 (function () {
   'use strict';
-  var WEBHOOK_URL = 'https://n8n.ailive.fr/webhook/lellouche-formulaire';
+  var WEBHOOK_URL = 'https://ailive.app.n8n.cloud/webhook/lellouche-formulaire';
 
   function clean(t) {
     return (t || '').replace(/\*/g, '').replace(/\s+/g, ' ').trim();

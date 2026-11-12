@@ -1,6 +1,7 @@
 # Lellouche site: handoff (2026-11-12)
 
 ## Current state (2026-11-12)
+- 2026-11-12: forms (`prendre-rdv.html`, `contactez-nous.html`) restyled via `public/assets/css/contact-form.css` (pill inputs, Oui/Non on one row at all widths, symptom checkboxes wrap several per row, tighter mobile padding, white `#subfooter` hidden on mobile). "Vérification de l'adresse email" removed. Checked at 375px (no horizontal scroll; prendre-rdv form 2638px, contact form 912px). Uncommitted.
 - 2026-11-12: new folder `images t/` (9 candidate photos: veneers, inlays, smiles, stock) added at the project root, outside `public/`. Not used on any page yet; placement undecided. No site files changed.
 
 
@@ -66,3 +67,4 @@ Raw list: `missing-refs.txt`. Search both CSS references with `grep -n "10517611
 - Forms: `assets/js/form-mail.js` replaces the old WD submit; posts JSON to `WEBHOOK_URL` (n8n). Workflow to import: `n8n/formulaire-cabinet.json` (Webhook -> Code -> Gmail to dr.lellouche.patrick@gmail.com). TODO: confirm the real n8n host in `WEBHOOK_URL`, set the Gmail credential, activate, send a real test.
 - "plus de 33 ans" -> "plus de 35 ans" (4 pages).
 - Local preview: `.claude/launch.json` (python static server, port 8123).
+- 2026-11-12: n8n workflow created on https://ailive.app.n8n.cloud (id S0Bem54acUSf6aXe, inactive, existing "Gmail account" credential auto-attached). `WEBHOOK_URL` in form-mail.js now points to ailive.app.n8n.cloud. TODO: confirm Gmail credential is valid, publish, send one real test, then set tracker `contactform` to ok. A duplicate on local n8n (PcFvqbSxTZKEzgF0) can be deleted.
