@@ -1,0 +1,136 @@
+/* responsive.css : overrides loaded after the CMS theme (self-hosted fixes)
+   Remove-safe: delete the <link> and the site goes back to the raw theme. */
+
+/* ---- 0. Hero photo: original smile files, sharp at every width and on 2x screens ---- */
+.container_59093563_inner {
+  background-image: url("../img/hero/patrick-lellouche.chirurgiens-dentistes-sourire-dents-blanches-ml.jpg") !important;
+  background-image: image-set(url("../img/hero/patrick-lellouche.chirurgiens-dentistes-sourire-dents-blanches-ml.jpg") 1x, url("../img/hero/patrick-lellouche.chirurgiens-dentistes-sourire-dents-blanches-mp.jpg") 2x) !important;
+  background-size: cover !important;
+  background-position: center center !important;
+}
+@media (min-width: 481px) {
+  .container_59093563_inner { background-image: image-set(url("../img/hero/patrick-lellouche.chirurgiens-dentistes-sourire-dents-blanches-mp.jpg") 1x, url("../img/hero/patrick-lellouche.chirurgiens-dentistes-sourire-dents-blanches-1024-tp.jpg") 2x) !important; }
+}
+@media (min-width: 641px) {
+  .container_59093563_inner { background-image: image-set(url("../img/hero/patrick-lellouche.chirurgiens-dentistes-sourire-dents-blanches-1024-tp.jpg") 1x, url("../img/hero/patrick-lellouche.chirurgiens-dentistes-sourire-dents-blanches-ds.jpg") 2x) !important; }
+}
+@media (min-width: 1025px) {
+  .container_59093563_inner { background-image: image-set(url("../img/hero/patrick-lellouche.chirurgiens-dentistes-sourire-dents-blanches-ds.jpg") 1x, url("../img/hero/patrick-lellouche.chirurgiens-dentistes-sourire-dents-blanches-l.jpg") 2x) !important; }
+}
+@media (min-width: 1441px) {
+  .container_59093563_inner { background-image: image-set(url("../img/hero/patrick-lellouche.chirurgiens-dentistes-sourire-dents-blanches-l.jpg") 1x, url("../img/hero/patrick-lellouche.chirurgiens-dentistes-sourire-dents-blanches.jpg") 2x) !important; }
+}
+
+/* ---- 0b. Hero box: 480px on every screen, photo centred (crop equal top and bottom) ---- */
+#container_59093563, .container_59093563_inner { height: 480px !important; min-height: 0 !important; }
+.container_59093563_inner { background-position: center center !important; }
+
+/* ---- 1. Text: no justified rivers, calmer hyphenation, all widths ---- */
+#body-container [class*="text-justify"],
+#body-container [class*="text-justify"] p,
+#body-container [style*="justify"],
+#body-container .article-description,
+#body-container .article-description p,
+#body-container .blog-article-thumbnail p {
+  text-align: left !important;
+  hyphens: auto;
+  -webkit-hyphens: auto;
+  word-spacing: normal !important;
+  letter-spacing: normal;
+}
+#body-container .sb-vi-text-center p[style*="justify"] { text-align: center !important; }
+#body-container p { overflow-wrap: break-word; }
+
+/* ---- 2. Never overflow the viewport ---- */
+html, body { overflow-x: clip; }
+#body-container img, #body-container video, #body-container iframe { max-width: 100%; }
+#body-container .element-image-container img { height: auto; }
+
+/* ---- 3. Tablet (768 to 1100): 2 article cards per row, no clipped cards ---- */
+@media (min-width: 768px) and (max-width: 1100px) {
+  #body-container .blog-articles-thumbnails-list .sb-col,
+  #body-container .element-blog-element-last-articles .sb-col { min-width: 0; }
+  #body-container .sb-row.media-query { margin-left: 0; margin-right: 0; }
+}
+
+/* ---- 3b. Phone + tablet portrait (up to 992): hero shows the whole smile
+   (JS sets a 700px inline height that zoomed and cropped the photo), footer menus centred ---- */
+@media (max-width: 992px) {
+  #container_59093563, .container_59093563_inner { height: 62vw !important; min-height: 0 !important; }
+  [id^="pied-de-page"] .menu-tabs { display: flex; flex-direction: column; align-items: center; text-align: center; }
+  [id^="pied-de-page"] .menu-tab-container { width: 100%; text-align: center; margin-left: 0 !important; padding-left: 0 !important; }
+}
+
+/* ---- 4. Phone (up to 767): gutters, spacing, stacking ---- */
+@media (max-width: 767px) {
+  /* one 16px gutter on content leaves instead of 6 nested paddings (was 70px/side) */
+  #center_inner_wrapper .sb-bloc:not(.sb-bloc-position-absolute),
+  #center_inner_wrapper .sb-bloc-inner:not(.sb-bloc-position-absolute) {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+  }
+  #center_inner_wrapper .sb-bloc-level-1 .sb-bloc-inner,
+  #center_inner_wrapper .sb-bloc-level-2 .sb-bloc-inner,
+  #center_inner_wrapper .sb-bloc-level-3 .sb-bloc-inner {
+    padding-top: 12px !important;
+    padding-bottom: 12px !important;
+  }
+  #center_inner_wrapper .element-text,
+  #center_inner_wrapper .element-title,
+  #center_inner_wrapper .element-list,
+  #center_inner_wrapper .element-link,
+  #center_inner_wrapper .element-form,
+  #center_inner_wrapper .element-table,
+  #center_inner_wrapper .element-tabs-container {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+  #center_inner_wrapper .element-content-box { margin: 0 12px !important; border-radius: 12px; }
+  #center_inner_wrapper .element-title h1,
+  #center_inner_wrapper .element-title h2 { overflow-wrap: anywhere; }
+  #body-container-inner { padding-bottom: 24px !important; }
+  #center_inner_wrapper section.section { margin-top: 0; margin-bottom: 0; }
+
+  /* columns stack, nothing keeps a fixed desktop width */
+  #center_inner_wrapper .sb-col,
+  #center_inner_wrapper .sb-bloc[style*="width"] { width: 100% !important; max-width: 100% !important; flex-basis: 100% !important; }
+
+  /* wrapped menus in the footer: centred stack instead of a staircase */
+  #body-container footer .menu-tabs,
+  #pied-de-page .menu-tabs,
+  [id^="pied-de-page"] .menu-tabs { display: flex; flex-direction: column; align-items: center; text-align: center; }
+  [id^="pied-de-page"] .menu-tab-container { width: 100%; text-align: center; }
+  [id^="pied-de-page"] .sb-bloc { padding-left: 16px !important; padding-right: 16px !important; }
+
+  /* keep the last footer line clear of the fixed Appeler/Menu/Localisation bar */
+  body { padding-bottom: 64px; }
+
+  /* calmer rhythm: tighter line-height and tracking, smaller dead zones around the hero button */
+  #body-container .element-text p, #body-container .element-title { line-height: 1.45 !important; }
+  #body-container h1, #body-container h2, #body-container h3 { letter-spacing: .01em !important; word-spacing: normal !important; }
+  #header2 .sb-bloc-inner { padding-top: 8px !important; padding-bottom: 8px !important; }
+
+  /* absolute-positioned desktop blocks (urgences-orthodontiques...) flow in a column on a phone */
+  #center_inner_wrapper .sb-bloc-position-absolute {
+    position: static !important; width: auto !important; left: auto !important; right: auto !important;
+    top: auto !important; transform: none !important; max-width: 100% !important;
+  }
+  #center_inner_wrapper .sb-bloc-alignment-wrapper { width: 100% !important; margin: 0 !important; }
+
+  /* landing pages (Couronnes / Implants): wide tables scroll inside their box instead of widening the page */
+  #body-container .lp, #body-container .lp .body { min-width: 0; max-width: 100%; }
+  #body-container .lp .tbl { max-width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+  #body-container .lp .tbl table { min-width: 520px; }
+
+  /* blog: slimmer side padding */
+  #blog-wrapper, .blog-article-page { padding-left: 12px !important; padding-right: 12px !important; }
+
+  #blog-wrapper .blog-article-content { margin-left: 0 !important; margin-right: 0 !important; }
+  #blog-wrapper .blog-article-content .sb-bloc, #blog-wrapper .blog-article-content .sb-bloc-inner,
+  #blog-wrapper .blog-article-content .element-text { padding-left: 0 !important; padding-right: 0 !important; }
+
+  /* touch targets */
+  #body-container .sb-vi-btn, #body-container .element-link a { min-height: 44px; }
+}

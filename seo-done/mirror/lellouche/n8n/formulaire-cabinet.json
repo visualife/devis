@@ -1,0 +1,44 @@
+{
+  "name": "Lellouche: formulaires du site vers e-mail du cabinet",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "lellouche-formulaire",
+        "responseMode": "onReceived",
+        "options": { "allowedOrigins": "*" }
+      },
+      "name": "Webhook formulaire",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [0, 0],
+      "webhookId": "lellouche-formulaire"
+    },
+    {
+      "parameters": {
+        "jsCode": "const b = $input.first().json.body || {};\nconst esc = s => String(s ?? '').replace(/[&<>]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));\nconst rows = (b.champs || []).map(c => `<tr><td style=\"padding:6px 12px;font-weight:600;vertical-align:top\">${esc(c.label)}</td><td style=\"padding:6px 12px\">${esc(c.value).replace(/\\n/g,'<br>')}</td></tr>`).join('');\nconst html = `<p>Nouveau message depuis le site (${esc(b.formulaire)}).</p><table style=\"border-collapse:collapse\">${rows}</table><p style=\"color:#888;font-size:12px\">Page : ${esc(b.page)}<br>Reçu le ${esc(b.date)}</p>`;\nconst email = /^[^@\\s]+@[^@\\s]+\\.[^@\\s]+$/.test(b.email || '') ? b.email : '';\nreturn [{ json: { subject: `[Site] ${b.formulaire || 'Message'}`, html, replyTo: email } }];"
+      },
+      "name": "Construire l'e-mail",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [240, 0]
+    },
+    {
+      "parameters": {
+        "sendTo": "dr.lellouche.patrick@gmail.com",
+        "subject": "={{ $json.subject }}",
+        "message": "={{ $json.html }}",
+        "options": { "replyTo": "={{ $json.replyTo }}", "appendAttribution": false }
+      },
+      "name": "Envoyer au cabinet",
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.1,
+      "position": [480, 0]
+    }
+  ],
+  "connections": {
+    "Webhook formulaire": { "main": [[{ "node": "Construire l'e-mail", "type": "main", "index": 0 }]] },
+    "Construire l'e-mail": { "main": [[{ "node": "Envoyer au cabinet", "type": "main", "index": 0 }]] }
+  },
+  "settings": { "executionOrder": "v1" }
+}

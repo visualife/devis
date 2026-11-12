@@ -1,0 +1,7 @@
+/* Pied de page : violet foncé du site (--night), même fond sur toutes les pages */
+#footer .container-dark,#footer .sb-bloc-inner,#footer section,#footer .background-color-before-c-1,
+#footer .background-color-before-c-1:before,#footer .background-color-before-c-1:after,
+#footer [class*="background-color-before"]:before,#footer [class*="background-color-before"]:after{background-color:#1d1236!important}
+#subfooter{background:#1d1236!important;border-top:1px solid rgba(255,255,255,.1)}
+#subfooter,#subfooter a,#subfooter p{color:#cfc6e6!important}
+#subfooter a:hover{color:#fff!important}
