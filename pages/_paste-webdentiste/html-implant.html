@@ -1,0 +1,265 @@
+<style>
+/* Lellouche — pages Implant / Couronne dentaire.
+   Feuille autonome pour webdentiste : tout ce qui n'existe pas dans le thème du site.
+   Préfixe #body-container pour passer devant les règles du thème (html à 10px, h1/h2/p du thème). */
+
+#body-container .lp{
+  --violet:#4f229e; --violet-2:#733ad5; --cyan:#21adcd; --night:#1d1236;
+  --ink:#2f2f2f; --ink-soft:#4a4458; --tint:#f4f0fb; --line:#e2dbef;
+  --gutter:clamp(20px,4vw,56px); --gap:clamp(28px,4vw,72px); --sec:clamp(32px,4vw,56px); --max:1300px;
+  font-family:"Marcellus",Georgia,serif; color:var(--ink); font-size:18px; line-height:1.6; overflow-x:clip;
+}
+#body-container .lp *{box-sizing:border-box}
+#body-container .lp ::selection{background:var(--violet);color:#fff}
+#body-container .lp h1,#body-container .lp h2,#body-container .lp h3{font-family:"Playfair Display",Georgia,serif;font-weight:400;color:var(--violet);line-height:1.12;margin:0;text-wrap:balance}
+#body-container .lp h2{font-size:clamp(30px,3vw,44px);letter-spacing:-.01em}
+#body-container .lp h3{font-size:24px;margin:0 0 6px}
+#body-container .lp p,#body-container .lp ul{font-size:inherit!important;line-height:inherit;margin:0 0 .8em}
+#body-container .lp ul{padding-left:1.2em}
+#body-container .lp li{margin-bottom:.3em}
+#body-container .lp li::marker{color:var(--violet-2)}
+#body-container .lp a{color:var(--violet-2);text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:4px;transition:color .2s}
+#body-container .lp a:hover{color:var(--violet)}
+#body-container .lp a:focus-visible,#body-container .lp summary:focus-visible{outline:2px solid var(--cyan);outline-offset:3px;border-radius:4px}
+#body-container .lp mark.todo{background:#fff2b3;color:#5a4500;padding:0 4px;border-radius:3px;font-size:.88em}
+
+/* Hero : photo pleine largeur, dégradé violet en bas, texte blanc en bas à gauche (zone vide de la photo) */
+#body-container .lp .hero{position:relative;width:min(var(--max),calc(100% - 2 * var(--gutter)));margin:clamp(16px,2vw,28px) auto 0;min-height:clamp(440px,40vw,600px);overflow:hidden;display:flex;align-items:flex-start;background:var(--night);color:#fff}
+#body-container .lp .hero-media{position:absolute;inset:0;z-index:0}
+#body-container .lp .hero-media img{display:block;width:100%;height:100%;object-fit:cover;object-position:50% 50%}
+#body-container .lp .hero::after{content:"";position:absolute;inset:0;z-index:0;background:linear-gradient(180deg,rgba(29,18,54,.78) 0%,rgba(29,18,54,.15) 100%)}
+#body-container .lp .hero-text{position:relative;z-index:1;max-width:min(820px,100%);padding:clamp(28px,4vw,56px)}
+#body-container .lp .hero h1{color:#fff;font-size:clamp(36px,3.6vw,56px);letter-spacing:-.02em}
+#body-container .lp .ln{display:block;white-space:nowrap}
+#body-container .lp .hero-loc{margin:22px 0 0;color:#e6defa;font-size:17px;white-space:nowrap}
+#body-container .lp .hero .btns{flex-wrap:nowrap}
+#body-container .lp .btn{white-space:nowrap}
+
+#body-container .lp .btns{display:flex;flex-wrap:wrap;gap:12px;margin-top:24px}
+#body-container .lp .btn{display:inline-flex;align-items:center;min-height:52px;padding:0 28px;border-radius:999px;background:var(--cyan);color:#06242c!important;font-family:"Marcellus",Georgia,serif;font-size:17px;text-decoration:none!important;transition:background .2s,transform .2s}
+#body-container .lp .btn:hover{background:#4cc3de;transform:translateY(-1px)}
+#body-container .lp .btn.alt{background:transparent;border:1.5px solid rgba(255,255,255,.7);color:#fff!important}
+#body-container .lp .btn.alt:hover{background:rgba(255,255,255,.1);border-color:#fff}
+
+/* Grille de section : titre à gauche, texte à droite, sur toute la largeur utile */
+#body-container .lp section.s{padding:var(--sec) 0 0}
+#body-container .lp .row{display:grid;grid-template-columns:minmax(0,1fr);max-width:calc(var(--max) + 2 * var(--gutter));margin:0 auto;padding:0 var(--gutter)}
+#body-container .lp .row>h2{margin-bottom:16px}
+#body-container .lp .intro.fig .row{grid-template-columns:minmax(0,1fr) minmax(0,560px);column-gap:clamp(12px,1.5vw,24px)}
+#body-container .lp .intro.fig .row>h2,#body-container .lp .intro.fig .row>.lead{grid-column:1 / -1}
+#body-container .lp .intro.fig .body{grid-column:1;grid-row:3}
+#body-container .lp .intro.fig .figure{grid-column:2;grid-row:3;margin:0;align-self:start}
+#body-container .lp .lead{max-width:none;margin-bottom:.8em;font-family:"Playfair Display",Georgia,serif;font-size:24px!important;line-height:1.45!important;color:var(--violet)}
+#body-container .lp .figure{margin:0}
+#body-container .lp .figure img{display:block;width:100%;height:auto;background:#fff}
+
+/* Photos : toujours 100 % de leur cadre, recadrées, jamais étirées */
+#body-container .lp .band{position:relative;width:min(var(--max),calc(100% - 2 * var(--gutter)));margin:var(--sec) auto 0;aspect-ratio:2.2/1;overflow:hidden;background:var(--tint)}
+#body-container .lp .band img{display:block;width:100%;height:100%;object-fit:cover}
+
+#body-container .lp .steps{counter-reset:s;list-style:none;padding:0;margin:8px 0 0;max-width:none}
+#body-container .lp .steps li{counter-increment:s;position:relative;padding:0 0 0 68px;margin:0 0 24px}
+#body-container .lp .steps li::before{content:counter(s);position:absolute;left:0;top:-2px;width:44px;height:44px;border-radius:50%;background:var(--violet);color:#fff;display:grid;place-items:center;font-family:"Playfair Display",serif;font-size:20px}
+#body-container .lp .steps li:not(:last-child)::after{content:"";position:absolute;left:21px;top:50px;bottom:-22px;width:1px;background:var(--line)}
+
+#body-container .lp .note{background:var(--tint);border-radius:14px;padding:18px 24px;margin:1.2em 0;max-width:none;color:var(--ink-soft)}
+#body-container .lp .note strong{color:var(--violet)}
+
+#body-container .lp .tbl{overflow-x:auto;margin:1.2em 0 1.4em}
+#body-container .lp table{border-collapse:collapse;width:100%;min-width:600px;font-size:16px;font-variant-numeric:tabular-nums}
+#body-container .lp th,#body-container .lp td{text-align:left;padding:14px 16px;border-bottom:1px solid var(--line);vertical-align:top}
+#body-container .lp th{background:var(--violet);color:#fff;font-weight:400}
+#body-container .lp td:first-child{white-space:nowrap;color:var(--violet)}
+#body-container .lp td:last-child,#body-container .lp th:last-child{text-align:right;white-space:nowrap}
+
+#body-container .lp details{border-top:1px solid var(--line);padding:14px 0}
+#body-container .lp details:last-child{border-bottom:1px solid var(--line)}
+#body-container .lp summary{cursor:pointer;font-family:"Playfair Display",Georgia,serif;font-size:21px;line-height:1.35;color:var(--violet);list-style:none;display:flex;justify-content:space-between;align-items:center;gap:24px}
+#body-container .lp summary::-webkit-details-marker{display:none}
+#body-container .lp summary::after{content:"";flex:none;width:10px;height:10px;border-right:1.5px solid currentColor;border-bottom:1.5px solid currentColor;transform:rotate(45deg) translateY(-3px);transition:transform .25s cubic-bezier(.16,1,.3,1)}
+#body-container .lp details[open] summary::after{transform:rotate(225deg) translateY(-3px)}
+#body-container .lp details p{margin:12px 0 0}
+
+#body-container .lp .cta{background:var(--night);color:#fff;padding:clamp(36px,4.5vw,64px) 0;margin-top:var(--sec)}
+#body-container .lp .cta h2{color:#fff}
+#body-container .lp .cta p{color:#e8e1f6}
+#body-container .lp .cta a:not(.btn){color:#a9e6f4}
+#body-container .lp .src{max-width:calc(var(--max) + 2 * var(--gutter));margin:0 auto;padding:var(--sec) var(--gutter);font-size:15px;line-height:1.5;color:var(--ink-soft)}
+#body-container .lp .src h2{font-size:22px;margin:0 0 10px}
+#body-container .lp .src ul{list-style:none;padding:0;margin:0}
+#body-container .lp .src li{margin:0 0 6px}
+
+@media (max-width:860px){
+  #body-container .lp{font-size:17px}
+  #body-container .lp .hero{display:block;min-height:0;width:100%;margin:0}
+  #body-container .lp .hero::after{display:none}
+  #body-container .lp .hero-media{position:relative;inset:auto;aspect-ratio:4/3}
+  #body-container .lp .hero-text{max-width:none;padding:32px var(--gutter) 40px}
+  #body-container .lp .ln,#body-container .lp .hero-loc{white-space:normal}
+  #body-container .lp .hero .btns{flex-wrap:wrap}
+  #body-container .lp .row,#body-container .lp .intro.fig .row{grid-template-columns:1fr}
+  #body-container .lp .row>h2{margin-bottom:12px}
+  #body-container .lp .band{aspect-ratio:3/2}
+  #body-container .lp .intro.fig .body,#body-container .lp .intro.fig .figure{grid-column:1;grid-row:auto}
+  #body-container .lp .intro.fig .row>.lead{grid-column:1}
+  #body-container .lp .intro.fig .figure{max-width:420px;margin-top:12px}
+  #body-container .lp .lead{font-size:21px!important}
+}
+@media (prefers-reduced-motion:reduce){#body-container .lp *{transition:none!important}}
+
+/* Pied de page + barre Webdentiste : violet foncé du site (--night) */
+#footer .container-dark,#footer .sb-bloc-inner,#footer section,#footer .background-color-before-c-1,
+#footer .background-color-before-c-1:before,#footer .background-color-before-c-1:after,
+#footer [class*="background-color-before"]:before,#footer [class*="background-color-before"]:after{background-color:#1d1236!important}
+#subfooter{background:#1d1236!important;border-top:1px solid rgba(255,255,255,.1)}
+#subfooter,#subfooter a,#subfooter p{color:#cfc6e6!important}
+#subfooter a:hover{color:#fff!important}
+#subfooter .logo-white-space img{display:block;height:44px;width:auto}
+
+</style>
+<div class="lp">
+
+<div class="hero">
+<div class="hero-media"><img src="[URL:implant-hero-480.jpg]" srcset="[URL:implant-hero-480.jpg] 480w, [URL:implant-hero-800.jpg] 800w, [URL:implant-hero-1300.jpg] 1300w" sizes="100vw" alt="Modèle d'implant dentaire examiné avec un instrument de précision au cabinet" style="object-position:50% 50%" fetchpriority="high" decoding="async" width="1300" height="731"></div>
+<div class="hero-text">
+<h1><span class="ln">Implant dentaire</span> <span class="ln">à Charenton-le-Pont</span></h1>
+<p class="hero-loc">139 rue de Paris, Charenton-le-Pont · métro Liberté (ligne 8) · aux portes de Paris 12e</p>
+<div class="btns"><a class="btn" href="https://dr-patrick-lellouche.chirurgiens-dentistes.fr/prendre-rdv">Prendre rendez-vous</a><a class="btn alt" href="tel:+33143680780">01 43 68 07 80</a></div>
+</div>
+</div>
+
+<section class="s intro fig"><div class="row">
+<h2>Qu'est-ce qu'un implant dentaire ?</h2>
+<p class="lead">Un implant dentaire est une racine artificielle, le plus souvent en titane, placée dans l'os de la mâchoire pour remplacer une dent absente. Une couronne vient ensuite s'y fixer.</p>
+<div class="body">
+<p>Un implant dentaire est une petite vis, généralement en titane, insérée dans l'os à l'emplacement d'une dent perdue pour en remplacer la racine. Il se compose de trois éléments : l'implant lui-même, qui reste dans l'os ; le pilier, une pièce de liaison vissée dessus ; la couronne, c'est-à-dire la partie visible de la dent.</p>
+<p>Avec le temps, l'os se soude à la surface de l'implant. On appelle ce phénomène l'ostéointégration. C'est lui qui donne à l'implant sa stabilité et permet ensuite de mâcher normalement.</p>
+<p>Contrairement à un <a href="https://dr-patrick-lellouche.chirurgiens-dentistes.fr/blog/articles/les-bridges-et-ponts-dentaires">bridge</a>, l'implant ne prend pas appui sur les dents voisines : il n'est pas nécessaire de les tailler.</p>
+<p>Au cabinet du Dr Patrick Lellouche, 139 rue de Paris à Charenton-le-Pont (métro Liberté, ligne 8), l'étude implantaire se fait avec la <a href="https://dr-patrick-lellouche.chirurgiens-dentistes.fr/le-cabinet">radio panoramique 3D du cabinet</a>. La pose de l'implant a lieu sur place ; la couronne est réalisée par un laboratoire de prothèse en France.</p>
+<p>Entre la pose et la dent définitive, il faut compter en général 3 mois.</p>
+<p>L'Assurance Maladie ne rembourse pas l'implant. La couronne posée dessus est remboursée en partie, sur une base de 107,50 €. Vous recevez un devis écrit avant tout traitement.</p>
+</div>
+<figure class="figure"><img src="[URL:structure-implant-480.jpg]" srcset="[URL:structure-implant-480.jpg] 480w, [URL:structure-implant-800.jpg] 800w, [URL:structure-implant-1300.jpg] 1300w" sizes="(max-width: 900px) 100vw, 40vw" alt="Schéma d'un implant dentaire en titane avec son pilier, sa vis et sa couronne" style="object-position:50% 50%" loading="lazy" decoding="async" width="1300"></figure>
+</div></section>
+
+<section class="s"><div class="row">
+<h2>Pour qui ? Les indications</h2>
+<div class="body">
+<p>L'implant s'adresse aux adultes qui ont perdu une ou plusieurs dents, après une extraction, un traumatisme ou une maladie des gencives.</p>
+<p>Il peut servir à :</p>
+<ul>
+<li>remplacer une seule dent, avec une <a href="https://dr-patrick-lellouche.chirurgiens-dentistes.fr/couronne-dentaire-charenton-le-pont">couronne sur implant</a> ;</li>
+<li>remplacer plusieurs dents voisines, avec un bridge sur implants ;</li>
+<li>stabiliser un appareil complet qui bouge, surtout à la mâchoire du bas.</li>
+</ul>
+<p>Trois conditions sont nécessaires : un volume d'os suffisant (ou qu'on peut reconstruire), des gencives saines et un état de santé compatible avec un petit geste chirurgical. Chez les jeunes, on attend la fin de la croissance des mâchoires.</p>
+</div>
+</div></section>
+
+<div class="band"><img src="[URL:implant-radio-480.jpg]" srcset="[URL:implant-radio-480.jpg] 480w, [URL:implant-radio-800.jpg] 800w, [URL:implant-radio-1300.jpg] 1300w" sizes="100vw" alt="Praticien réglant l'appareil de radio panoramique 3D du cabinet" style="object-position:50% 50%" loading="lazy" decoding="async" width="1300"></div>
+
+<section class="s"><div class="row">
+<h2>Les étapes du traitement au cabinet</h2>
+<div class="body">
+<p>Un traitement implantaire se déroule en plusieurs rendez-vous étalés sur quelques mois. Voici comment il se passe au cabinet de Charenton-le-Pont.</p>
+<ol class="steps">
+<li><h3>La consultation et le bilan 3D</h3>
+<p>Le premier rendez-vous sert à examiner votre bouche, à faire le point sur votre santé générale et sur vos médicaments, puis à réaliser une radio panoramique 3D au cabinet. Cet examen montre la hauteur et l'épaisseur de l'os, ainsi que la position des sinus et des nerfs.</p>
+<p>Le Dr Lellouche vous présente ensuite les solutions possibles, implant ou non, avec leurs avantages et leurs limites. Vous repartez avec un devis détaillé. Rien n'est engagé tant que vous ne l'avez pas signé.</p></li>
+<li><h3>Si l'os manque : greffe ou comblement osseux</h3>
+<p>Quand une dent est absente depuis longtemps, l'os a souvent fondu. Une greffe ou un comblement osseux peut alors être proposé, avant la pose ou en même temps. Au maxillaire, il s'agit parfois d'un comblement de sinus. Cette étape ajoute en général quelques mois au traitement.</p></li>
+<li><h3>La pose de l'implant</h3>
+<p>La pose se fait au cabinet, sous anesthésie locale. Après avoir préparé un logement dans l'os, le praticien y place l'implant, puis referme la gencive si besoin. Pour un implant unitaire, l'intervention dure environ une heure.</p></li>
+<li><h3>La cicatrisation osseuse</h3>
+<p>Il faut ensuite laisser l'os se souder à l'implant. Ce délai est en général de 3 mois, souvent plus court à la mâchoire du bas qu'à celle du haut. Si la dent manquante est visible, une solution provisoire peut être prévue pendant cette période : un appareil très léger remplace la dent manquante. En zone esthétique, un pilier provisoire avec une couronne provisoire est parfois possible.</p></li>
+<li><h3>La couronne sur implant</h3>
+<p>Une fois l'implant stable, une empreinte numérique est prise avec le scanner intra-oral du cabinet. Le pilier puis la couronne sont fixés sur l'implant, et l'occlusion (la façon dont vos dents se rencontrent) est réglée. La couronne est fabriquée par un laboratoire de prothèse en France. Le détail des matériaux est expliqué sur notre <a href="https://dr-patrick-lellouche.chirurgiens-dentistes.fr/couronne-dentaire-charenton-le-pont">page consacrée à la couronne dentaire</a>.</p></li>
+</ol>
+</div>
+</div></section>
+
+<div class="band"><img src="[URL:implant-teintier-480.jpg]" srcset="[URL:implant-teintier-480.jpg] 480w, [URL:implant-teintier-800.jpg] 800w, [URL:implant-teintier-1300.jpg] 1300w" sizes="100vw" alt="Mains gantées présentant un teintier de dents au cabinet" style="object-position:50% 50%" loading="lazy" decoding="async" width="1300"></div>
+
+<section class="s"><div class="row">
+<h2>La pose d'un implant fait-elle mal ?</h2>
+<div class="body">
+<p>Pendant l'intervention, l'anesthésie locale supprime la douleur : vous ressentez des vibrations, rien de plus. Les consignes à suivre après l'intervention vous sont expliquées au cabinet.</p>
+</div>
+</div></section>
+
+<section class="s"><div class="row">
+<h2>Quelle est la durée de vie d'un implant ?</h2>
+<div class="body">
+<p>Les études cliniques rapportent qu'environ 95 % des implants posés pour remplacer une dent sont toujours en place après dix ans. Un implant peut durer bien plus longtemps, mais ce chiffre reste une moyenne, pas une garantie individuelle.</p>
+<p>Ce qui fait la différence, c'est l'entretien. La principale complication à long terme est la péri-implantite, une inflammation de la gencive et de l'os autour de l'implant. Une méta-analyse de Derks et Tomasi, publiée en 2015 dans le Journal of Clinical Periodontology, l'estime en moyenne à 22 % des patients porteurs d'implants. Une étude de Costa et al. (2012), qui a suivi pendant cinq ans des patients présentant déjà une inflammation de la gencive autour de l'implant, a observé une péri-implantite chez 43,9 % de ceux qui ne venaient pas aux séances d'entretien, contre 18,0 % chez ceux qui y venaient.</p>
+<p>Concrètement :</p>
+<ul>
+<li>brossez-vous les dents deux fois par jour, en insistant au ras de la gencive autour de l'implant ;</li>
+<li>utilisez des brossettes interdentaires adaptées ;</li>
+<li>venez en contrôle au moins une fois par an, avec une radio quand c'est utile.</li>
+</ul>
+</div>
+</div></section>
+
+<section class="s"><div class="row">
+<h2>Risques et contre-indications</h2>
+<div class="body">
+<p>La pose d'un implant est un acte chirurgical. Comme tout acte de ce type, elle comporte des risques : infection, saignement, implant qui ne se soude pas à l'os et doit être retiré, plus rarement atteinte d'un nerf. Le bilan 3D sert justement à limiter ces risques.</p>
+<p>Les contre-indications définitives sont rares. Elles concernent par exemple certains traitements anti-résorption osseuse par voie intraveineuse prescrits dans le cadre d'un cancer, une radiothérapie de la mâchoire ou un état de santé très fragile.</p>
+<p>D'autres situations augmentent le risque d'échec sans forcément l'interdire : le tabac, un diabète déséquilibré, une maladie des gencives non traitée, une hygiène insuffisante. Un diabète bien équilibré n'est pas un obstacle. Signalez toujours vos traitements, en particulier contre l'ostéoporose, les anticoagulants et les corticoïdes.</p>
+</div>
+</div></section>
+
+<div class="band"><img src="[URL:implant-consultation-480.jpg]" srcset="[URL:implant-consultation-480.jpg] 480w, [URL:implant-consultation-800.jpg] 800w, [URL:implant-consultation-1300.jpg] 1300w" sizes="100vw" alt="Chirurgien-dentiste présentant une radiographie panoramique à son patient" style="object-position:50% 50%" loading="lazy" decoding="async" width="1300"></div>
+
+<section class="s"><div class="row">
+<h2>Prix et remboursement d'un implant en France</h2>
+<div class="body">
+<p>Le coût d'un implant se compose de trois parties, qui ne sont pas prises en charge de la même façon.</p>
+<p><strong>L'implant et le pilier</strong> : ce sont des actes hors nomenclature. Leurs honoraires sont libres et l'Assurance Maladie ne les rembourse pas.</p>
+<p><strong>La couronne sur implant</strong> : elle est remboursée sur une base de 107,50 €, à 60 % en 2026, soit 64,50 €. Elle relève du panier à tarifs libres et n'entre pas dans le dispositif 100 % Santé.</p>
+<p><strong>La greffe osseuse</strong>, si elle est nécessaire, est en général facturée en plus.</p>
+<p>Votre mutuelle peut prévoir un forfait « implantologie » ou un remboursement en pourcentage de la base. Le plus simple est de lui envoyer le devis remis par le cabinet.</p>
+<div class="note"><strong>Bon à savoir.</strong> Le décret n° 2026-809, publié au Journal officiel le 22 août 2026, prévoit que le taux de remboursement des soins dentaires par l'Assurance Maladie pourrait baisser à partir du 1er janvier 2027. Le taux exact n'est pas encore fixé. Par ailleurs, la Haute Autorité de santé s'est prononcée en novembre 2024 en faveur d'un remboursement des implants dans certains cas, mais cette prise en charge n'a pas été mise en place à ce jour.</div>
+<p><strong>Honoraires du cabinet :</strong> le cabinet est conventionné secteur 1. L'implant, le pilier et la couronne sont facturés sur devis, remis avant tout traitement. Le cabinet accepte la carte Vitale, la carte bancaire, les espèces, le chèque et le virement. Voir aussi <a href="https://dr-patrick-lellouche.chirurgiens-dentistes.fr/blog/articles/honoraires-et-remboursements">honoraires et remboursements</a>.</p>
+</div>
+</div></section>
+
+<section class="s"><div class="row">
+<h2>Les alternatives à l'implant</h2>
+<div class="body">
+<p>L'implant n'est pas la seule façon de remplacer une dent. Le choix se fait avec vous, selon votre bouche, votre santé et votre budget.</p>
+<p><strong>Le bridge</strong> : une fausse dent est fixée sur les deux dents voisines, qu'il faut tailler. Le traitement est plus court et certains bridges font partie du panier 100 % Santé, selon le matériau et la dent remplacée.</p>
+<p><strong>La prothèse amovible (appareil)</strong> : c'est la solution la moins invasive. Les prothèses en résine font partie du panier 100 % Santé.</p>
+<p><strong>Ne rien remplacer</strong> : c'est possible pour certaines dents du fond, mais les dents voisines ont tendance à bouger avec le temps.</p>
+<p>Ces options doivent figurer sur votre devis, avec leur prise en charge.</p>
+</div>
+</div></section>
+
+<div class="cta"><div class="row">
+<h2>Prendre rendez-vous pour un bilan implantaire</h2>
+<div class="body">
+<p>Pour savoir si un implant est possible dans votre cas, la première étape est une consultation avec bilan. Le Dr Patrick Lellouche, chirurgien-dentiste, reçoit au 139 rue de Paris à Charenton-le-Pont, au pied du métro Liberté (ligne 8), aux portes de Paris 12e, le lundi, le mercredi, le jeudi et le vendredi de 9h30 à 19h (fermé les autres jours). Le rendez-vous se prend sur Doctolib ou au 01 43 68 07 80. Consultations possibles en français, en anglais et en espagnol.</p>
+<div class="btns"><a class="btn" href="https://dr-patrick-lellouche.chirurgiens-dentistes.fr/prendre-rdv">Prendre rendez-vous sur Doctolib</a><a class="btn alt" href="tel:+33143680780">01 43 68 07 80</a></div>
+</div>
+</div></div>
+
+<section class="s"><div class="row">
+<h2>Questions fréquentes sur l'implant dentaire</h2>
+<div class="body">
+<details><summary>Combien coûte un implant dentaire à Charenton-le-Pont ?</summary><p>Le prix dépend du nombre d'implants, d'une éventuelle greffe osseuse et du type de couronne. L'implant et le pilier sont à honoraires libres et ne sont pas remboursés par l'Assurance Maladie. Au cabinet du Dr Lellouche, un devis écrit et détaillé vous est remis après le bilan 3D, avant tout engagement.</p></details>
+<details><summary>L'implant dentaire est-il remboursé par la Sécurité sociale ?</summary><p>Non. La pose d'un implant est un acte hors nomenclature, que l'Assurance Maladie ne rembourse pas. Seule la couronne posée sur l'implant est prise en charge, sur une base de 107,50 €, soit 64,50 € au taux de 60 % appliqué en 2026. Votre mutuelle peut prévoir un forfait implant.</p></details>
+<details><summary>La pose d'un implant fait-elle mal ?</summary><p>La pose se fait sous anesthésie locale : vous sentez des pressions, pas de douleur pendant l'intervention. Les consignes à suivre ensuite vous sont expliquées au cabinet.</p></details>
+<details><summary>Combien de temps entre la pose de l'implant et la dent définitive ?</summary><p>Comptez en général 3 mois, le temps que l'os se soude à l'implant. Ce délai est souvent plus court à la mâchoire du bas qu'à celle du haut. Si une greffe osseuse est nécessaire, quelques mois s'ajoutent. Une solution provisoire peut être prévue pendant cette période.</p></details>
+<details><summary>Quelle est la durée de vie d'un implant dentaire ?</summary><p>Les études cliniques rapportent qu'environ 95 % des implants unitaires sont toujours en place après dix ans. Un implant peut durer bien plus longtemps si l'hygiène est bonne et si vous venez en contrôle chaque année. Le tabac et une maladie des gencives non traitée augmentent le risque de complications.</p></details>
+<details><summary>Peut-on poser un implant quand on manque d'os ?</summary><p>Souvent, oui. Si le volume d'os est insuffisant, une greffe ou un comblement osseux, par exemple un comblement de sinus au maxillaire, peut être réalisé avant ou pendant la pose. La radio panoramique 3D du cabinet permet de mesurer l'os disponible et de choisir la technique adaptée.</p></details>
+<details><summary>Qui ne peut pas recevoir d'implant ?</summary><p>Les contre-indications définitives sont rares : certains traitements osseux par voie intraveineuse liés à un cancer, une radiothérapie de la mâchoire, un état de santé très fragile. Le tabac, un diabète déséquilibré ou une maladie des gencives active augmentent le risque d'échec et doivent être pris en charge avant la pose.</p></details>
+<details><summary>Implant ou bridge : que choisir ?</summary><p>L'implant remplace la dent sans toucher aux dents voisines. Le bridge prend appui sur elles et oblige donc à les tailler, mais le traitement est plus rapide et peut entrer dans le panier 100 % Santé selon le matériau et la dent. Le choix se fait au cas par cas, après examen.</p></details>
+</div>
+</div></section>
+
+<div class="band"><img src="[URL:cabinet-charenton-480.jpg]" srcset="[URL:cabinet-charenton-480.jpg] 480w, [URL:cabinet-charenton-800.jpg] 800w, [URL:cabinet-charenton-1300.jpg] 1300w" sizes="100vw" alt="Salle de soins du cabinet dentaire, fauteuil et équipement" style="object-position:50% 50%" loading="lazy" decoding="async" width="1300"></div>
+
+<div class="src"><h2>Sources</h2><ul><li><a href="https://www.ameli.fr/assure/remboursements/rembourse/soins-protheses-dentaires-optique-audition/consultations-soins-protheses-dentaires/protheses-dentaires" target="_blank" rel="noopener">Assurance Maladie, Prothèses dentaires</a></li><li><a href="https://www.has-sante.fr/jcms/p_3555021/fr/implants-et-protheses-dentaires-avis-favorable-de-la-has-pour-leur-remboursement-dans-les-edentements-complet-ou-unitaire" target="_blank" rel="noopener">Haute Autorité de santé, avis favorable au remboursement des implants et prothèses dentaires</a></li><li><a href="https://www.information-dentaire.fr/formations/l-osteointegration/" target="_blank" rel="noopener">L’Information Dentaire, Ostéointégration</a></li><li><a href="https://www.ufsbd.fr/wp-content/uploads/2016/08/Fiche-conseil-DIABETE-avec-video-.pdf" target="_blank" rel="noopener">UFSBD, fiche conseil Diabète</a></li><li><a href="https://www.ameli.fr/chirurgien-dentiste/exercice-liberal/facturation-remuneration/tarifs-conventionnels/devis-obligatoire" target="_blank" rel="noopener">Assurance Maladie, Devis obligatoire</a></li></ul></div>
+
+</div>

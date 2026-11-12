@@ -1,0 +1,9 @@
+[    2062ms] [WARNING] Ignoring Event: localhost @ http://localhost:8765/assets/pa-waT94pCb48KIcNMT-6IZr.js.download:0
+[    2326ms] Uncaught Error: Axeptio SDK is already loaded
+    at ri (http://static.axept.io/sdk.js:1:676746)
+    at boot (http://static.axept.io/sdk.js:1:673078)
+    at <anonymous> (http://static.axept.io/sdk.js:1:726599)
+    at <anonymous> (http://static.axept.io/sdk.js:1:85512)
+    at <anonymous> (http://static.axept.io/sdk.js:1:726583)
+    at <anonymous> (http://static.axept.io/sdk.js:1:726667)
+    at <anonymous> (http://static.axept.io/sdk.js:1:726670)

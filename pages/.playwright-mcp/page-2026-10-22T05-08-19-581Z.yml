@@ -1,0 +1,265 @@
+- generic [ref=f3e2]:
+  - navigation [ref=f3e3]:
+    - list [ref=f3e5]:
+      - listitem [ref=f3e6]:
+        - generic [ref=f3e7] [cursor=pointer]:
+          - button [ref=f3e8]
+          - text: ACCUEIL
+      - listitem [ref=f3e11]:
+        - link "LE CABINET" [ref=f3e12] [cursor=pointer]:
+          - /url: https://dr-patrick-lellouche.chirurgiens-dentistes.fr/le-cabinet
+      - listitem [ref=f3e13]:
+        - link "CAS CLINIQUES" [ref=f3e14] [cursor=pointer]:
+          - /url: https://dr-patrick-lellouche.chirurgiens-dentistes.fr/cas-cliniques
+      - listitem [ref=f3e15]:
+        - link "FICHES CONSEILS" [ref=f3e16] [cursor=pointer]:
+          - /url: https://dr-patrick-lellouche.chirurgiens-dentistes.fr/blog/categories/fiches-conseils
+      - listitem [ref=f3e17]:
+        - link "VIDEOS" [ref=f3e18] [cursor=pointer]:
+          - /url: https://dr-patrick-lellouche.chirurgiens-dentistes.fr/blog/categories/videos-3d
+      - listitem [ref=f3e19]:
+        - link "URGENCES" [ref=f3e20] [cursor=pointer]:
+          - /url: https://dr-patrick-lellouche.chirurgiens-dentistes.fr/urgences#body-container
+      - listitem [ref=f3e21]:
+        - link "CONTACT" [ref=f3e22] [cursor=pointer]:
+          - /url: https://dr-patrick-lellouche.chirurgiens-dentistes.fr/contactez-nous
+      - listitem [ref=f3e23]:
+        - link "PRENDRE RDV" [ref=f3e24] [cursor=pointer]:
+          - /url: https://dr-patrick-lellouche.chirurgiens-dentistes.fr/prendre-rdv
+  - navigation [ref=f3e25]:
+    - list [ref=f3e26]:
+      - listitem [ref=f3e27]:
+        - link "Appeler" [ref=f3e28] [cursor=pointer]:
+          - /url: tel:+33143680780
+    - button "mobile-menu-button" [ref=f3e33] [cursor=pointer]: MENU
+    - list [ref=f3e34]:
+      - listitem [ref=f3e35]:
+        - link "Localisation" [ref=f3e36] [cursor=pointer]:
+          - /url: https://maps.google.com/maps?q=139%20rue%20de%20Paris,%20CHARENTON%20LE%20PONT,%2094220
+  - generic [ref=f3e41]:
+    - banner [ref=f3e42]:
+      - generic [ref=f3e43]:
+        - strong [ref=f3e45]: Cabinet dentaire du Dr Patrick LELLOUCHE
+        - strong [ref=f3e47]: Chirurgien dentiste à Charenton le pont
+    - banner
+    - main [ref=f3e48]:
+      - generic [ref=f3e50]:
+        - generic [ref=f3e51]:
+          - img "Modèle d'implant dentaire examiné avec un instrument de précision au cabinet" [ref=f3e53]
+          - generic [ref=f3e54]:
+            - heading "Implant dentaire à Charenton-le-Pont" [level=1] [ref=f3e55]
+            - paragraph [ref=f3e56]: 139 rue de Paris, Charenton-le-Pont · métro Liberté (ligne 8)
+            - generic [ref=f3e57]:
+              - link "Prendre rendez-vous" [ref=f3e58] [cursor=pointer]:
+                - /url: https://dr-patrick-lellouche.chirurgiens-dentistes.fr/prendre-rdv
+              - link "01 43 68 07 80" [ref=f3e59] [cursor=pointer]:
+                - /url: tel:+33143680780
+        - generic [ref=f3e61]:
+          - heading "Qu'est-ce qu'un implant dentaire ?" [level=2] [ref=f3e62]
+          - generic [ref=f3e63]:
+            - paragraph [ref=f3e64]: Un implant dentaire est une racine artificielle, le plus souvent en titane, placée dans l'os de la mâchoire pour remplacer une dent absente. Une couronne vient ensuite s'y fixer.
+            - paragraph [ref=f3e65]: "Un implant dentaire est une petite vis, généralement en titane, insérée dans l'os à l'emplacement d'une dent perdue pour en remplacer la racine. Il se compose de trois éléments : l'implant lui-même, qui reste dans l'os ; le pilier, une pièce de liaison vissée dessus ; la couronne, c'est-à-dire la partie visible de la dent."
+            - paragraph [ref=f3e66]: Avec le temps, l'os se soude à la surface de l'implant. On appelle ce phénomène l'ostéointégration. C'est lui qui donne à l'implant sa stabilité et permet ensuite de mâcher normalement.
+            - paragraph [ref=f3e67]:
+              - text: Contrairement à un
+              - link "bridge" [ref=f3e68] [cursor=pointer]:
+                - /url: https://dr-patrick-lellouche.chirurgiens-dentistes.fr/blog/articles/les-bridges-et-ponts-dentaires
+              - text: ", l'implant ne prend pas appui sur les dents voisines : il n'est pas nécessaire de les tailler."
+            - paragraph [ref=f3e69]:
+              - text: Au cabinet du Dr Patrick Lellouche, 139 rue de Paris à Charenton-le-Pont (métro Liberté, ligne 8), l'étude implantaire se fait avec une
+              - link "radio panoramique 3D au cabinet" [ref=f3e70] [cursor=pointer]:
+                - /url: https://dr-patrick-lellouche.chirurgiens-dentistes.fr/le-cabinet
+              - text: ", et la pose de l'implant comme celle de la couronne ont lieu sur place."
+            - paragraph [ref=f3e71]: Entre la pose et la dent définitive, il faut compter en général 3 à 6 mois.
+            - paragraph [ref=f3e72]: L'Assurance Maladie ne rembourse pas l'implant. La couronne posée dessus est remboursée en partie, sur une base de 107,50 €. Vous recevez un devis écrit avant tout traitement.
+          - figure [ref=f3e73]:
+            - img "Schéma d'un implant dentaire en titane avec son pilier, sa vis et sa couronne" [ref=f3e74]
+        - generic [ref=f3e76]:
+          - heading "Pour qui ? Les indications" [level=2] [ref=f3e77]
+          - generic [ref=f3e78]:
+            - paragraph [ref=f3e79]: L'implant s'adresse aux adultes qui ont perdu une ou plusieurs dents, après une extraction, un traumatisme ou une maladie des gencives.
+            - paragraph [ref=f3e80]: "Il peut servir à :"
+            - list [ref=f3e81]:
+              - listitem [ref=f3e82]:
+                - text: remplacer une seule dent, avec une
+                - link "couronne sur implant" [ref=f3e83] [cursor=pointer]:
+                  - /url: couronne-dentaire-charenton-le-pont.html
+                - text: ;
+              - listitem [ref=f3e84]: remplacer plusieurs dents voisines, avec un bridge sur implants ;
+              - listitem [ref=f3e85]: stabiliser un appareil complet qui bouge, surtout à la mâchoire du bas.
+            - paragraph [ref=f3e86]: "Trois conditions sont nécessaires : un volume d'os suffisant (ou qu'on peut reconstruire), des gencives saines et un état de santé compatible avec un petit geste chirurgical. Chez les jeunes, on attend la fin de la croissance des mâchoires."
+        - img "Radio panoramique 3D utilisée pour l'étude implantaire au cabinet du Dr Lellouche à Charenton-le-Pont" [ref=f3e88]
+        - generic [ref=f3e90]:
+          - heading "Les étapes du traitement au cabinet" [level=2] [ref=f3e91]
+          - generic [ref=f3e92]:
+            - paragraph [ref=f3e93]: Un traitement implantaire se déroule en plusieurs rendez-vous étalés sur quelques mois. Voici comment il se passe au cabinet de Charenton-le-Pont.
+            - list [ref=f3e94]:
+              - listitem [ref=f3e95]:
+                - heading "La consultation et le bilan 3D" [level=3] [ref=f3e96]
+                - paragraph [ref=f3e97]: Le premier rendez-vous sert à examiner votre bouche, à faire le point sur votre santé générale et sur vos médicaments, puis à réaliser une radio panoramique 3D au cabinet. Cet examen montre la hauteur et l'épaisseur de l'os, ainsi que la position des sinus et des nerfs.
+                - paragraph [ref=f3e98]: Le Dr Lellouche vous présente ensuite les solutions possibles, implant ou non, avec leurs avantages et leurs limites. Vous repartez avec un devis détaillé. Rien n'est engagé tant que vous ne l'avez pas signé.
+              - listitem [ref=f3e99]:
+                - 'heading "Si l''os manque : greffe ou comblement osseux" [level=3] [ref=f3e100]'
+                - paragraph [ref=f3e101]: Quand une dent est absente depuis longtemps, l'os a souvent fondu. Une greffe ou un comblement osseux peut alors être proposé, avant la pose ou en même temps. Au maxillaire, il s'agit parfois d'un comblement de sinus. Cette étape ajoute en général quelques mois au traitement.
+              - listitem [ref=f3e102]:
+                - heading "La pose de l'implant" [level=3] [ref=f3e103]
+                - paragraph [ref=f3e104]:
+                  - text: La pose se fait au cabinet, sous anesthésie locale. Le jeudi est réservé à l'implantologie et à la chirurgie. Après avoir préparé un logement dans l'os, le praticien y place l'implant, puis referme la gencive si besoin. Pour un implant unitaire, l'intervention dure
+                  - mark [ref=f3e105]: "À COMPLÉTER : durée habituelle, par exemple « environ une heure »"
+                  - text: .
+              - listitem [ref=f3e106]:
+                - heading "La cicatrisation osseuse" [level=3] [ref=f3e107]
+                - paragraph [ref=f3e108]:
+                  - text: Il faut ensuite laisser l'os se souder à l'implant. Ce délai est en général de 3 à 6 mois, souvent plus court à la mâchoire du bas qu'à celle du haut. Si la dent manquante est visible, une solution provisoire peut être prévue pendant cette période
+                  - mark [ref=f3e109]: "À COMPLÉTER : préciser les solutions provisoires proposées au cabinet"
+                  - text: .
+              - listitem [ref=f3e110]:
+                - heading "La couronne sur implant" [level=3] [ref=f3e111]
+                - paragraph [ref=f3e112]:
+                  - text: Une fois l'implant stable, une empreinte est prise. Le pilier puis la couronne sont fixés sur l'implant, et l'occlusion (la façon dont vos dents se rencontrent) est réglée. Le détail des matériaux est expliqué sur notre
+                  - link "page consacrée à la couronne dentaire" [ref=f3e113] [cursor=pointer]:
+                    - /url: couronne-dentaire-charenton-le-pont.html
+                  - text: .
+        - img "Implant dentaire en titane surmonté de sa couronne, tenu à la pince au cabinet" [ref=f3e115]
+        - generic [ref=f3e117]:
+          - heading "La pose d'un implant fait-elle mal ?" [level=2] [ref=f3e118]
+          - generic [ref=f3e119]:
+            - paragraph [ref=f3e120]: "Pendant l'intervention, l'anesthésie locale supprime la douleur : vous ressentez des pressions et des vibrations, rien de plus. Beaucoup de patients disent que c'est moins pénible qu'une extraction."
+            - paragraph [ref=f3e121]: Dans les jours qui suivent, un gonflement et une gêne modérée sont fréquents, en général pendant deux à trois jours. Ils se calment avec les antalgiques prescrits, de la glace appliquée sur la joue et une alimentation tiède et molle. Il est préférable de ne pas fumer pendant la cicatrisation.
+            - paragraph [ref=f3e122]: Un saignement qui ne s'arrête pas, une fièvre ou une douleur qui augmente après le troisième jour doivent vous amener à appeler le cabinet.
+        - generic [ref=f3e124]:
+          - heading "Quelle est la durée de vie d'un implant ?" [level=2] [ref=f3e125]
+          - generic [ref=f3e126]:
+            - paragraph [ref=f3e127]: Les études cliniques rapportent qu'environ 95 % des implants posés pour remplacer une dent sont toujours en place après dix ans. Un implant peut durer bien plus longtemps, mais ce chiffre reste une moyenne, pas une garantie individuelle.
+            - paragraph [ref=f3e128]: Ce qui fait la différence, c'est l'entretien. La principale complication à long terme est la péri-implantite, une inflammation de la gencive et de l'os autour de l'implant. Une méta-analyse de Derks et Tomasi, publiée en 2015 dans le Journal of Clinical Periodontology, l'estime en moyenne à 22 % des patients porteurs d'implants. Une étude de Costa et al. (2012), qui a suivi pendant cinq ans des patients présentant déjà une inflammation de la gencive autour de l'implant, a observé une péri-implantite chez 43,9 % de ceux qui ne venaient pas aux séances d'entretien, contre 18,0 % chez ceux qui y venaient.
+            - paragraph [ref=f3e129]: "Concrètement :"
+            - list [ref=f3e130]:
+              - listitem [ref=f3e131]: brossez-vous les dents deux fois par jour, en insistant au ras de la gencive autour de l'implant ;
+              - listitem [ref=f3e132]: utilisez des brossettes interdentaires adaptées ;
+              - listitem [ref=f3e133]: venez en contrôle au moins une fois par an, avec une radio quand c'est utile.
+        - generic [ref=f3e135]:
+          - heading "Risques et contre-indications" [level=2] [ref=f3e136]
+          - generic [ref=f3e137]:
+            - paragraph [ref=f3e138]: "La pose d'un implant est un acte chirurgical. Comme tout acte de ce type, elle comporte des risques : infection, saignement, implant qui ne se soude pas à l'os et doit être retiré, plus rarement atteinte d'un nerf. Le bilan 3D sert justement à limiter ces risques."
+            - paragraph [ref=f3e139]: Les contre-indications définitives sont rares. Elles concernent par exemple certains traitements anti-résorption osseuse par voie intraveineuse prescrits dans le cadre d'un cancer, une radiothérapie de la mâchoire ou un état de santé très fragile.
+            - paragraph [ref=f3e140]: "D'autres situations augmentent le risque d'échec sans forcément l'interdire : le tabac, un diabète déséquilibré, une maladie des gencives non traitée, une hygiène insuffisante. Un diabète bien équilibré n'est pas un obstacle. Signalez toujours vos traitements, en particulier contre l'ostéoporose, les anticoagulants et les corticoïdes."
+        - img "Chirurgien-dentiste présentant une radiographie panoramique à son patient au cabinet" [ref=f3e142]
+        - generic [ref=f3e144]:
+          - heading "Prix et remboursement d'un implant en France" [level=2] [ref=f3e145]
+          - generic [ref=f3e146]:
+            - paragraph [ref=f3e147]: Le coût d'un implant se compose de trois parties, qui ne sont pas prises en charge de la même façon.
+            - paragraph [ref=f3e148]:
+              - strong [ref=f3e149]: L'implant et le pilier
+              - text: ": ce sont des actes hors nomenclature. Leurs honoraires sont libres et l'Assurance Maladie ne les rembourse pas."
+            - paragraph [ref=f3e150]:
+              - strong [ref=f3e151]: La couronne sur implant
+              - text: ": elle est remboursée sur une base de 107,50 €, à 60 % en 2026, soit 64,50 €. Elle relève du panier à tarifs libres et n'entre pas dans le dispositif 100 % Santé."
+            - paragraph [ref=f3e152]:
+              - strong [ref=f3e153]: La greffe osseuse
+              - text: ", si elle est nécessaire, est en général facturée en plus"
+              - mark [ref=f3e154]: "À COMPLÉTER : vérifier la cotation pratiquée au cabinet"
+              - text: .
+            - paragraph [ref=f3e155]: Votre mutuelle peut prévoir un forfait « implantologie » ou un remboursement en pourcentage de la base. Le plus simple est de lui envoyer le devis remis par le cabinet.
+            - generic [ref=f3e156]:
+              - strong [ref=f3e157]: Bon à savoir.
+              - text: Le décret n° 2026-809, publié au Journal officiel le 22 août 2026, prévoit que le taux de remboursement des soins dentaires par l'Assurance Maladie pourrait baisser à partir du 1er janvier 2027. Le taux exact n'est pas encore fixé. Par ailleurs, la Haute Autorité de santé s'est prononcée en novembre 2024 en faveur d'un remboursement des implants dans certains cas, mais cette prise en charge n'a pas été mise en place à ce jour.
+            - paragraph [ref=f3e158]:
+              - strong [ref=f3e159]: "Honoraires du cabinet :"
+              - mark [ref=f3e160]: "À COMPLÉTER : fourchette d'honoraires pour implant + pilier + couronne, ou renvoi vers la page Honoraires & remboursement"
+              - text: . Le cabinet est conventionné et accepte la carte Vitale, la carte bancaire, les espèces, le chèque et le virement. Voir aussi
+              - link "honoraires et remboursements" [ref=f3e161] [cursor=pointer]:
+                - /url: https://dr-patrick-lellouche.chirurgiens-dentistes.fr/blog/articles/honoraires-et-remboursements
+              - text: .
+        - generic [ref=f3e163]:
+          - heading "Les alternatives à l'implant" [level=2] [ref=f3e164]
+          - generic [ref=f3e165]:
+            - paragraph [ref=f3e166]: L'implant n'est pas la seule façon de remplacer une dent. Le choix se fait avec vous, selon votre bouche, votre santé et votre budget.
+            - paragraph [ref=f3e167]:
+              - strong [ref=f3e168]: Le bridge
+              - text: ": une fausse dent est fixée sur les deux dents voisines, qu'il faut tailler. Le traitement est plus court et certains bridges font partie du panier 100 % Santé, selon le matériau et la dent remplacée."
+            - paragraph [ref=f3e169]:
+              - strong [ref=f3e170]: La prothèse amovible (appareil)
+              - text: ": c'est la solution la moins invasive. Les prothèses en résine font partie du panier 100 % Santé."
+            - paragraph [ref=f3e171]:
+              - strong [ref=f3e172]: Ne rien remplacer
+              - text: ": c'est possible pour certaines dents du fond, mais les dents voisines ont tendance à bouger avec le temps."
+            - paragraph [ref=f3e173]: Ces options doivent figurer sur votre devis, avec leur prise en charge.
+        - generic [ref=f3e175]:
+          - heading "Questions fréquentes sur l'implant dentaire" [level=2] [ref=f3e176]
+          - generic [ref=f3e177]:
+            - group [ref=f3e178]:
+              - generic "Combien coûte un implant dentaire à Charenton-le-Pont ?" [ref=f3e179] [cursor=pointer]
+            - group [ref=f3e180]:
+              - generic "L'implant dentaire est-il remboursé par la Sécurité sociale ?" [ref=f3e181] [cursor=pointer]
+            - group [ref=f3e182]:
+              - generic "La pose d'un implant fait-elle mal ?" [ref=f3e183] [cursor=pointer]
+            - group [ref=f3e184]:
+              - generic "Combien de temps entre la pose de l'implant et la dent définitive ?" [ref=f3e185] [cursor=pointer]
+            - group [ref=f3e186]:
+              - generic "Quelle est la durée de vie d'un implant dentaire ?" [ref=f3e187] [cursor=pointer]
+            - group [ref=f3e188]:
+              - generic "Peut-on poser un implant quand on manque d'os ?" [ref=f3e189] [cursor=pointer]
+            - group [ref=f3e190]:
+              - generic "Qui ne peut pas recevoir d'implant ?" [ref=f3e191] [cursor=pointer]
+            - group [ref=f3e192]:
+              - 'generic "Implant ou bridge : que choisir ?" [ref=f3e193] [cursor=pointer]'
+        - img "Salle de soins du cabinet dentaire, fauteuil et équipement" [ref=f3e195]
+        - generic [ref=f3e197]:
+          - heading "Prendre rendez-vous pour un bilan implantaire" [level=2] [ref=f3e198]
+          - generic [ref=f3e199]:
+            - paragraph [ref=f3e200]:
+              - text: Pour savoir si un implant est possible dans votre cas, la première étape est une consultation avec bilan. Le Dr Patrick Lellouche, chirurgien-dentiste, reçoit au 139 rue de Paris à Charenton-le-Pont, au pied du métro Liberté (ligne 8), le lundi, le mercredi et le vendredi
+              - mark [ref=f3e201]: "À COMPLÉTER : horaires harmonisés"
+              - text: . Le rendez-vous se prend sur Doctolib ou au 01 43 68 07 80. Consultations possibles en français, en anglais et en espagnol.
+            - generic [ref=f3e202]:
+              - link "Prendre rendez-vous sur Doctolib" [ref=f3e203] [cursor=pointer]:
+                - /url: https://dr-patrick-lellouche.chirurgiens-dentistes.fr/prendre-rdv
+              - link "01 43 68 07 80" [ref=f3e204] [cursor=pointer]:
+                - /url: tel:+33143680780
+        - generic [ref=f3e205]:
+          - text: "Sources : Assurance Maladie (ameli.fr), Haute Autorité de santé, Union française pour la santé bucco-dentaire, L'Information Dentaire."
+          - mark [ref=f3e206]: "À COMPLÉTER : liens cliquables vers ces pages"
+    - generic [ref=f3e211]:
+      - paragraph [ref=f3e214]:
+        - generic [ref=f3e215]: Cabinet dentaire du Dr Patrick LELLOUCHE
+      - paragraph [ref=f3e219]: 139 rue de Paris 94220 CHARENTON LE PONT
+      - paragraph [ref=f3e222]:
+        - link "+33143680780" [ref=f3e223] [cursor=pointer]:
+          - /url: tel:+33143680780
+      - link "Nous localiser" [ref=f3e226] [cursor=pointer]:
+        - /url: https://dr-patrick-lellouche.chirurgiens-dentistes.fr/contactez-nous
+      - list [ref=f3e234]:
+        - listitem [ref=f3e235]:
+          - link "Hygiène & Asepsie" [ref=f3e237] [cursor=pointer]:
+            - /url: https://dr-patrick-lellouche.chirurgiens-dentistes.fr/blog/articles/hygiene-et-asepsie-au-cabinet
+        - listitem [ref=f3e239]:
+          - link "Honoraires & remboursement" [ref=f3e241] [cursor=pointer]:
+            - /url: https://dr-patrick-lellouche.chirurgiens-dentistes.fr/blog/articles/honoraires-et-remboursements
+        - listitem [ref=f3e243]:
+          - link "Diaporama" [ref=f3e245] [cursor=pointer]:
+            - /url: https://dr-patrick-lellouche.chirurgiens-dentistes.fr/diaporama
+      - list [ref=f3e252]:
+        - listitem [ref=f3e253]:
+          - link "Politique de confidentialité et charte cookie" [ref=f3e255] [cursor=pointer]:
+            - /url: https://dr-patrick-lellouche.chirurgiens-dentistes.fr/politique-de-confidentialite
+        - listitem [ref=f3e257]:
+          - link "Mentions légales" [ref=f3e259] [cursor=pointer]:
+            - /url: https://dr-patrick-lellouche.chirurgiens-dentistes.fr/mentions-legales
+        - listitem [ref=f3e261]:
+          - link "Conditions Générales Utilisation" [ref=f3e263] [cursor=pointer]:
+            - /url: https://dr-patrick-lellouche.chirurgiens-dentistes.fr/cgu
+        - listitem [ref=f3e265]:
+          - link "Charte déontologique" [ref=f3e267] [cursor=pointer]:
+            - /url: https://www.ordre-chirurgiens-dentistes.fr/download/56606
+        - listitem [ref=f3e269]:
+          - link "Ordre national" [ref=f3e271] [cursor=pointer]:
+            - /url: https://www.ordre-chirurgiens-dentistes.fr/download/52785
+        - listitem [ref=f3e273]:
+          - link "Annuaires chirurgiens dentistes" [ref=f3e275] [cursor=pointer]:
+            - /url: https://www.ordre-chirurgiens-dentistes.fr/annuaire
+    - paragraph [ref=f3e280]:
+      - generic [ref=f3e281]:
+        - generic [ref=f3e282]: Création par
+        - link [ref=f3e283] [cursor=pointer]:
+          - /url: https://webdentiste.eu/
+          - img "Webdentiste" [ref=f3e284]

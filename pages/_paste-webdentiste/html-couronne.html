@@ -1,0 +1,281 @@
+<style>
+/* Lellouche — pages Implant / Couronne dentaire.
+   Feuille autonome pour webdentiste : tout ce qui n'existe pas dans le thème du site.
+   Préfixe #body-container pour passer devant les règles du thème (html à 10px, h1/h2/p du thème). */
+
+#body-container .lp{
+  --violet:#4f229e; --violet-2:#733ad5; --cyan:#21adcd; --night:#1d1236;
+  --ink:#2f2f2f; --ink-soft:#4a4458; --tint:#f4f0fb; --line:#e2dbef;
+  --gutter:clamp(20px,4vw,56px); --gap:clamp(28px,4vw,72px); --sec:clamp(32px,4vw,56px); --max:1300px;
+  font-family:"Marcellus",Georgia,serif; color:var(--ink); font-size:18px; line-height:1.6; overflow-x:clip;
+}
+#body-container .lp *{box-sizing:border-box}
+#body-container .lp ::selection{background:var(--violet);color:#fff}
+#body-container .lp h1,#body-container .lp h2,#body-container .lp h3{font-family:"Playfair Display",Georgia,serif;font-weight:400;color:var(--violet);line-height:1.12;margin:0;text-wrap:balance}
+#body-container .lp h2{font-size:clamp(30px,3vw,44px);letter-spacing:-.01em}
+#body-container .lp h3{font-size:24px;margin:0 0 6px}
+#body-container .lp p,#body-container .lp ul{font-size:inherit!important;line-height:inherit;margin:0 0 .8em}
+#body-container .lp ul{padding-left:1.2em}
+#body-container .lp li{margin-bottom:.3em}
+#body-container .lp li::marker{color:var(--violet-2)}
+#body-container .lp a{color:var(--violet-2);text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:4px;transition:color .2s}
+#body-container .lp a:hover{color:var(--violet)}
+#body-container .lp a:focus-visible,#body-container .lp summary:focus-visible{outline:2px solid var(--cyan);outline-offset:3px;border-radius:4px}
+#body-container .lp mark.todo{background:#fff2b3;color:#5a4500;padding:0 4px;border-radius:3px;font-size:.88em}
+
+/* Hero : photo pleine largeur, dégradé violet en bas, texte blanc en bas à gauche (zone vide de la photo) */
+#body-container .lp .hero{position:relative;width:min(var(--max),calc(100% - 2 * var(--gutter)));margin:clamp(16px,2vw,28px) auto 0;min-height:clamp(440px,40vw,600px);overflow:hidden;display:flex;align-items:flex-start;background:var(--night);color:#fff}
+#body-container .lp .hero-media{position:absolute;inset:0;z-index:0}
+#body-container .lp .hero-media img{display:block;width:100%;height:100%;object-fit:cover;object-position:50% 50%}
+#body-container .lp .hero::after{content:"";position:absolute;inset:0;z-index:0;background:linear-gradient(180deg,rgba(29,18,54,.78) 0%,rgba(29,18,54,.15) 100%)}
+#body-container .lp .hero-text{position:relative;z-index:1;max-width:min(820px,100%);padding:clamp(28px,4vw,56px)}
+#body-container .lp .hero h1{color:#fff;font-size:clamp(36px,3.6vw,56px);letter-spacing:-.02em}
+#body-container .lp .ln{display:block;white-space:nowrap}
+#body-container .lp .hero-loc{margin:22px 0 0;color:#e6defa;font-size:17px;white-space:nowrap}
+#body-container .lp .hero .btns{flex-wrap:nowrap}
+#body-container .lp .btn{white-space:nowrap}
+
+#body-container .lp .btns{display:flex;flex-wrap:wrap;gap:12px;margin-top:24px}
+#body-container .lp .btn{display:inline-flex;align-items:center;min-height:52px;padding:0 28px;border-radius:999px;background:var(--cyan);color:#06242c!important;font-family:"Marcellus",Georgia,serif;font-size:17px;text-decoration:none!important;transition:background .2s,transform .2s}
+#body-container .lp .btn:hover{background:#4cc3de;transform:translateY(-1px)}
+#body-container .lp .btn.alt{background:transparent;border:1.5px solid rgba(255,255,255,.7);color:#fff!important}
+#body-container .lp .btn.alt:hover{background:rgba(255,255,255,.1);border-color:#fff}
+
+/* Grille de section : titre à gauche, texte à droite, sur toute la largeur utile */
+#body-container .lp section.s{padding:var(--sec) 0 0}
+#body-container .lp .row{display:grid;grid-template-columns:minmax(0,1fr);max-width:calc(var(--max) + 2 * var(--gutter));margin:0 auto;padding:0 var(--gutter)}
+#body-container .lp .row>h2{margin-bottom:16px}
+#body-container .lp .intro.fig .row{grid-template-columns:minmax(0,1fr) minmax(0,560px);column-gap:clamp(12px,1.5vw,24px)}
+#body-container .lp .intro.fig .row>h2,#body-container .lp .intro.fig .row>.lead{grid-column:1 / -1}
+#body-container .lp .intro.fig .body{grid-column:1;grid-row:3}
+#body-container .lp .intro.fig .figure{grid-column:2;grid-row:3;margin:0;align-self:start}
+#body-container .lp .lead{max-width:none;margin-bottom:.8em;font-family:"Playfair Display",Georgia,serif;font-size:24px!important;line-height:1.45!important;color:var(--violet)}
+#body-container .lp .figure{margin:0}
+#body-container .lp .figure img{display:block;width:100%;height:auto;background:#fff}
+
+/* Photos : toujours 100 % de leur cadre, recadrées, jamais étirées */
+#body-container .lp .band{position:relative;width:min(var(--max),calc(100% - 2 * var(--gutter)));margin:var(--sec) auto 0;aspect-ratio:2.2/1;overflow:hidden;background:var(--tint)}
+#body-container .lp .band img{display:block;width:100%;height:100%;object-fit:cover}
+
+#body-container .lp .steps{counter-reset:s;list-style:none;padding:0;margin:8px 0 0;max-width:none}
+#body-container .lp .steps li{counter-increment:s;position:relative;padding:0 0 0 68px;margin:0 0 24px}
+#body-container .lp .steps li::before{content:counter(s);position:absolute;left:0;top:-2px;width:44px;height:44px;border-radius:50%;background:var(--violet);color:#fff;display:grid;place-items:center;font-family:"Playfair Display",serif;font-size:20px}
+#body-container .lp .steps li:not(:last-child)::after{content:"";position:absolute;left:21px;top:50px;bottom:-22px;width:1px;background:var(--line)}
+
+#body-container .lp .note{background:var(--tint);border-radius:14px;padding:18px 24px;margin:1.2em 0;max-width:none;color:var(--ink-soft)}
+#body-container .lp .note strong{color:var(--violet)}
+
+#body-container .lp .tbl{overflow-x:auto;margin:1.2em 0 1.4em}
+#body-container .lp table{border-collapse:collapse;width:100%;min-width:600px;font-size:16px;font-variant-numeric:tabular-nums}
+#body-container .lp th,#body-container .lp td{text-align:left;padding:14px 16px;border-bottom:1px solid var(--line);vertical-align:top}
+#body-container .lp th{background:var(--violet);color:#fff;font-weight:400}
+#body-container .lp td:first-child{white-space:nowrap;color:var(--violet)}
+#body-container .lp td:last-child,#body-container .lp th:last-child{text-align:right;white-space:nowrap}
+
+#body-container .lp details{border-top:1px solid var(--line);padding:14px 0}
+#body-container .lp details:last-child{border-bottom:1px solid var(--line)}
+#body-container .lp summary{cursor:pointer;font-family:"Playfair Display",Georgia,serif;font-size:21px;line-height:1.35;color:var(--violet);list-style:none;display:flex;justify-content:space-between;align-items:center;gap:24px}
+#body-container .lp summary::-webkit-details-marker{display:none}
+#body-container .lp summary::after{content:"";flex:none;width:10px;height:10px;border-right:1.5px solid currentColor;border-bottom:1.5px solid currentColor;transform:rotate(45deg) translateY(-3px);transition:transform .25s cubic-bezier(.16,1,.3,1)}
+#body-container .lp details[open] summary::after{transform:rotate(225deg) translateY(-3px)}
+#body-container .lp details p{margin:12px 0 0}
+
+#body-container .lp .cta{background:var(--night);color:#fff;padding:clamp(36px,4.5vw,64px) 0;margin-top:var(--sec)}
+#body-container .lp .cta h2{color:#fff}
+#body-container .lp .cta p{color:#e8e1f6}
+#body-container .lp .cta a:not(.btn){color:#a9e6f4}
+#body-container .lp .src{max-width:calc(var(--max) + 2 * var(--gutter));margin:0 auto;padding:var(--sec) var(--gutter);font-size:15px;line-height:1.5;color:var(--ink-soft)}
+#body-container .lp .src h2{font-size:22px;margin:0 0 10px}
+#body-container .lp .src ul{list-style:none;padding:0;margin:0}
+#body-container .lp .src li{margin:0 0 6px}
+
+@media (max-width:860px){
+  #body-container .lp{font-size:17px}
+  #body-container .lp .hero{display:block;min-height:0;width:100%;margin:0}
+  #body-container .lp .hero::after{display:none}
+  #body-container .lp .hero-media{position:relative;inset:auto;aspect-ratio:4/3}
+  #body-container .lp .hero-text{max-width:none;padding:32px var(--gutter) 40px}
+  #body-container .lp .ln,#body-container .lp .hero-loc{white-space:normal}
+  #body-container .lp .hero .btns{flex-wrap:wrap}
+  #body-container .lp .row,#body-container .lp .intro.fig .row{grid-template-columns:1fr}
+  #body-container .lp .row>h2{margin-bottom:12px}
+  #body-container .lp .band{aspect-ratio:3/2}
+  #body-container .lp .intro.fig .body,#body-container .lp .intro.fig .figure{grid-column:1;grid-row:auto}
+  #body-container .lp .intro.fig .row>.lead{grid-column:1}
+  #body-container .lp .intro.fig .figure{max-width:420px;margin-top:12px}
+  #body-container .lp .lead{font-size:21px!important}
+}
+@media (prefers-reduced-motion:reduce){#body-container .lp *{transition:none!important}}
+
+/* Pied de page + barre Webdentiste : violet foncé du site (--night) */
+#footer .container-dark,#footer .sb-bloc-inner,#footer section,#footer .background-color-before-c-1,
+#footer .background-color-before-c-1:before,#footer .background-color-before-c-1:after,
+#footer [class*="background-color-before"]:before,#footer [class*="background-color-before"]:after{background-color:#1d1236!important}
+#subfooter{background:#1d1236!important;border-top:1px solid rgba(255,255,255,.1)}
+#subfooter,#subfooter a,#subfooter p{color:#cfc6e6!important}
+#subfooter a:hover{color:#fff!important}
+#subfooter .logo-white-space img{display:block;height:44px;width:auto}
+
+</style>
+<div class="lp">
+
+<div class="hero">
+<div class="hero-media"><img src="[URL:couronne-hero-480.jpg]" srcset="[URL:couronne-hero-480.jpg] 480w, [URL:couronne-hero-800.jpg] 800w, [URL:couronne-hero-1300.jpg] 1300w" sizes="100vw" alt="Couronne dentaire en céramique tenue à la pince au-dessus d'un modèle de dents" style="object-position:50% 50%" fetchpriority="high" decoding="async" width="1300" height="731"></div>
+<div class="hero-text">
+<h1><span class="ln">Couronne dentaire</span> <span class="ln">à Charenton-le-Pont</span></h1>
+<p class="hero-loc">139 rue de Paris, Charenton-le-Pont · métro Liberté (ligne 8) · aux portes de Paris 12e</p>
+<div class="btns"><a class="btn" href="https://dr-patrick-lellouche.chirurgiens-dentistes.fr/prendre-rdv">Prendre rendez-vous</a><a class="btn alt" href="tel:+33143680780">01 43 68 07 80</a></div>
+</div>
+</div>
+
+<section class="s intro"><div class="row">
+<h2>Qu'est-ce qu'une couronne dentaire ?</h2>
+<div class="body">
+<p class="lead">Une couronne dentaire est une prothèse fixe qui recouvre et protège une dent très abîmée, ou qui se fixe sur un <a href="https://dr-patrick-lellouche.chirurgiens-dentistes.fr/implant-dentaire-charenton-le-pont">implant</a>.</p>
+<p>Une couronne dentaire est une coiffe fabriquée sur mesure qui reproduit la forme et la couleur d'une dent, et qui vient la recouvrir entièrement. Elle est scellée ou collée de façon définitive : on ne la retire pas.</p>
+<p>On parle de couronne dento-portée quand elle est posée sur votre dent naturelle, et de couronne implanto-portée, ou couronne sur implant, quand elle est fixée sur un implant.</p>
+<p>Elle se pose en général en deux séances, avec une couronne provisoire entre les deux.</p>
+<p>Plusieurs couronnes sont intégralement remboursées dans le cadre du 100 % Santé, si votre mutuelle est un contrat responsable : la couronne métallique et la couronne zircone sur toutes les dents, la céramo-métallique et la céramique hors zircone sur les dents de devant.</p>
+<p>Le cabinet du Dr Patrick Lellouche, conventionné secteur 1, se trouve au 139 rue de Paris à Charenton-le-Pont, au pied du métro Liberté, aux portes de Paris 12e. Un devis vous est remis avant tout traitement prothétique.</p>
+</div>
+</div></section>
+
+<div class="band"><img src="[URL:couronne-instruments-480.jpg]" srcset="[URL:couronne-instruments-480.jpg] 480w, [URL:couronne-instruments-800.jpg] 800w, [URL:couronne-instruments-1300.jpg] 1300w" sizes="100vw" alt="Mains gantées de bleu tenant un modèle de dents et un instrument" style="object-position:50% 50%" loading="lazy" decoding="async" width="1300"></div>
+
+<section class="s"><div class="row">
+<h2>Dans quels cas pose-t-on une couronne ?</h2>
+<div class="body">
+<p>Une couronne est indiquée lorsqu'une dent est trop abîmée pour être réparée par un simple plombage ou un composite.</p>
+<p>Les situations les plus courantes :</p>
+<ul>
+<li>une dent dévitalisée, devenue plus fragile ;</li>
+<li>une grosse carie ou un ancien plombage très étendu ;</li>
+<li>une dent fêlée ou cassée ;</li>
+<li>une dent usée ou très abîmée ;</li>
+<li>le remplacement d'une dent absente, sur un implant.</li>
+</ul>
+<p>Quand la dent est encore assez solide, une solution plus conservatrice comme <a href="https://dr-patrick-lellouche.chirurgiens-dentistes.fr/blog/articles/inlay-et-onlay-une-technique-conservatrice">l'inlay ou l'onlay</a> peut suffire. Le Dr Lellouche vous indique ce qui est possible après examen.</p>
+</div>
+</div></section>
+
+<section class="s"><div class="row">
+<h2>Les matériaux : céramique, zircone, céramo-métallique ou métal</h2>
+<div class="body">
+<p>Le choix du matériau dépend de la place de la dent, de la force de votre mastication et de l'esthétique recherchée. Il a aussi une incidence directe sur le remboursement.</p>
+<p><strong>La couronne céramo-métallique</strong> : une armature en métal recouverte de céramique. C'est un matériau ancien et éprouvé, mais le métal peut laisser apparaître un liseré gris au bord de la gencive avec le temps.</p>
+<p><strong>La couronne zircone</strong> : une céramique très résistante, sans métal, qui convient aux dents de devant comme aux molaires. Depuis le 1er janvier 2026, elle fait partie du panier 100 % Santé sur toutes les dents.</p>
+<p><strong>La couronne céramique hors zircone</strong>, par exemple en disilicate de lithium, ou la céramo-céramique : sans métal, avec une translucidité proche de l'émail naturel. On la réserve plutôt aux dents visibles.</p>
+<p><strong>La couronne métallique</strong> : la plus discrète en épaisseur et la plus solide, mais grise. On la propose surtout pour les dents du fond.</p>
+<p>La couronne provisoire, en résine, n'est pas un matériau à choisir : elle protège la dent pendant la fabrication de la couronne définitive.</p>
+<p>Au cabinet, le Dr Lellouche propose la zircone stratifiée (céramo-céramique), la céramo-métallique et la full zircone. La zircone stratifiée relève des honoraires libres ; la full zircone peut être prise en charge sans reste à charge dans le cadre du 100 % Santé. Les couronnes sont réalisées par un laboratoire de prothèse en France, et ce lieu de fabrication figure sur le devis.</p>
+</div>
+</div></section>
+
+<div class="band"><img src="[URL:couronne-implants-480.jpg]" srcset="[URL:couronne-implants-480.jpg] 480w, [URL:couronne-implants-800.jpg] 800w, [URL:couronne-implants-1300.jpg] 1300w" sizes="100vw" alt="Modèle de dents avec implants et couronnes sur un socle transparent" style="object-position:50% 50%" loading="lazy" decoding="async" width="1300"></div>
+
+<section class="s"><div class="row">
+<h2>Les étapes de la pose au cabinet</h2>
+<div class="body">
+<p>La pose d'une couronne demande en général deux séances, espacées de quelques jours à deux semaines.</p>
+<ol class="steps">
+<li><h3>L'examen et le devis</h3>
+<p>Le praticien examine la dent et fait une radio. Si la dent est infectée, un traitement de canal (dévitalisation) est réalisé d'abord. Vous recevez ensuite un devis qui présente le traitement proposé et une alternative du panier 100 % Santé.</p></li>
+<li><h3>La préparation de la dent et l'empreinte</h3>
+<p>Sous anesthésie locale, la dent est taillée pour laisser la place à la couronne. Si elle est très délabrée, on peut d'abord poser un inlay-core, un ancrage dans la racine qui sert de support. Une empreinte numérique est ensuite prise avec le scanner intra-oral du cabinet, puis une couronne provisoire est posée.</p></li>
+<li><h3>La pose de la couronne définitive</h3>
+<p>La couronne provisoire est retirée. La couronne définitive est essayée, sa teinte et son contact avec les dents opposées sont vérifiés, puis elle est scellée ou collée. Cette séance se fait le plus souvent sans anesthésie.</p></li>
+</ol>
+</div>
+</div></section>
+
+<section class="s"><div class="row">
+<h2>Est-ce douloureux ?</h2>
+<div class="body">
+<p>La préparation de la dent se fait sous anesthésie locale lorsque la dent est vivante. Vous ne devriez pas avoir mal pendant la séance.</p>
+<p>Après coup, une sensibilité au chaud et au froid ou une gencive un peu irritée peut apparaître pendant quelques jours. Avec la couronne provisoire, évitez de mâcher des aliments durs ou collants de ce côté. Si la provisoire se décolle, appelez le cabinet : il ne faut pas laisser la dent taillée à nu plusieurs jours.</p>
+</div>
+</div></section>
+
+<div class="band"><img src="[URL:couronne-bouche-480.jpg]" srcset="[URL:couronne-bouche-480.jpg] 480w, [URL:couronne-bouche-800.jpg] 800w, [URL:couronne-bouche-1300.jpg] 1300w" sizes="100vw" alt="Contrôle d'une dent au miroir lors d'un examen dentaire" style="object-position:50% 50%" loading="lazy" decoding="async" width="1300"></div>
+
+<section class="s"><div class="row">
+<h2>Durée de vie et entretien</h2>
+<div class="body">
+<p>Une couronne dure souvent dix à quinze ans, parfois beaucoup plus. Ce qui limite sa durée de vie, c'est surtout la dent qui la porte : une carie qui se forme au bord de la couronne, une fracture de la racine ou une maladie des gencives.</p>
+<p>Pour la faire durer :</p>
+<ul>
+<li>brossez-vous les dents deux fois par jour, en insistant sur la jonction entre la couronne et la gencive ;</li>
+<li>passez du fil ou une brossette interdentaire chaque jour ;</li>
+<li>si vous serrez ou grincez des dents la nuit, parlez-en : une gouttière de protection peut être proposée ;</li>
+<li>venez en contrôle régulièrement, au moins une fois par an.</li>
+</ul>
+</div>
+</div></section>
+
+<section class="s"><div class="row">
+<h2>Risques et limites</h2>
+<div class="body">
+<p>La couronne est un traitement courant, mais il n'est pas anodin. Tailler une dent vivante peut l'irriter, et il arrive qu'une dévitalisation devienne nécessaire plus tard. La céramique peut s'écailler, une couronne peut se desceller, et une carie peut apparaître sous son bord si l'hygiène est insuffisante. Ces risques sont expliqués lors de la consultation et rappelés dans le devis.</p>
+</div>
+</div></section>
+
+<section class="s"><div class="row">
+<h2>Prix et remboursement d'une couronne en France</h2>
+<div class="body">
+<p>Le prix d'une couronne dépend de son matériau et de la dent concernée. Depuis la réforme 100 % Santé, chaque couronne appartient à l'un des trois paniers suivants. Montants maximum en vigueur au 1er janvier 2026, selon l'Assurance Maladie.</p>
+<div class="tbl"><table>
+<thead><tr><th>Panier</th><th>Couronne</th><th>Dents concernées</th><th>Montant maximum</th></tr></thead>
+<tbody>
+<tr><td>100 % Santé</td><td>Métallique</td><td>Toutes</td><td>298,70 €</td></tr>
+<tr><td>100 % Santé</td><td>Zircone</td><td>Toutes, molaires incluses</td><td>453,20 €</td></tr>
+<tr><td>100 % Santé</td><td>Céramo-métallique ou céramique hors zircone</td><td>Incisives, canines, 1res prémolaires</td><td>515 €</td></tr>
+<tr><td>Tarif maîtrisé</td><td>Céramo-métallique</td><td>2es prémolaires</td><td>566,50 €</td></tr>
+<tr><td>Tarif maîtrisé</td><td>Céramique hors zircone</td><td>2es prémolaires et molaires</td><td>566,50 €</td></tr>
+<tr><td>Tarif libre</td><td>Céramo-céramique, alliage précieux, céramo-métallique sur molaire, couronne sur implant</td><td>Selon la dent</td><td>Honoraires libres</td></tr>
+</tbody></table></div>
+<p>Dans tous les cas, l'Assurance Maladie rembourse 60 % d'une base de 120 €, soit 72 € par couronne sur dent naturelle. Pour une couronne sur implant, la base est de 107,50 €, soit 64,50 €. La couronne provisoire et l'inlay-core ont leur propre base et leur propre plafond.</p>
+<p>Le reste à charge zéro du panier 100 % Santé suppose deux conditions : un dentiste conventionné, ce qui est le cas du cabinet, et une complémentaire santé responsable, ce qui est le cas de la grande majorité des contrats.</p>
+<div class="note"><strong>Bon à savoir.</strong> Le décret n° 2026-809, publié au Journal officiel le 22 août 2026, prévoit que le taux de remboursement des soins dentaires par l'Assurance Maladie pourrait baisser au 1er janvier 2027. Le taux exact n'est pas encore fixé. Pour les couronnes du panier 100 % Santé, la complémentaire responsable couvre la différence.</div>
+<p><strong>Honoraires du cabinet :</strong> le cabinet est conventionné secteur 1. Les couronnes sont facturées sur devis, remis avant tout traitement. Le cabinet accepte la carte Vitale, la carte bancaire, les espèces, le chèque et le virement. Voir aussi <a href="https://dr-patrick-lellouche.chirurgiens-dentistes.fr/blog/articles/honoraires-et-remboursements">honoraires et remboursements</a>.</p>
+</div>
+</div></section>
+
+<section class="s"><div class="row">
+<h2>Les alternatives à la couronne</h2>
+<div class="body">
+<p>Selon l'état de la dent, d'autres solutions peuvent être discutées :</p>
+<ul>
+<li>l'inlay ou l'onlay, une pièce collée qui remplace seulement la partie abîmée et préserve davantage la dent ;</li>
+<li><a href="https://dr-patrick-lellouche.chirurgiens-dentistes.fr/blog/articles/les-facettes-en-ceramique">la facette</a>, pour une dent de devant peu abîmée dont on veut corriger la forme ou la teinte ;</li>
+<li>l'extraction suivie d'un <a href="https://dr-patrick-lellouche.chirurgiens-dentistes.fr/implant-dentaire-charenton-le-pont">implant</a> ou d'un bridge, quand la dent ne peut plus être conservée.</li>
+</ul>
+</div>
+</div></section>
+
+<div class="cta"><div class="row">
+<h2>Prendre rendez-vous</h2>
+<div class="body">
+<p>Si une dent est cassée, très abîmée ou dévitalisée, une consultation permet de savoir si une couronne est nécessaire et quel matériau convient. Le Dr Patrick Lellouche, chirurgien-dentiste, reçoit au 139 rue de Paris à Charenton-le-Pont, au pied du métro Liberté (ligne 8), aux portes de Paris 12e, le lundi, le mercredi, le jeudi et le vendredi de 9h30 à 19h (fermé les autres jours). Le rendez-vous se prend sur Doctolib ou au 01 43 68 07 80. En cas de dent cassée ou douloureuse, consultez la <a href="https://dr-patrick-lellouche.chirurgiens-dentistes.fr/urgences">page Urgences</a>.</p>
+<div class="btns"><a class="btn" href="https://dr-patrick-lellouche.chirurgiens-dentistes.fr/prendre-rdv">Prendre rendez-vous sur Doctolib</a><a class="btn alt" href="tel:+33143680780">01 43 68 07 80</a></div>
+</div>
+</div></div>
+
+<section class="s"><div class="row">
+<h2>Questions fréquentes sur la couronne dentaire</h2>
+<div class="body">
+<details><summary>Quelle couronne est remboursée à 100 % ?</summary><p>Avec un dentiste conventionné et une mutuelle responsable, n'entraînent aucun reste à charge : la couronne métallique et la couronne zircone sur toutes les dents, ainsi que la couronne céramo-métallique et la céramique hors zircone sur les incisives, canines et premières prémolaires. La zircone sur molaire fait partie de ce panier depuis le 1er janvier 2026.</p></details>
+<details><summary>Combien coûte une couronne dentaire ?</summary><p>Cela dépend du matériau et de la dent. Au 1er janvier 2026, les montants maximum vont de 298,70 € (métal) à 515 € (céramo-métallique sur dent de devant) dans le panier 100 % Santé, et atteignent 566,50 € dans le panier à tarifs maîtrisés. La céramo-céramique et la couronne sur implant sont à honoraires libres.</p></details>
+<details><summary>Combien de séances faut-il pour poser une couronne ?</summary><p>En général deux, espacées de quelques jours à deux semaines. La première sert à préparer la dent, prendre l'empreinte et poser une couronne provisoire. La seconde permet d'essayer, de régler puis de sceller la couronne définitive. Une dent dévitalisée très abîmée peut demander un inlay-core au préalable.</p></details>
+<details><summary>La pose d'une couronne est-elle douloureuse ?</summary><p>La dent est préparée sous anesthésie locale lorsqu'elle est vivante, vous ne devriez donc pas avoir mal pendant la séance. Ensuite, une sensibilité au chaud et au froid ou une gencive un peu irritée peuvent durer quelques jours. La pose de la couronne définitive est le plus souvent indolore.</p></details>
+<details><summary>Quelle est la durée de vie d'une couronne dentaire ?</summary><p>Une couronne dure souvent dix à quinze ans, parfois davantage. Sa longévité dépend surtout de la dent qui la porte, de votre hygiène (brossage et brossettes au ras de la gencive), du serrement des dents la nuit et de contrôles réguliers chez votre chirurgien-dentiste.</p></details>
+<details><summary>Zircone, céramique ou céramo-métallique : quelle différence ?</summary><p>La céramo-métallique associe une armature en métal et une céramique en surface. La zircone est une céramique très résistante, sans métal, utilisable sur toutes les dents. Les céramiques de type disilicate ont une translucidité proche de l'émail, plutôt pour les dents visibles. Le choix dépend de la dent, de votre mastication et de l'esthétique souhaitée.</p></details>
+<details><summary>À quoi sert une couronne provisoire ?</summary><p>Elle protège la dent taillée, limite la sensibilité et empêche les dents voisines de bouger pendant la fabrication de la couronne définitive. Elle est moins solide : évitez les aliments durs ou collants de ce côté. Si elle se décolle, appelez le cabinet pour la faire refixer rapidement.</p></details>
+<details><summary>Une couronne sur implant est-elle remboursée ?</summary><p>Oui, en partie. La couronne sur implant relève du panier à tarifs libres, hors 100 % Santé. L'Assurance Maladie la rembourse sur une base de 107,50 €, soit 64,50 € en 2026, et le reste dépend de votre mutuelle. L'implant lui-même n'est pas remboursé.</p></details>
+</div>
+</div></section>
+
+<div class="band"><img src="[URL:cabinet-charenton-480.jpg]" srcset="[URL:cabinet-charenton-480.jpg] 480w, [URL:cabinet-charenton-800.jpg] 800w, [URL:cabinet-charenton-1300.jpg] 1300w" sizes="100vw" alt="Salle de soins du cabinet dentaire, fauteuil et équipement" style="object-position:50% 50%" loading="lazy" decoding="async" width="1300"></div>
+
+<div class="src"><h2>Sources</h2><ul><li><a href="https://www.ameli.fr/assure/remboursements/rembourse/soins-protheses-dentaires-optique-audition/consultations-soins-protheses-dentaires/protheses-dentaires" target="_blank" rel="noopener">Assurance Maladie, Prothèses dentaires</a></li><li><a href="https://www.ameli.fr/assure/remboursements/rembourse/soins-protheses-dentaires-optique-audition/consultations-soins-protheses-dentaires/soins-dentaires-comprendre-le-100-sante" target="_blank" rel="noopener">Assurance Maladie, Soins dentaires : comprendre le 100 % Santé</a></li><li><a href="https://www.ameli.fr/chirurgien-dentiste/exercice-liberal/facturation-remuneration/tarifs-conventionnels/devis-obligatoire" target="_blank" rel="noopener">Assurance Maladie, Devis obligatoire</a></li></ul></div>
+
+</div>

@@ -1,0 +1,288 @@
+- generic [ref=f10e3]:
+  - generic [ref=f10e5]:
+    - generic:
+      - generic:
+        - generic [ref=f10e6]: 139 rue de Paris, 94220 CHARENTON LE PONT
+        - generic [ref=f10e12]: +33 1 43 68 07 80
+  - banner [ref=f10e18]:
+    - generic [ref=f10e24]:
+      - strong [ref=f10e29]: Cabinet dentaire du Dr Patrick LELLOUCHE
+      - strong [ref=f10e34]: Chirurgien dentiste à Charenton le pont
+  - navigation [ref=f10e35]:
+    - list [ref=f10e43]:
+      - listitem [ref=f10e44]:
+        - generic [ref=f10e45]: ACCUEIL
+      - listitem [ref=f10e53]:
+        - link "LE CABINET" [ref=f10e55] [cursor=pointer]:
+          - /url: https://dr-patrick-lellouche.chirurgiens-dentistes.fr/le-cabinet
+      - listitem [ref=f10e57]:
+        - link "CAS CLINIQUES" [ref=f10e59] [cursor=pointer]:
+          - /url: https://dr-patrick-lellouche.chirurgiens-dentistes.fr/cas-cliniques
+      - listitem [ref=f10e61]:
+        - link "FICHES CONSEILS" [ref=f10e63] [cursor=pointer]:
+          - /url: https://dr-patrick-lellouche.chirurgiens-dentistes.fr/blog/categories/fiches-conseils
+      - listitem [ref=f10e65]:
+        - link "VIDEOS" [ref=f10e67] [cursor=pointer]:
+          - /url: https://dr-patrick-lellouche.chirurgiens-dentistes.fr/blog/categories/videos-3d
+      - listitem [ref=f10e69]:
+        - link "URGENCES" [ref=f10e71] [cursor=pointer]:
+          - /url: https://dr-patrick-lellouche.chirurgiens-dentistes.fr/urgences#body-container
+      - listitem [ref=f10e73]:
+        - link "CONTACT" [ref=f10e75] [cursor=pointer]:
+          - /url: https://dr-patrick-lellouche.chirurgiens-dentistes.fr/contactez-nous
+      - listitem [ref=f10e77]:
+        - link "PRENDRE RDV" [ref=f10e79] [cursor=pointer]:
+          - /url: https://dr-patrick-lellouche.chirurgiens-dentistes.fr/prendre-rdv
+  - main [ref=f10e82]:
+    - generic [ref=f10e84]:
+      - generic [ref=f10e85]:
+        - img "Couronne dentaire en céramique tenue à la pince au-dessus d'un modèle de dents" [ref=f10e87]
+        - generic [ref=f10e88]:
+          - heading "Couronne dentaire à Charenton-le-Pont" [level=1] [ref=f10e89]:
+            - generic [ref=f10e90]: Couronne dentaire
+            - generic [ref=f10e91]: à Charenton-le-Pont
+          - paragraph [ref=f10e92]: 139 rue de Paris, Charenton-le-Pont · métro Liberté (ligne 8)
+          - generic [ref=f10e93]:
+            - link "Prendre rendez-vous" [ref=f10e94] [cursor=pointer]:
+              - /url: https://dr-patrick-lellouche.chirurgiens-dentistes.fr/prendre-rdv
+            - link "01 43 68 07 80" [ref=f10e95] [cursor=pointer]:
+              - /url: tel:+33143680780
+      - generic [ref=f10e97]:
+        - heading "Qu'est-ce qu'une couronne dentaire ?" [level=2] [ref=f10e98]
+        - generic [ref=f10e99]:
+          - paragraph [ref=f10e100]:
+            - text: Une couronne dentaire est une prothèse fixe qui recouvre et protège une dent très abîmée, ou qui se fixe sur un
+            - link "implant" [ref=f10e101] [cursor=pointer]:
+              - /url: implant-dentaire-charenton-le-pont.html
+            - text: .
+          - paragraph [ref=f10e102]: "Une couronne dentaire est une coiffe fabriquée sur mesure qui reproduit la forme et la couleur d'une dent, et qui vient la recouvrir entièrement. Elle est scellée ou collée de façon définitive : on ne la retire pas."
+          - paragraph [ref=f10e103]: On parle de couronne dento-portée quand elle est posée sur votre dent naturelle, et de couronne implanto-portée, ou couronne sur implant, quand elle est fixée sur un implant.
+          - paragraph [ref=f10e104]: Elle se pose en général en deux séances, avec une couronne provisoire entre les deux.
+          - paragraph [ref=f10e105]: "Plusieurs couronnes sont intégralement remboursées dans le cadre du 100 % Santé, si votre mutuelle est un contrat responsable : la couronne métallique et la couronne zircone sur toutes les dents, la céramo-métallique et la céramique hors zircone sur les dents de devant."
+          - paragraph [ref=f10e106]: Le cabinet du Dr Patrick Lellouche, conventionné, se trouve au 139 rue de Paris à Charenton-le-Pont, au pied du métro Liberté. Un devis vous est remis avant tout traitement prothétique.
+      - img "Instruments de contrôle posés sur un modèle de dents avec couronnes" [ref=f10e108]
+      - generic [ref=f10e110]:
+        - heading "Dans quels cas pose-t-on une couronne ?" [level=2] [ref=f10e111]
+        - generic [ref=f10e112]:
+          - paragraph [ref=f10e113]: Une couronne est indiquée lorsqu'une dent est trop abîmée pour être réparée par un simple plombage ou un composite.
+          - paragraph [ref=f10e114]: "Les situations les plus courantes :"
+          - list [ref=f10e115]:
+            - listitem [ref=f10e116]: une dent dévitalisée, devenue plus fragile ;
+            - listitem [ref=f10e117]: une grosse carie ou un ancien plombage très étendu ;
+            - listitem [ref=f10e118]: une dent fêlée ou cassée ;
+            - listitem [ref=f10e119]: une dent usée ou très abîmée ;
+            - listitem [ref=f10e120]: le remplacement d'une dent absente, sur un implant.
+          - paragraph [ref=f10e121]:
+            - text: Quand la dent est encore assez solide, une solution plus conservatrice comme
+            - link "l'inlay ou l'onlay" [ref=f10e122] [cursor=pointer]:
+              - /url: https://dr-patrick-lellouche.chirurgiens-dentistes.fr/blog/articles/inlay-et-onlay-une-technique-conservatrice
+            - text: peut suffire. Le Dr Lellouche vous indique ce qui est possible après examen.
+      - generic [ref=f10e124]:
+        - 'heading "Les matériaux : céramique, zircone, céramo-métallique ou métal" [level=2] [ref=f10e125]'
+        - generic [ref=f10e126]:
+          - paragraph [ref=f10e127]: Le choix du matériau dépend de la place de la dent, de la force de votre mastication et de l'esthétique recherchée. Il a aussi une incidence directe sur le remboursement.
+          - paragraph [ref=f10e128]:
+            - strong [ref=f10e129]: La couronne céramo-métallique
+            - text: ": une armature en métal recouverte de céramique. C'est un matériau ancien et éprouvé, mais le métal peut laisser apparaître un liseré gris au bord de la gencive avec le temps."
+          - paragraph [ref=f10e130]:
+            - strong [ref=f10e131]: La couronne zircone
+            - text: ": une céramique très résistante, sans métal, qui convient aux dents de devant comme aux molaires. Depuis le 1er janvier 2026, elle fait partie du panier 100 % Santé sur toutes les dents."
+          - paragraph [ref=f10e132]:
+            - strong [ref=f10e133]: La couronne céramique hors zircone
+            - text: ", par exemple en disilicate de lithium, ou la céramo-céramique : sans métal, avec une translucidité proche de l'émail naturel. On la réserve plutôt aux dents visibles."
+          - paragraph [ref=f10e134]:
+            - strong [ref=f10e135]: La couronne métallique
+            - text: ": la plus discrète en épaisseur et la plus solide, mais grise. On la propose surtout pour les dents du fond."
+          - paragraph [ref=f10e136]: "La couronne provisoire, en résine, n'est pas un matériau à choisir : elle protège la dent pendant la fabrication de la couronne définitive."
+          - paragraph [ref=f10e137]:
+            - mark [ref=f10e138]: "À COMPLÉTER : préciser les matériaux habituellement proposés au cabinet et si les couronnes sont fabriquées par un laboratoire, ainsi que son lieu de fabrication en France, dans l'UE ou hors UE, information qui doit figurer sur le devis."
+      - img "Teintier de couronnes dentaires et instruments sur un champ blanc" [ref=f10e140]
+      - generic [ref=f10e142]:
+        - heading "Les étapes de la pose au cabinet" [level=2] [ref=f10e143]
+        - generic [ref=f10e144]:
+          - paragraph [ref=f10e145]: La pose d'une couronne demande en général deux séances, espacées de quelques jours à deux semaines.
+          - list [ref=f10e146]:
+            - listitem [ref=f10e147]:
+              - heading "L'examen et le devis" [level=3] [ref=f10e148]
+              - paragraph [ref=f10e149]: Le praticien examine la dent et fait une radio. Si la dent est infectée, un traitement de canal (dévitalisation) est réalisé d'abord. Vous recevez ensuite un devis qui présente le traitement proposé et une alternative du panier 100 % Santé.
+            - listitem [ref=f10e150]:
+              - heading "La préparation de la dent et l'empreinte" [level=3] [ref=f10e151]
+              - paragraph [ref=f10e152]:
+                - text: Sous anesthésie locale, la dent est taillée pour laisser la place à la couronne. Si elle est très délabrée, on peut d'abord poser un inlay-core, un ancrage dans la racine qui sert de support. Une empreinte est ensuite prise
+                - mark [ref=f10e153]: "À COMPLÉTER : empreinte classique ou caméra optique au cabinet"
+                - text: ", puis une couronne provisoire est posée."
+            - listitem [ref=f10e154]:
+              - heading "La pose de la couronne définitive" [level=3] [ref=f10e155]
+              - paragraph [ref=f10e156]: La couronne provisoire est retirée. La couronne définitive est essayée, sa teinte et son contact avec les dents opposées sont vérifiés, puis elle est scellée ou collée. Cette séance se fait le plus souvent sans anesthésie.
+      - generic [ref=f10e158]:
+        - heading "Est-ce douloureux ?" [level=2] [ref=f10e159]
+        - generic [ref=f10e160]:
+          - paragraph [ref=f10e161]: La préparation de la dent se fait sous anesthésie locale lorsque la dent est vivante. Vous ne devriez pas avoir mal pendant la séance.
+          - paragraph [ref=f10e162]: "Après coup, une sensibilité au chaud et au froid ou une gencive un peu irritée sont fréquentes pendant quelques jours. Avec la couronne provisoire, évitez de mâcher des aliments durs ou collants de ce côté. Si la provisoire se décolle, appelez le cabinet : il ne faut pas laisser la dent taillée à nu plusieurs jours."
+      - img "Contrôle d'une dent au miroir et à la sonde lors d'un examen dentaire" [ref=f10e164]
+      - generic [ref=f10e166]:
+        - heading "Durée de vie et entretien" [level=2] [ref=f10e167]
+        - generic [ref=f10e168]:
+          - paragraph [ref=f10e169]: "Une couronne dure souvent dix à quinze ans, parfois beaucoup plus. Ce qui limite sa durée de vie, c'est surtout la dent qui la porte : une carie qui se forme au bord de la couronne, une fracture de la racine ou une maladie des gencives."
+          - paragraph [ref=f10e170]: "Pour la faire durer :"
+          - list [ref=f10e171]:
+            - listitem [ref=f10e172]: brossez-vous les dents deux fois par jour, en insistant sur la jonction entre la couronne et la gencive ;
+            - listitem [ref=f10e173]: passez du fil ou une brossette interdentaire chaque jour ;
+            - listitem [ref=f10e174]: "si vous serrez ou grincez des dents la nuit, parlez-en : une gouttière de protection peut être proposée ;"
+            - listitem [ref=f10e175]: venez en contrôle régulièrement, au moins une fois par an.
+      - generic [ref=f10e177]:
+        - heading "Risques et limites" [level=2] [ref=f10e178]
+        - paragraph [ref=f10e180]: La couronne est un traitement courant, mais il n'est pas anodin. Tailler une dent vivante peut l'irriter, et il arrive qu'une dévitalisation devienne nécessaire plus tard. La céramique peut s'écailler, une couronne peut se desceller, et une carie peut apparaître sous son bord si l'hygiène est insuffisante. Ces risques sont expliqués lors de la consultation et rappelés dans le devis.
+      - generic [ref=f10e182]:
+        - heading "Prix et remboursement d'une couronne en France" [level=2] [ref=f10e183]
+        - generic [ref=f10e184]:
+          - paragraph [ref=f10e185]: Le prix d'une couronne dépend de son matériau et de la dent concernée. Depuis la réforme 100 % Santé, chaque couronne appartient à l'un des trois paniers suivants. Montants maximum en vigueur au 1er janvier 2026, selon l'Assurance Maladie.
+          - table [ref=f10e187]:
+            - rowgroup [ref=f10e188]:
+              - row [ref=f10e189]:
+                - columnheader "Panier" [ref=f10e190]
+                - columnheader "Couronne" [ref=f10e191]
+                - columnheader "Dents concernées" [ref=f10e192]
+                - columnheader "Montant maximum" [ref=f10e193]
+            - rowgroup [ref=f10e194]:
+              - row [ref=f10e195]:
+                - cell "100 % Santé" [ref=f10e196]
+                - cell "Métallique" [ref=f10e197]
+                - cell "Toutes" [ref=f10e198]
+                - cell "298,70 €" [ref=f10e199]
+              - row [ref=f10e200]:
+                - cell "100 % Santé" [ref=f10e201]
+                - cell "Zircone" [ref=f10e202]
+                - cell "Toutes, molaires incluses" [ref=f10e203]
+                - cell "453,20 €" [ref=f10e204]
+              - row [ref=f10e205]:
+                - cell "100 % Santé" [ref=f10e206]
+                - cell "Céramo-métallique ou céramique hors zircone" [ref=f10e207]
+                - cell "Incisives, canines, 1res prémolaires" [ref=f10e208]
+                - cell "515 €" [ref=f10e209]
+              - row [ref=f10e210]:
+                - cell "Tarif maîtrisé" [ref=f10e211]
+                - cell "Céramo-métallique" [ref=f10e212]
+                - cell "2es prémolaires" [ref=f10e213]
+                - cell "566,50 €" [ref=f10e214]
+              - row [ref=f10e215]:
+                - cell "Tarif maîtrisé" [ref=f10e216]
+                - cell "Céramique hors zircone" [ref=f10e217]
+                - cell "2es prémolaires et molaires" [ref=f10e218]
+                - cell "566,50 €" [ref=f10e219]
+              - row [ref=f10e220]:
+                - cell "Tarif libre" [ref=f10e221]
+                - cell "Céramo-céramique, alliage précieux, céramo-métallique sur molaire, couronne sur implant" [ref=f10e222]
+                - cell "Selon la dent" [ref=f10e223]
+                - cell "Honoraires libres" [ref=f10e224]
+          - paragraph [ref=f10e225]: Dans tous les cas, l'Assurance Maladie rembourse 60 % d'une base de 120 €, soit 72 € par couronne sur dent naturelle. Pour une couronne sur implant, la base est de 107,50 €, soit 64,50 €. La couronne provisoire et l'inlay-core ont leur propre base et leur propre plafond.
+          - paragraph [ref=f10e226]: "Le reste à charge zéro du panier 100 % Santé suppose deux conditions : un dentiste conventionné, ce qui est le cas du cabinet, et une complémentaire santé responsable, ce qui est le cas de la grande majorité des contrats."
+          - generic [ref=f10e227]:
+            - strong [ref=f10e228]: Bon à savoir.
+            - text: Le décret n° 2026-809, publié au Journal officiel le 22 août 2026, prévoit que le taux de remboursement des soins dentaires par l'Assurance Maladie pourrait baisser au 1er janvier 2027. Le taux exact n'est pas encore fixé. Pour les couronnes du panier 100 % Santé, la complémentaire responsable couvre la différence.
+          - paragraph [ref=f10e229]:
+            - strong [ref=f10e230]: "Honoraires du cabinet :"
+            - mark [ref=f10e231]: "À COMPLÉTER : honoraires pratiqués par type de couronne, ou renvoi vers la page Honoraires & remboursement"
+            - text: . Le cabinet accepte la carte Vitale, la carte bancaire, les espèces, le chèque et le virement. Voir aussi
+            - link "honoraires et remboursements" [ref=f10e232] [cursor=pointer]:
+              - /url: https://dr-patrick-lellouche.chirurgiens-dentistes.fr/blog/articles/honoraires-et-remboursements
+            - text: .
+      - generic [ref=f10e234]:
+        - heading "Les alternatives à la couronne" [level=2] [ref=f10e235]
+        - generic [ref=f10e236]:
+          - paragraph [ref=f10e237]: "Selon l'état de la dent, d'autres solutions peuvent être discutées :"
+          - list [ref=f10e238]:
+            - listitem [ref=f10e239]: l'inlay ou l'onlay, une pièce collée qui remplace seulement la partie abîmée et préserve davantage la dent ;
+            - listitem [ref=f10e240]:
+              - link "la facette" [ref=f10e241] [cursor=pointer]:
+                - /url: https://dr-patrick-lellouche.chirurgiens-dentistes.fr/blog/articles/les-facettes-en-ceramique
+              - text: ", pour une dent de devant peu abîmée dont on veut corriger la forme ou la teinte ;"
+            - listitem [ref=f10e242]:
+              - text: l'extraction suivie d'un
+              - link "implant" [ref=f10e243] [cursor=pointer]:
+                - /url: implant-dentaire-charenton-le-pont.html
+              - text: ou d'un bridge, quand la dent ne peut plus être conservée.
+      - generic [ref=f10e245]:
+        - heading "Questions fréquentes sur la couronne dentaire" [level=2] [ref=f10e246]
+        - generic [ref=f10e247]:
+          - group [ref=f10e248]:
+            - generic "Quelle couronne est remboursée à 100 % ?" [ref=f10e249] [cursor=pointer]
+          - group [ref=f10e250]:
+            - generic "Combien coûte une couronne dentaire ?" [ref=f10e251] [cursor=pointer]
+          - group [ref=f10e252]:
+            - generic "Combien de séances faut-il pour poser une couronne ?" [ref=f10e253] [cursor=pointer]
+          - group [ref=f10e254]:
+            - generic "La pose d'une couronne est-elle douloureuse ?" [ref=f10e255] [cursor=pointer]
+          - group [ref=f10e256]:
+            - generic "Quelle est la durée de vie d'une couronne dentaire ?" [ref=f10e257] [cursor=pointer]
+          - group [ref=f10e258]:
+            - 'generic "Zircone, céramique ou céramo-métallique : quelle différence ?" [ref=f10e259] [cursor=pointer]'
+          - group [ref=f10e260]:
+            - generic "À quoi sert une couronne provisoire ?" [ref=f10e261] [cursor=pointer]
+          - group [ref=f10e262]:
+            - generic "Une couronne sur implant est-elle remboursée ?" [ref=f10e263] [cursor=pointer]
+      - img "Salle de soins du cabinet dentaire, fauteuil et équipement" [ref=f10e265]
+      - generic [ref=f10e267]:
+        - heading "Prendre rendez-vous" [level=2] [ref=f10e268]
+        - generic [ref=f10e269]:
+          - paragraph [ref=f10e270]:
+            - text: Si une dent est cassée, très abîmée ou dévitalisée, une consultation permet de savoir si une couronne est nécessaire et quel matériau convient. Le Dr Patrick Lellouche, chirurgien-dentiste, reçoit au 139 rue de Paris à Charenton-le-Pont, au pied du métro Liberté (ligne 8). Le rendez-vous se prend sur Doctolib ou au 01 43 68 07 80. En cas de dent cassée ou douloureuse, consultez la
+            - link "page Urgences" [ref=f10e271] [cursor=pointer]:
+              - /url: https://dr-patrick-lellouche.chirurgiens-dentistes.fr/urgences
+            - text: .
+          - generic [ref=f10e272]:
+            - link "Prendre rendez-vous sur Doctolib" [ref=f10e273] [cursor=pointer]:
+              - /url: https://dr-patrick-lellouche.chirurgiens-dentistes.fr/prendre-rdv
+            - link "01 43 68 07 80" [ref=f10e274] [cursor=pointer]:
+              - /url: tel:+33143680780
+      - generic [ref=f10e275]:
+        - text: "Sources : Assurance Maladie (ameli.fr), pages « Prothèses dentaires » et « Comprendre le devis de votre dentiste »."
+        - mark [ref=f10e276]: "À COMPLÉTER : liens cliquables"
+  - generic [ref=f10e281]:
+    - paragraph [ref=f10e284]:
+      - generic [ref=f10e285]: Cabinet dentaire du Dr Patrick LELLOUCHE
+    - paragraph [ref=f10e289]: 139 rue de Paris 94220 CHARENTON LE PONT
+    - paragraph [ref=f10e292]:
+      - link "+33143680780" [ref=f10e293] [cursor=pointer]:
+        - /url: tel:+33143680780
+    - link "Nous localiser" [ref=f10e296] [cursor=pointer]:
+      - /url: https://dr-patrick-lellouche.chirurgiens-dentistes.fr/contactez-nous
+    - list [ref=f10e304]:
+      - listitem [ref=f10e305]:
+        - link "Hygiène & Asepsie" [ref=f10e307] [cursor=pointer]:
+          - /url: https://dr-patrick-lellouche.chirurgiens-dentistes.fr/blog/articles/hygiene-et-asepsie-au-cabinet
+      - listitem [ref=f10e309]:
+        - link "Honoraires & remboursement" [ref=f10e311] [cursor=pointer]:
+          - /url: https://dr-patrick-lellouche.chirurgiens-dentistes.fr/blog/articles/honoraires-et-remboursements
+      - listitem [ref=f10e313]:
+        - link "Diaporama" [ref=f10e315] [cursor=pointer]:
+          - /url: https://dr-patrick-lellouche.chirurgiens-dentistes.fr/diaporama
+    - list [ref=f10e322]:
+      - listitem [ref=f10e323]:
+        - link "Politique de confidentialité et charte cookie" [ref=f10e325] [cursor=pointer]:
+          - /url: https://dr-patrick-lellouche.chirurgiens-dentistes.fr/politique-de-confidentialite
+      - listitem [ref=f10e327]:
+        - link "Mentions légales" [ref=f10e329] [cursor=pointer]:
+          - /url: https://dr-patrick-lellouche.chirurgiens-dentistes.fr/mentions-legales
+      - listitem [ref=f10e331]:
+        - link "Conditions Générales Utilisation" [ref=f10e333] [cursor=pointer]:
+          - /url: https://dr-patrick-lellouche.chirurgiens-dentistes.fr/cgu
+      - listitem [ref=f10e335]:
+        - link "Charte déontologique" [ref=f10e337] [cursor=pointer]:
+          - /url: https://www.ordre-chirurgiens-dentistes.fr/download/56606
+      - listitem [ref=f10e339]:
+        - link "Ordre national" [ref=f10e341] [cursor=pointer]:
+          - /url: https://www.ordre-chirurgiens-dentistes.fr/download/52785
+      - listitem [ref=f10e343]:
+        - link "Annuaires chirurgiens dentistes" [ref=f10e345] [cursor=pointer]:
+          - /url: https://www.ordre-chirurgiens-dentistes.fr/annuaire
+  - generic [ref=f10e349]:
+    - paragraph [ref=f10e350]:
+      - generic [ref=f10e351]:
+        - generic [ref=f10e352]: Création par
+        - link [ref=f10e353] [cursor=pointer]:
+          - /url: https://webdentiste.eu/
+          - img "Webdentiste" [ref=f10e354]
+    - paragraph [ref=f10e355]:
+      - link "Connexion" [ref=f10e356] [cursor=pointer]:
+        - /url: https://compte.sites.webdentiste.eu/sites-internet/mes-sites/IXEqjtkS1G/tableau-de-bord?redirected_from=cms
