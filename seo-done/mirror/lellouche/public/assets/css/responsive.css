@@ -134,3 +134,14 @@ html, body { overflow-x: clip; }
   /* touch targets */
   #body-container .sb-vi-btn, #body-container .element-link a { min-height: 44px; }
 }
+
+/* Back-to-top: the scroll-progress ring (white centre) must survive hover/focus/tap.
+   dynamic-styles.css fills it purple on :hover, which sticks after a tap on touch screens. */
+#body-container #backtotop:hover,
+#body-container #backtotop:focus,
+#body-container #backtotop:active {
+  background: radial-gradient(closest-side,#fff 86%,transparent 87%),
+              conic-gradient(#4f229e calc(var(--p)*1%),#e6ddf6 0) !important;
+  color: #4f229e !important;
+  outline: none;
+}

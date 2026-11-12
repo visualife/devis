@@ -135,9 +135,60 @@
 #body-container .element-form .sb-vi-ajax-callback{
   border-radius:var(--cf-radius);padding:14px 18px;text-align:center;font-weight:600;text-wrap:balance;
 }
-/* oui / non side by side at every width */
-#body-container .element-form .sb-vi-form-group-radio>.sb-col{flex:1 1 0 !important;width:auto !important;max-width:none !important;min-width:0}
-#body-container .element-form .sb-vi-form-group-radio .sb-vi-input-radio{width:100%;justify-content:center;box-sizing:border-box}
+/* oui / non inline, on the same row as the question */
+#body-container .element-form .form-one-object:has(.sb-vi-form-group-radio) .sb-vi-form-group{flex-direction:row;flex-wrap:wrap;align-items:center;gap:6px 10px}
+#body-container .element-form .form-one-object:has(.sb-vi-form-group-radio) .sb-vi-form-group>label{flex:1 1 120px !important;width:auto !important;max-width:none !important;min-width:0}
+#body-container .element-form .form-one-object:has(.sb-vi-form-group-radio) .sb-vi-form-group>.sb-col:not(label){flex:0 0 auto !important;width:auto !important;max-width:none !important}
+#body-container .element-form .sb-vi-form-group::before,#body-container .element-form .sb-vi-form-group::after,#body-container .element-form .sb-vi-form-group-radio::before,#body-container .element-form .sb-vi-form-group-radio::after{display:none !important}
+#body-container .element-form .sb-vi-form-group-radio{flex-wrap:wrap;gap:6px}
+#body-container .element-form .sb-vi-form-group-radio>.sb-col{flex:0 0 auto !important;width:auto !important;max-width:none !important}
+#body-container .element-form .sb-vi-form-group-radio .sb-vi-input-radio{justify-content:center;box-sizing:border-box;padding:6px 14px;min-height:36px}
+#body-container .element-form .sb-vi-form-group>.sb-col:not(label){min-width:0}
+#body-container .element-form .form-one-object:has(.sb-vi-form-group-radio) .sb-vi-form-group>.sb-col:not(label):has(.sb-col:nth-child(3)){flex-basis:100% !important;width:100% !important}
+#body-container .element-form .sb-vi-form-group-radio:not(:has(.sb-col:nth-child(3))){flex-wrap:nowrap}
+/* oui / non: plain radio circles, no pill */
+#body-container .element-form .sb-vi-form-group-radio .sb-vi-input-radio,
+#body-container .element-form .sb-vi-form-group-radio .sb-vi-input-radio:hover,
+#body-container .element-form .sb-vi-form-group-radio .sb-vi-input-radio:has(input:checked){
+  background:none !important;border:0 !important;border-radius:0;box-shadow:none;color:var(--cf-ink) !important;
+  padding:4px 2px !important;min-height:32px !important;gap:6px;justify-content:flex-start;transform:none;
+}
+#body-container .element-form .sb-vi-form-group-radio .sb-vi-input-radio input{
+  position:static;opacity:1;inset:auto;width:20px;height:20px;margin:0;flex:0 0 auto;
+  accent-color:var(--cf-accent);cursor:pointer;
+}
+#body-container .element-form .sb-vi-form-group-radio .sb-vi-input-radio:has(input:focus-visible){box-shadow:none}
+#body-container .element-form .sb-vi-form-group-radio .sb-vi-input-radio input:focus-visible{outline:2px solid var(--cf-accent);outline-offset:2px}
+#body-container .element-form .sb-vi-form-group-radio{gap:14px}
+/* checkbox: no pill, plain box + V */
+#body-container .element-form .sb-vi-input-checkbox,
+#body-container .element-form .sb-vi-input-checkbox:hover,
+#body-container .element-form .sb-vi-input-checkbox:has(input:checked){
+  background:none !important;border:0 !important;border-radius:0;box-shadow:none;color:var(--cf-ink) !important;
+  padding:4px 2px !important;min-height:32px !important;gap:8px;transform:none;
+}
+#body-container .element-form .sb-vi-input-checkbox:has(input:checked)::before{border-color:var(--cf-accent) !important}
+#body-container .element-form .sb-vi-input-checkbox:has(input:focus-visible){box-shadow:none}
+#body-container .element-form .sb-vi-input-checkbox:has(input:focus-visible)::before{outline:2px solid var(--cf-accent);outline-offset:2px}
+#body-container .element-form .sb-vi-form-group-checkbox{gap:4px 16px}
+/* checkbox: 18px rounded box, white V in accent colour when checked */
+#body-container .element-form .sb-vi-input-checkbox::before{
+  content:"" !important;display:block !important;position:static !important;flex:0 0 auto;box-sizing:border-box;
+  width:18px !important;height:18px !important;margin:0 !important;border:1.5px solid #8b8b97 !important;border-radius:5px !important;background:#fff !important;
+  transition:border-color .18s;
+}
+#body-container .element-form .sb-vi-input-checkbox::after{display:none !important}
+#body-container .element-form .sb-vi-input-checkbox:has(input:checked)::before{
+  border-color:#fff !important;
+  background:#fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M3.2 8.6l3 3L12.8 4.6' fill='none' stroke='%234f229e' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/100% no-repeat !important;
+}
+/* centre WD's drawn radio: 20px ring, dot centred on it */
+#body-container .element-form .sb-vi-form-group-radio .sb-vi-input-radio::before{
+  width:20px !important;height:20px !important;top:0 !important;left:0 !important;margin:0 !important;flex:0 0 auto;box-sizing:border-box;
+}
+#body-container .element-form .sb-vi-form-group-radio .sb-vi-input-radio::after{
+  width:10px !important;height:10px !important;left:7px !important;top:50% !important;margin:0 !important;transform:translateY(-50%) !important;
+}
 @media (max-width:600px){
   #body-container .element-form form{border-radius:18px;padding:16px 12px}
   #body-container .element-form .form-body{gap:12px}
@@ -160,4 +211,10 @@
 }
 @media (prefers-reduced-motion:reduce){
   #body-container .element-form *{transition:none !important;animation-duration:.01ms !important}
+}
+
+/* Doctolib booking iframe: tall enough to show the whole motif list without an inner scrollbar */
+#body-container iframe[src*="doctolib"] { height: 700px !important; min-height: 0 !important; }
+@media (min-width: 640px) {
+  #body-container iframe[src*="doctolib"] { height: 600px !important; }
 }

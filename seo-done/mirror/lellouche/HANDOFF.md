@@ -1,6 +1,11 @@
 # Lellouche site: handoff (2026-11-12)
 
 ## Current state (2026-11-12)
+- 2026-11-12: back-to-top circle (`#backtotop`) no longer turns purple after a click/tap: `:hover/:focus/:active` rule at the end of `responsive.css` keeps the white-centre progress ring and the purple arrow (it overrode the sticky `:hover` fill of `dynamic-styles.css`). Checked on `prendre-rdv.html`. Uncommitted.
+- 2026-11-12: `prendre-rdv.html` dead space cut: Doctolib iframe height set by `contact-form.css` (700px under 640px wide, 600px above; shows the full motif list, no inner scrollbar), section paddings reduced (`container_59101474_inner` 20px 10px, `container_104673716_inner` 0 10px 30px), empty paragraphs/`<br />` between the two headings removed. Checked at 375px. Uncommitted.
+- 2026-11-12: symptom checkboxes: no pills; 18px box when unticked, purple (#4f229e) V when ticked (SVG background on `::before`, in `contact-form.css`). Uncommitted.
+- 2026-11-12: Oui/Non are plain radio circles (no pills), WD ring/dot centred in `contact-form.css`. Footer on all pages: "Confidentialité cookie" (link kept), "CGV" plain text (no link), other links unchanged. `cgu.html` page itself untouched. Uncommitted.
+- 2026-11-12: `prendre-rdv.html`: COVID block removed (14-day contact title, 3 Oui/Non questions, 3 "Nombre de jour" inputs, "+" toggle, footnote). Oui/Non pills now sit on the same row as the question (2-option groups; the 3-option "enceinte" question wraps below). Fix lives in `contact-form.css` (needs `!important` over WD `application.css` flex-basis, and `display:none` on the WD clearfix `::before/::after` that added gaps). Checked at 375px, no horizontal scroll. Uncommitted.
 - 2026-11-12: forms (`prendre-rdv.html`, `contactez-nous.html`) restyled via `public/assets/css/contact-form.css` (pill inputs, Oui/Non on one row at all widths, symptom checkboxes wrap several per row, tighter mobile padding, white `#subfooter` hidden on mobile). "Vérification de l'adresse email" removed. Checked at 375px (no horizontal scroll; prendre-rdv form 2638px, contact form 912px). Uncommitted.
 - 2026-11-12: new folder `images t/` (9 candidate photos: veneers, inlays, smiles, stock) added at the project root, outside `public/`. Not used on any page yet; placement undecided. No site files changed.
 
